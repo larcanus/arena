@@ -1,0 +1,167 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhd1y4fwaf7ww"]
+
+[ext_resource type="Script" path="res://create_user.gd" id="1_8nogr"]
+[ext_resource type="Texture2D" uid="uid://d1df8auhkx17" path="res://images/border2.png" id="3_kynf2"]
+[ext_resource type="Texture2D" uid="uid://dmu4cmo4owy3y" path="res://images/border1.png" id="7_56vsd"]
+[ext_resource type="Texture2D" uid="uid://2d4ygsviiauv" path="res://images/border1-press.png" id="8_andi1"]
+[ext_resource type="Script" path="res://avatar_create_user.gd" id="9_yyh4u"]
+[ext_resource type="Texture2D" uid="uid://vv00pwlq68yx" path="res://images/border-avatar.png" id="10_4s6uh"]
+
+[node name="create_user_node" type="Node2D"]
+script = ExtResource("1_8nogr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../ButtonOk")
+focus_previous = NodePath("../ButtonOk")
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BorderInput" type="Sprite2D" parent="."]
+position = Vector2(975, 937)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_kynf2")
+
+[node name="BorderAvatar" type="Sprite2D" parent="."]
+top_level = true
+light_mask = 524288
+visibility_layer = 524288
+position = Vector2(352, 288)
+scale = Vector2(0.234272, 0.23)
+texture = ExtResource("10_4s6uh")
+
+[node name="AvatarSprite2D2" type="Sprite2D" parent="."]
+position = Vector2(352, 288)
+scale = Vector2(1.8, 1.8)
+script = ExtResource("9_yyh4u")
+
+[node name="AvatarButtonBack" type="TextureButton" parent="AvatarSprite2D2"]
+anchors_preset = -1
+anchor_left = -48.889
+anchor_top = -62.222
+anchor_right = 53.333
+anchor_bottom = 53.333
+offset_left = -25.611
+offset_top = -12.278
+offset_right = 22.167
+offset_bottom = 22.167
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 774.0
+offset_top = 896.0
+offset_right = 1174.0
+offset_bottom = 976.0
+focus_next = NodePath("../ButtonOk")
+focus_previous = NodePath("../ButtonOk")
+focus_mode = 1
+theme_override_font_sizes/font_size = 30
+placeholder_text = "ИМЯ"
+alignment = 1
+max_length = 18
+flat = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="ButtonChangeAvatar" type="TextureButton" parent="."]
+clip_contents = true
+offset_left = 256.0
+offset_top = 456.0
+offset_right = 2256.0
+offset_bottom = 1016.0
+scale = Vector2(0.1, 0.1)
+focus_mode = 0
+texture_normal = ExtResource("7_56vsd")
+texture_pressed = ExtResource("8_andi1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LabelButtonBack" type="Label" parent="ButtonChangeAvatar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -22.5
+offset_right = 64.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "сменить"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonOk" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1400.0
+offset_top = 917.0
+offset_right = 2782.0
+offset_bottom = 1182.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.33, 0.33)
+focus_mode = 1
+texture_normal = ExtResource("7_56vsd")
+texture_pressed = ExtResource("8_andi1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LabelButtonOk" type="Label" parent="."]
+offset_left = 1597.0
+offset_top = 939.0
+offset_right = 1653.0
+offset_bottom = 984.0
+theme_override_font_sizes/font_size = 30
+text = " ОК"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBack" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 915.0
+offset_right = 1502.0
+offset_bottom = 1180.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.33, 0.33)
+focus_mode = 0
+texture_normal = ExtResource("7_56vsd")
+texture_pressed = ExtResource("8_andi1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LabelButtonBack" type="Label" parent="."]
+offset_left = 296.0
+offset_top = 936.0
+offset_right = 399.0
+offset_bottom = 981.0
+theme_override_font_sizes/font_size = 30
+text = "НАЗАД"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_focus_entered"]
+[connection signal="pressed" from="AvatarSprite2D2/AvatarButtonBack" to="." method="_on_button_change_avatar_pressed"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="ButtonChangeAvatar" to="." method="_on_button_change_avatar_pressed"]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

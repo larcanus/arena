@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6vtwqn6jlj37"]
+
+[ext_resource type="Texture2D" uid="uid://bh1635dwteve" path="res://icon.svg" id="1_4touk"]
+[ext_resource type="Script" path="res://change_avatar.gd" id="1_adkdw"]
+[ext_resource type="Texture2D" uid="uid://b6qyi4tiqwggm" path="res://images/avawom1.png" id="2_swllm"]
+[ext_resource type="Texture2D" uid="uid://bumkh8yfhin35" path="res://images/avawom2.png" id="3_7thva"]
+[ext_resource type="Texture2D" uid="uid://ewwayf7ua35w" path="res://images/avawom3.png" id="4_pb2ib"]
+[ext_resource type="Texture2D" uid="uid://bhpos5lax8gcn" path="res://images/avawom4.png" id="5_1eyeh"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_adkdw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0666667, 0.0509804, 0.0588235, 1)
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 512.0
+allow_search = false
+auto_height = true
+item_count = 6
+max_columns = 5
+same_column_width = true
+icon_mode = 0
+icon_scale = 0.9
+fixed_icon_size = Vector2i(150, 150)
+item_0/text = ""
+item_0/icon = ExtResource("2_swllm")
+item_1/text = ""
+item_1/icon = ExtResource("3_7thva")
+item_2/text = ""
+item_2/icon = ExtResource("4_pb2ib")
+item_3/text = ""
+item_3/icon = ExtResource("5_1eyeh")
+item_4/text = ""
+item_4/icon = ExtResource("1_4touk")
+item_5/text = ""
+
+[node name="TextureButton" type="Button" parent="."]
+offset_left = 496.0
+offset_top = 552.0
+offset_right = 632.0
+offset_bottom = 592.0
+text = "ok"
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
