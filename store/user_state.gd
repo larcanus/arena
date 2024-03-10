@@ -16,10 +16,10 @@ func _ready():
 class State:
 	var name: String
 	var avatarPath: String
-	var senseOfElements: Dictionary
+	var controlOfElements = { 'air' : 5, 'water' : 5, 'earth' : 5, 'fire' : 5,  }
 
 	func _init(data):
 		print('UserStore.State._init ', data)
 		self.name = data.get('name', '')
 		self.avatarPath = data.get('avatarPath', 'res://images/avawom1.png')
-		self.senseOfElements = data.get('senseOfElements', {})
+		self.controlOfElements = data.get('controlOfElements', controlOfElements)
