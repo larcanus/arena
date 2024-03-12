@@ -17,9 +17,11 @@ class State:
 	var name: String
 	var avatarPath: String
 	var controlOfElements = { 'air' : 5, 'water' : 5, 'earth' : 5, 'fire' : 5,  }
+	var controlOfElementsAvailable = 0
 
 	func _init(data):
 		print('UserStore.State._init ', data)
 		self.name = data.get('name', '')
 		self.avatarPath = data.get('avatarPath', 'res://images/avawom1.png')
 		self.controlOfElements = data.get('controlOfElements', controlOfElements)
+		self.controlOfElementsAvailable = data.get('controlOfElementsAvailable', 0)

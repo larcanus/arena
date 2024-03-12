@@ -3,12 +3,15 @@ extends Node2D
 var userName: String
 var controlOfElements = { 'air' : 0, 'water' : 0, 'earth' : 0, 'fire' : 0,  }
 var controlOfElementsAvailable = 0;
+var backgroundScene = Color('1e113c');
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	userName = User.state.name if User.state.name else ''
 	controlOfElements = User.state.controlOfElements if User.state.controlOfElements else controlOfElements
+	controlOfElementsAvailable = User.state.controlOfElementsAvailable
 	
+	$ColorRect.set_color(backgroundScene)
 	$InputName.insert_text_at_caret(userName)
 	setControlTable()
 	setAvailableCount()
@@ -55,6 +58,7 @@ func _on_button_change_family_pressed() -> void:
 
 
 func _on_button_back_pressed() -> void:
+	User.state.controlOfElementsAvailable = controlOfElementsAvailable
 	get_tree().change_scene_to_file('res://menu.tscn')
 
 
