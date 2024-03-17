@@ -11,7 +11,8 @@ func _ready() -> void:
 	controlOfElements = User.state.controlOfElements if User.state.controlOfElements else controlOfElements
 	controlOfElementsAvailable = User.state.controlOfElementsAvailable
 	
-	$ColorRect.set_color(backgroundScene)
+	$AnimationPlayer.play('blackinScene');
+	$Background.set_color(backgroundScene)
 	$InputName.insert_text_at_caret(userName)
 	setControlTable()
 	setAvailableCount()
@@ -58,8 +59,9 @@ func _on_button_change_family_pressed() -> void:
 
 
 func _on_button_back_pressed() -> void:
-	User.state.controlOfElementsAvailable = controlOfElementsAvailable
-	get_tree().change_scene_to_file('res://menu.tscn')
+	User.state.controlOfElementsAvailable = controlOfElementsAvailable;
+	$BlackoutScene.visible = true;
+	$AnimationPlayer.play('blackoutScene');
 
 
 func _on_color_rect_focus_entered() -> void:
@@ -162,3 +164,13 @@ func _on_arrow_right_fire_pressed():
 func _on_button_ok_pressed():
 	var isReady = checkReadyScene();
 	print('user ready: ', User.state.name, User.state.controlOfElements)
+	get_tree().change_scene_to_file('res://main.tscn')
+
+
+func _on_animation_player_animation_finished(anim_name):
+	print(anim_name)
+	if anim_name == 'blackoutScene':
+		get_tree().change_scene_to_file('res://menu.tscn')
+		
+	if anim_name == 'blackinScene':
+		$BlackoutScene.visible = false

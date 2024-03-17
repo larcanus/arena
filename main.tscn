@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb43ne5killpg"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_iejb3"]
+[ext_resource type="Texture2D" uid="uid://djplyg0hktq1i" path="res://images/main.png" id="2_w6cqp"]
+
+[sub_resource type="Animation" id="Animation_82se2"]
+resource_name = "blackoutScene"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackoutSceneColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.0666667, 0.235294, 0), Color(0.117647, 0.0666667, 0.235294, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rdtgp"]
+resource_name = "blackinScene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackoutSceneColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.0666667, 0.235294, 1), Color(0.117647, 0.0666667, 0.235294, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwm02"]
+_data = {
+"blackinScene": SubResource("Animation_rdtgp"),
+"blackoutScene": SubResource("Animation_82se2")
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_iejb3")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+offset_right = 1980.0
+offset_bottom = 1080.0
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.966971, 0.934426)
+texture = ExtResource("2_w6cqp")
+centered = false
+
+[node name="BlackoutSceneColor" type="ColorRect" parent="."]
+offset_right = 1980.0
+offset_bottom = 1080.0
+color = Color(0.117647, 0.0666667, 0.235294, 0.7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwm02")
+}
+
+[node name="textLabelUserState" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 135.378
+offset_top = 967.956
+offset_right = 735.378
+offset_bottom = 1017.96
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 30
+text = "jvbkjjvcvbkjnkkjvhgcvjbkjnlnbjjcghvjhbkjnlmkm"
+scroll_active = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
