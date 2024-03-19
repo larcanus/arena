@@ -1,7 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb43ne5killpg"]
+[gd_scene load_steps=10 format=3 uid="uid://cb43ne5killpg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_iejb3"]
 [ext_resource type="Texture2D" uid="uid://djplyg0hktq1i" path="res://images/main.png" id="2_w6cqp"]
+[ext_resource type="Texture2D" uid="uid://bnboh3akgkgh8" path="res://images/swords-300.png" id="3_78ow4"]
+[ext_resource type="Texture2D" uid="uid://ckso0b6disi4d" path="res://images/swords-pressed-300.png" id="4_jbjvh"]
+
+[sub_resource type="Animation" id="Animation_rdtgp"]
+resource_name = "blackinScene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackoutSceneColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.0666667, 0.235294, 1), Color(0.117647, 0.0666667, 0.235294, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_82se2"]
 resource_name = "blackoutScene"
@@ -19,26 +36,31 @@ tracks/0/keys = {
 "values": [Color(0.117647, 0.0666667, 0.235294, 0), Color(0.117647, 0.0666667, 0.235294, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_rdtgp"]
-resource_name = "blackinScene"
+[sub_resource type="Animation" id="Animation_apviq"]
+resource_name = "battleIcon"
+length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackoutSceneColor:color")
+tracks/0/path = NodePath("BattleBtn:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.117647, 0.0666667, 0.235294, 1), Color(0.117647, 0.0666667, 0.235294, 0)]
+"values": [Vector2(928, 615), Vector2(928, 620), Vector2(928, 625), Vector2(928, 620), Vector2(928, 615)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dwm02"]
 _data = {
+"battleIcon": SubResource("Animation_apviq"),
 "blackinScene": SubResource("Animation_rdtgp"),
 "blackoutScene": SubResource("Animation_82se2")
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbver"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_iejb3")
@@ -53,14 +75,10 @@ scale = Vector2(0.966971, 0.934426)
 texture = ExtResource("2_w6cqp")
 centered = false
 
-[node name="BlackoutSceneColor" type="ColorRect" parent="."]
-offset_right = 1980.0
-offset_bottom = 1080.0
-color = Color(0.117647, 0.0666667, 0.235294, 0.7)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dwm02")
+"": SubResource("AnimationLibrary_dwm02"),
+"animation": SubResource("AnimationLibrary_fbver")
 }
 
 [node name="textLabelUserState" type="RichTextLabel" parent="."]
@@ -80,4 +98,37 @@ theme_override_font_sizes/normal_font_size = 30
 text = "jvbkjjvcvbkjnkkjvhgcvjbkjnlnbjjcghvjhbkjnlmkm"
 scroll_active = false
 
+[node name="BattleBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 928.0
+offset_top = 615.0
+offset_right = 1078.0
+offset_bottom = 765.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.01214, 1.01214)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_78ow4")
+texture_pressed = ExtResource("4_jbjvh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BlackoutSceneColor" type="ColorRect" parent="."]
+offset_right = 1980.0
+offset_bottom = 1080.0
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[node name="AnimationPlayerBtn" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwm02"),
+"animation": SubResource("AnimationLibrary_fbver")
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="BattleBtn" to="." method="_on_battle_btn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayerBtn" to="." method="_on_animation_player_animation_finished"]
