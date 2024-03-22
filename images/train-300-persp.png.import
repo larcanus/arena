@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvo4y75n1emb"
-path="res://.godot/imported/swords-250.png-1e9266298c27aff88e25a4b8d76374a5.ctex"
+uid="uid://cy0hhy18yoi0t"
+path="res://.godot/imported/train-300-persp.png-c6290c2b9303b92b5819b9aa842d1244.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/swords-250.png"
-dest_files=["res://.godot/imported/swords-250.png-1e9266298c27aff88e25a4b8d76374a5.ctex"]
+source_file="res://images/train-300-persp.png"
+dest_files=["res://.godot/imported/train-300-persp.png-c6290c2b9303b92b5819b9aa842d1244.ctex"]
 
 [params]
 

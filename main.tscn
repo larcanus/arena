@@ -1,9 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb43ne5killpg"]
+[gd_scene load_steps=14 format=3 uid="uid://cb43ne5killpg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_iejb3"]
 [ext_resource type="Texture2D" uid="uid://djplyg0hktq1i" path="res://images/main.png" id="2_w6cqp"]
 [ext_resource type="Texture2D" uid="uid://bnboh3akgkgh8" path="res://images/swords-300.png" id="3_78ow4"]
-[ext_resource type="Texture2D" uid="uid://ckso0b6disi4d" path="res://images/swords-pressed-300.png" id="4_jbjvh"]
+[ext_resource type="Texture2D" uid="uid://bthf01u260ixl" path="res://images/swords-pressed-300.png" id="4_jbjvh"]
+[ext_resource type="Texture2D" uid="uid://cjoyw1ybjb2dy" path="res://images/swords-hover-300.png" id="5_8y67j"]
+[ext_resource type="Texture2D" uid="uid://cy0hhy18yoi0t" path="res://images/train-300-persp.png" id="6_1j3fv"]
+[ext_resource type="Texture2D" uid="uid://b6ebfyuvcbh66" path="res://images/train-pressed-300-persp.png" id="7_pfo5e"]
+[ext_resource type="Texture2D" uid="uid://y1u6nnsthhgg" path="res://images/train-hover-300-persp.png" id="8_f8fwr"]
+
+[sub_resource type="Animation" id="Animation_apviq"]
+resource_name = "battleIcon"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(928, 615), Vector2(928, 620), Vector2(928, 625), Vector2(928, 620), Vector2(928, 615)]
+}
 
 [sub_resource type="Animation" id="Animation_rdtgp"]
 resource_name = "blackinScene"
@@ -34,23 +55,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.117647, 0.0666667, 0.235294, 0), Color(0.117647, 0.0666667, 0.235294, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_apviq"]
-resource_name = "battleIcon"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BattleBtn:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(928, 615), Vector2(928, 620), Vector2(928, 625), Vector2(928, 620), Vector2(928, 615)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dwm02"]
@@ -115,10 +119,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_78ow4")
 texture_pressed = ExtResource("4_jbjvh")
+texture_hover = ExtResource("5_8y67j")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="BlackoutSceneColor" type="ColorRect" parent="."]
+visible = false
 offset_right = 1980.0
 offset_bottom = 1080.0
 color = Color(0.117647, 0.0666667, 0.235294, 1)
@@ -128,6 +134,24 @@ libraries = {
 "": SubResource("AnimationLibrary_dwm02"),
 "animation": SubResource("AnimationLibrary_fbver")
 }
+
+[node name="TrainBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 528.0
+offset_top = 744.0
+offset_right = 678.0
+offset_bottom = 894.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_1j3fv")
+texture_pressed = ExtResource("7_pfo5e")
+texture_hover = ExtResource("8_f8fwr")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BattleBtn" to="." method="_on_battle_btn_pressed"]

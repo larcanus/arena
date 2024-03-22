@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bthf01u260ixl"
-path="res://.godot/imported/swords-pressed-300.png-2c897f8881bf70442caca9a293f079cf.ctex"
+uid="uid://cjoyw1ybjb2dy"
+path="res://.godot/imported/swords-hover-300.png-f07ea8a03a72aa9b96dfed07136f22b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/swords-pressed-300.png"
-dest_files=["res://.godot/imported/swords-pressed-300.png-2c897f8881bf70442caca9a293f079cf.ctex"]
+source_file="res://images/swords-hover-300.png"
+dest_files=["res://.godot/imported/swords-hover-300.png-f07ea8a03a72aa9b96dfed07136f22b6.ctex"]
 
 [params]
 

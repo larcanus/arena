@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnh2s6m14nnjn"
-path="res://.godot/imported/sword-gold-source-border2-black-250.png-4733390d0571b384d6f85f6e4d8beac5.ctex"
+uid="uid://b6ebfyuvcbh66"
+path="res://.godot/imported/train-pressed-300-persp.png-80502495b239c1d43654dad98081223f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/sword-gold-source-border2-black-250.png"
-dest_files=["res://.godot/imported/sword-gold-source-border2-black-250.png-4733390d0571b384d6f85f6e4d8beac5.ctex"]
+source_file="res://images/train-pressed-300-persp.png"
+dest_files=["res://.godot/imported/train-pressed-300-persp.png-80502495b239c1d43654dad98081223f.ctex"]
 
 [params]
 
