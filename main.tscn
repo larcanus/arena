@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cb43ne5killpg"]
+[gd_scene load_steps=25 format=3 uid="uid://cb43ne5killpg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_iejb3"]
 [ext_resource type="Texture2D" uid="uid://djplyg0hktq1i" path="res://images/main.png" id="2_w6cqp"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://dax3216eqbw0s" path="res://images/icon-store-300-persp.png" id="12_fyw7n"]
 [ext_resource type="Texture2D" uid="uid://4bocdkbbtpmy" path="res://images/icon-store-pressed-300-persp.png" id="13_3m3fm"]
 [ext_resource type="Texture2D" uid="uid://cimskd14a7f7r" path="res://images/icon-store-hover-300-persp.png" id="13_lb6s5"]
+[ext_resource type="Script" path="res://avatar.gd" id="15_ddy37"]
+[ext_resource type="Texture2D" uid="uid://ca5mkkpq11yy0" path="res://images/border-menu-source.png" id="15_h0cnn"]
+[ext_resource type="Texture2D" uid="uid://b2xkw5puxwpbp" path="res://images/border-menu-pressed.png" id="16_iunfx"]
+[ext_resource type="Texture2D" uid="uid://baoakrge1qqxr" path="res://images/border-menu-hover.png" id="17_vduwb"]
+[ext_resource type="Texture2D" uid="uid://b6qyi4tiqwggm" path="res://images/avawom1.png" id="18_jwivj"]
 
 [sub_resource type="Animation" id="Animation_apviq"]
 resource_name = "battleIcon"
@@ -29,7 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(928, 615), Vector2(928, 620), Vector2(928, 625), Vector2(928, 620), Vector2(928, 615)]
+"values": [Vector2(893, 615), Vector2(893, 620), Vector2(893, 625), Vector2(893, 620), Vector2(893, 615)]
 }
 
 [sub_resource type="Animation" id="Animation_rdtgp"]
@@ -76,12 +81,13 @@ _data = {
 script = ExtResource("1_iejb3")
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
-offset_right = 1980.0
+offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.117647, 0.0666667, 0.235294, 1)
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.966971, 0.934426)
+position = Vector2(2, -7.62939e-06)
+scale = Vector2(0.935547, 0.9375)
 texture = ExtResource("2_w6cqp")
 centered = false
 
@@ -114,10 +120,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 928.0
-offset_top = 615.0
-offset_right = 1078.0
-offset_bottom = 765.0
+offset_left = 893.0
+offset_top = 622.357
+offset_right = 1043.0
+offset_bottom = 772.357
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.01214, 1.01214)
@@ -135,10 +141,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 528.0
-offset_top = 744.0
-offset_right = 678.0
-offset_bottom = 894.0
+offset_left = 503.0
+offset_top = 749.0
+offset_right = 653.0
+offset_bottom = 899.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_1j3fv")
@@ -153,9 +159,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1316.0
+offset_left = 1275.0
 offset_top = 744.0
-offset_right = 1484.0
+offset_right = 1443.0
 offset_bottom = 904.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -171,10 +177,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 200.0
-offset_top = 776.0
-offset_right = 350.0
-offset_bottom = 926.0
+offset_left = 195.0
+offset_top = 779.0
+offset_right = 345.0
+offset_bottom = 929.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -182,6 +188,23 @@ size_flags_vertical = 4
 texture_normal = ExtResource("12_fyw7n")
 texture_pressed = ExtResource("13_3m3fm")
 texture_hover = ExtResource("13_lb6s5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MenuBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1760.0
+offset_right = 1918.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_h0cnn")
+texture_pressed = ExtResource("16_iunfx")
+texture_hover = ExtResource("17_vduwb")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -196,6 +219,19 @@ libraries = {
 "animation": SubResource("AnimationLibrary_fbver")
 }
 
+[node name="AvatarSprite" type="Sprite2D" parent="."]
+position = Vector2(976, 1003)
+texture = ExtResource("18_jwivj")
+script = ExtResource("15_ddy37")
+
+[node name="Button" type="Button" parent="AvatarSprite"]
+show_behind_parent = true
+offset_left = -72.0
+offset_top = -73.0
+offset_right = 72.0
+offset_bottom = 73.0
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BattleBtn" to="." method="_on_battle_btn_pressed"]
+[connection signal="pressed" from="MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayerBtn" to="." method="_on_animation_player_animation_finished"]

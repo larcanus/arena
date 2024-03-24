@@ -25,3 +25,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_battle_btn_pressed():
 	print('on_battle_btn_pressed')
+
+
+func _on_menu_btn_pressed():
+	get_tree().change_scene_to_file('res://menu.tscn');
