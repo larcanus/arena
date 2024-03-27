@@ -163,7 +163,6 @@ func _on_arrow_right_fire_pressed():
 
 
 func _on_button_ok_pressed():
-	var isReady = checkReadyScene();
 	print('user ready: ', User.state.name, User.state.controlOfElements)
 	get_tree().change_scene_to_file('res://main.tscn')
 
@@ -182,7 +181,7 @@ func _on_input_name_text_submitted(new_text):
 	handlerButtonOk();
 
 
-func _on_input_name_text_change_rejected(rejected_substring):
+func _on_input_name_text_change_rejected():
 	User.state.name = $InputName.get_text();
 	handlerButtonOk();
 
