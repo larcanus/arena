@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="wom"
+config/version="0.0.1"
 run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
@@ -28,6 +29,7 @@ User="*res://store/user_state.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 
@@ -36,6 +38,5 @@ version_control/autoload_on_startup=true
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 limits/global_shader_variables/buffer_size=16384

@@ -4,9 +4,11 @@ var backgroundScene = Color('1e113c');
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	changeScaleAspectToKeep();
 	$AnimationPlayer.play('blackinScene')
 	$AnimationPlayerBtn.play('battleIcon')
 	$BackgroundColor.set_color(backgroundScene)
+	$CanvasLayer/PopupMenu.visible = false;
 	$textLabelUserState.text = User.state.name + '  ' + JSON.stringify(User.state.controlOfElements);
 
 
@@ -14,6 +16,10 @@ func _ready():
 func _process(delta):
 	pass
 
+func changeScaleAspectToKeep():
+	if(get_tree().root.content_scale_aspect != 1):
+		get_tree().root.content_scale_aspect = 1;
+		print('change scale_aspect = keep')
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'blackoutScene':
@@ -28,4 +34,5 @@ func _on_battle_btn_pressed():
 
 
 func _on_menu_btn_pressed():
-	get_tree().change_scene_to_file('res://menu.tscn');
+	get_tree().paused = !get_tree().paused
+	$CanvasLayer/PopupMenu.visible = !$CanvasLayer/PopupMenu.visible;
