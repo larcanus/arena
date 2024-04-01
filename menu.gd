@@ -21,7 +21,10 @@ func on_press_btn_new_game():
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'blackoutScene':
-		get_tree().change_scene_to_file('res://create_user.tscn')
+		if User.state.isNewUser == true:
+			get_tree().change_scene_to_file('res://create_user.tscn')
+		else:
+			get_tree().change_scene_to_file('res://main.tscn')
 		
 	if anim_name == 'blackinScene':
 		$CanvasLayer/BlackoutScene.visible = false

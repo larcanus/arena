@@ -13,12 +13,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func changeScaleAspectToKeep():
-	if(get_tree().root.content_scale_aspect != 1):
-		get_tree().root.content_scale_aspect = 1;
+	if(get_tree().root.content_scale_aspect != Window.CONTENT_SCALE_ASPECT_KEEP):
+		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP;
 		print('change scale_aspect = keep')
 
 func _on_animation_player_animation_finished(anim_name):

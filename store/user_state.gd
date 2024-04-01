@@ -18,6 +18,7 @@ class State:
 	var avatarPath: String
 	var controlOfElements = { 'air' : 5, 'water' : 5, 'earth' : 5, 'fire' : 5,  }
 	var controlOfElementsAvailable = 0
+	var isNewUser = true;
 
 	func _init(data):
 		print('UserStore.State._init ', data)

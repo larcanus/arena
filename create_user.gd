@@ -7,6 +7,7 @@ var backgroundScene = Color('1e113c');
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	User.state.isNewUser = true;
 	userName = User.state.name if User.state.name else ''
 	controlOfElements = User.state.controlOfElements if User.state.controlOfElements else controlOfElements
 	controlOfElementsAvailable = User.state.controlOfElementsAvailable
@@ -163,6 +164,7 @@ func _on_arrow_right_fire_pressed():
 
 
 func _on_button_ok_pressed():
+	User.state.isNewUser = false;
 	print('user ready: ', User.state.name, User.state.controlOfElements)
 	get_tree().change_scene_to_file('res://main.tscn')
 
