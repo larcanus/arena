@@ -216,17 +216,6 @@ texture_hover = ExtResource("13_lb6s5")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="BlackoutSceneColor" type="ColorRect" parent="."]
-offset_right = 1980.0
-offset_bottom = 1080.0
-color = Color(0.117647, 0.0666667, 0.235294, 1)
-
-[node name="AnimationPlayerBtn" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_dwm02"),
-"animation": SubResource("AnimationLibrary_fbver")
-}
-
 [node name="AvatarSprite" type="TextureRect" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -251,6 +240,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BlackoutSceneColor" type="ColorRect" parent="."]
+offset_right = 1980.0
+offset_bottom = 1080.0
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[node name="AnimationPlayerBtn" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwm02"),
+"animation": SubResource("AnimationLibrary_fbver")
+}
 
 [connection signal="pressed" from="CanvasLayer/MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
