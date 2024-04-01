@@ -217,7 +217,6 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="BlackoutSceneColor" type="ColorRect" parent="."]
-visible = false
 offset_right = 1980.0
 offset_bottom = 1080.0
 color = Color(0.117647, 0.0666667, 0.235294, 1)
@@ -228,17 +227,30 @@ libraries = {
 "animation": SubResource("AnimationLibrary_fbver")
 }
 
-[node name="AvatarSprite" type="Sprite2D" parent="."]
-position = Vector2(976, 1003)
+[node name="AvatarSprite" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 910.0
+offset_top = 899.0
+offset_right = 1064.0
+offset_bottom = 1049.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("18_jwivj")
+stretch_mode = 5
 script = ExtResource("15_ddy37")
 
 [node name="Button" type="Button" parent="AvatarSprite"]
 show_behind_parent = true
-offset_left = -72.0
-offset_top = -73.0
-offset_right = 72.0
-offset_bottom = 73.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="CanvasLayer/MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

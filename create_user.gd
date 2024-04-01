@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var userName: String
 var controlOfElements = { 'air' : 0, 'water' : 0, 'earth' : 0, 'fire' : 0,  }
@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 	$AnimationPlayer.play('blackinScene');
 	$Background.set_color(backgroundScene)
-	$InputName.insert_text_at_caret(userName)
+	$BorderInput/InputName.insert_text_at_caret(userName)
 	setControlTable()
 	setAvailableCount()
 	handlerButtonOk()
@@ -34,10 +34,10 @@ func _process(_delta: float) -> void:
 func handlerButtonOk() -> void:
 	if checkReadyScene() == true:
 		$ButtonOk.set_disabled(false);
-		$LabelButtonOk.set("theme_override_colors/font_color",Color("ffffff"))
+		$ButtonOk/LabelButtonOk.set("theme_override_colors/font_color",Color("ffffff"))
 	else:
 		$ButtonOk.set_disabled(true);
-		$LabelButtonOk.set("theme_override_colors/font_color",Color("ffffff77"))
+		$ButtonOk/LabelButtonOk.set("theme_override_colors/font_color",Color("ffffff77"))
 
 func checkReadyScene() -> bool:
 	if User.state.name.length() > 1 && controlOfElementsAvailable == 0:
@@ -182,15 +182,15 @@ func _on_input_name_text_submitted(new_text):
 
 
 func _on_input_name_text_change_rejected():
-	User.state.name = $InputName.get_text();
+	User.state.name = $BorderInput/InputName.get_text();
 	handlerButtonOk();
 
 
 func _on_input_name_focus_entered():
-	User.state.name = $InputName.get_text();
+	User.state.name = $BorderInput/InputName.get_text();
 	handlerButtonOk();
 
 
 func _on_input_name_focus_exited():
-	User.state.name = $InputName.get_text();
+	User.state.name = $BorderInput/InputName.get_text();
 	handlerButtonOk();
