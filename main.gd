@@ -8,7 +8,7 @@ func _ready():
 	$AnimationPlayer.play('blackinScene')
 	$AnimationPlayerBtn.play('battleIcon')
 	$BackgroundColor.set_color(backgroundScene)
-	$CanvasLayer/PopupMenu.visible = false;
+	$CanvasLayerMenu/PopupMenu.visible = false;
 	$textLabelUserState.text = User.state.name + '  ' + JSON.stringify(User.state.controlOfElements);
 
 
@@ -26,7 +26,7 @@ func _on_animation_player_animation_finished(anim_name):
 		print('out main scene')
 		
 	if anim_name == 'blackinScene':
-		$BlackoutSceneColor.visible = false
+		$CanvasLayerBk/BlackoutSceneColor.visible = false
 
 
 func _on_battle_btn_pressed():
@@ -35,4 +35,4 @@ func _on_battle_btn_pressed():
 
 func _on_menu_btn_pressed():
 	get_tree().paused = !get_tree().paused
-	$CanvasLayer/PopupMenu.visible = !$CanvasLayer/PopupMenu.visible;
+	$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cb43ne5killpg"]
+[gd_scene load_steps=25 format=3 uid="uid://cb43ne5killpg"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_iejb3"]
 [ext_resource type="Texture2D" uid="uid://djplyg0hktq1i" path="res://images/main.png" id="2_w6cqp"]
@@ -14,12 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://dax3216eqbw0s" path="res://images/icon-store-300-persp.png" id="12_fyw7n"]
 [ext_resource type="Texture2D" uid="uid://4bocdkbbtpmy" path="res://images/icon-store-pressed-300-persp.png" id="13_3m3fm"]
 [ext_resource type="Texture2D" uid="uid://cimskd14a7f7r" path="res://images/icon-store-hover-300-persp.png" id="13_lb6s5"]
-[ext_resource type="Script" path="res://avatar.gd" id="15_ddy37"]
 [ext_resource type="Texture2D" uid="uid://ca5mkkpq11yy0" path="res://images/border-menu-source.png" id="15_h0cnn"]
 [ext_resource type="Texture2D" uid="uid://b2xkw5puxwpbp" path="res://images/border-menu-pressed.png" id="16_iunfx"]
 [ext_resource type="Texture2D" uid="uid://baoakrge1qqxr" path="res://images/border-menu-hover.png" id="17_vduwb"]
-[ext_resource type="Texture2D" uid="uid://b6qyi4tiqwggm" path="res://images/avawom1.png" id="18_jwivj"]
 [ext_resource type="PackedScene" uid="uid://3bjyupig62ha" path="res://popup_menu.tscn" id="18_oh6u5"]
+[ext_resource type="PackedScene" uid="uid://b43fcdkj1krjx" path="res://user_state_bar.tscn" id="21_mp7sf"]
 
 [sub_resource type="Animation" id="Animation_apviq"]
 resource_name = "battleIcon"
@@ -43,7 +42,7 @@ resource_name = "blackinScene"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackoutSceneColor:color")
+tracks/0/path = NodePath("CanvasLayerBk/BlackoutSceneColor:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +58,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackoutSceneColor:color")
+tracks/0/path = NodePath("CanvasLayerBk/BlackoutSceneColor:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,12 +91,21 @@ scale = Vector2(0.935547, 0.9375)
 texture = ExtResource("2_w6cqp")
 centered = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayerUserState" type="CanvasLayer" parent="."]
 
-[node name="PopupMenu" parent="CanvasLayer" instance=ExtResource("18_oh6u5")]
+[node name="UserStateBar" parent="CanvasLayerUserState" instance=ExtResource("21_mp7sf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
+
+[node name="CanvasLayerMenu" type="CanvasLayer" parent="."]
+
+[node name="PopupMenu" parent="CanvasLayerMenu" instance=ExtResource("18_oh6u5")]
 visible = false
 
-[node name="MenuBtn" type="TextureButton" parent="CanvasLayer"]
+[node name="MenuBtn" type="TextureButton" parent="CanvasLayerMenu"]
 process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -216,43 +224,27 @@ texture_hover = ExtResource("13_lb6s5")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="AvatarSprite" type="TextureRect" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 910.0
-offset_top = 899.0
-offset_right = 1064.0
-offset_bottom = 1049.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("18_jwivj")
-stretch_mode = 5
-script = ExtResource("15_ddy37")
-
-[node name="Button" type="Button" parent="AvatarSprite"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BlackoutSceneColor" type="ColorRect" parent="."]
-offset_right = 1980.0
-offset_bottom = 1080.0
-color = Color(0.117647, 0.0666667, 0.235294, 1)
-
 [node name="AnimationPlayerBtn" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dwm02"),
 "animation": SubResource("AnimationLibrary_fbver")
 }
 
-[connection signal="pressed" from="CanvasLayer/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[node name="CanvasLayerBk" type="CanvasLayer" parent="."]
+
+[node name="BlackoutSceneColor" type="ColorRect" parent="CanvasLayerBk"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[connection signal="pressed" from="CanvasLayerMenu/MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BattleBtn" to="." method="_on_battle_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayerBtn" to="." method="_on_animation_player_animation_finished"]
