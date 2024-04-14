@@ -23,6 +23,8 @@ driver/mix_rate.web=44100
 [autoload]
 
 User="*res://store/user_state.gd"
+UserStateSignals="*res://controller/user_state_signals.gd"
+UserStoreSignals="*res://controller/user_store_signals.gd"
 
 [display]
 

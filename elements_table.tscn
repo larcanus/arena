@@ -1,0 +1,271 @@
+[gd_scene load_steps=8 format=3 uid="uid://cct1i5jettv0w"]
+
+[ext_resource type="Texture2D" uid="uid://1w7wpada15ic" path="res://images/border-elements-stone.png" id="1_trxhd"]
+[ext_resource type="Script" path="res://elements_table.gd" id="1_wge6n"]
+[ext_resource type="Texture2D" uid="uid://df22ciddldqmo" path="res://images/text-border-black.png" id="2_prlif"]
+[ext_resource type="Texture2D" uid="uid://pvcsfo4svja3" path="res://images/arrow-left.png" id="3_hbrnv"]
+[ext_resource type="Texture2D" uid="uid://1p7v0fn83c0a" path="res://images/arrow-left-pressed.png" id="4_elvfh"]
+[ext_resource type="Texture2D" uid="uid://djrpur7uw2dd4" path="res://images/arrow-right-pressed.png" id="5_0egnb"]
+[ext_resource type="Texture2D" uid="uid://bbkogg7y4ljtk" path="res://images/arrow-right.png" id="6_ongy5"]
+
+[node name="ControlElementsTable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wge6n")
+
+[node name="ElementsTable" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -870.0
+offset_top = 90.0
+offset_right = 553.0
+offset_bottom = 1348.0
+grow_horizontal = 0
+scale = Vector2(0.548724, 0.51248)
+texture = ExtResource("1_trxhd")
+stretch_mode = 5
+metadata/_edit_group_ = true
+
+[node name="BorderText" type="TextureRect" parent="ElementsTable"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.983
+offset_top = -40.9772
+offset_right = 652.017
+offset_bottom = 234.023
+grow_horizontal = 2
+scale = Vector2(0.5, 0.516)
+texture = ExtResource("2_prlif")
+stretch_mode = 5
+
+[node name="BorderText" type="Label" parent="ElementsTable/BorderText"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -55.0
+offset_right = 327.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 76
+text = "контроль стихий"
+
+[node name="Table" type="VBoxContainer" parent="ElementsTable"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.5
+offset_top = -452.0
+offset_right = 500.5
+offset_bottom = 452.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="row1" type="HBoxContainer" parent="ElementsTable/Table"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_group_ = true
+
+[node name="ElementName" type="Label" parent="ElementsTable/Table/row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 70
+text = "воздух"
+horizontal_alignment = 1
+
+[node name="ArrowLeftAir" type="TextureButton" parent="ElementsTable/Table/row1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hbrnv")
+texture_pressed = ExtResource("4_elvfh")
+
+[node name="CountAir" type="Label" parent="ElementsTable/Table/row1"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="ArrowRightAir" type="TextureButton" parent="ElementsTable/Table/row1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_0egnb")
+texture_pressed = ExtResource("6_ongy5")
+
+[node name="row2" type="HBoxContainer" parent="ElementsTable/Table"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_group_ = true
+
+[node name="ElementName" type="Label" parent="ElementsTable/Table/row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 70
+text = "вода"
+horizontal_alignment = 1
+
+[node name="ArrowLeftWater" type="TextureButton" parent="ElementsTable/Table/row2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hbrnv")
+texture_pressed = ExtResource("4_elvfh")
+
+[node name="CountWater" type="Label" parent="ElementsTable/Table/row2"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="ArrowRightWater" type="TextureButton" parent="ElementsTable/Table/row2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_0egnb")
+texture_pressed = ExtResource("6_ongy5")
+
+[node name="row3" type="HBoxContainer" parent="ElementsTable/Table"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_group_ = true
+
+[node name="ElementName" type="Label" parent="ElementsTable/Table/row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 70
+text = "земля
+"
+horizontal_alignment = 1
+
+[node name="ArrowLeftEarth" type="TextureButton" parent="ElementsTable/Table/row3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hbrnv")
+texture_pressed = ExtResource("4_elvfh")
+
+[node name="CountEarth" type="Label" parent="ElementsTable/Table/row3"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="ArrowRightEarth" type="TextureButton" parent="ElementsTable/Table/row3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_0egnb")
+texture_pressed = ExtResource("6_ongy5")
+
+[node name="row4" type="HBoxContainer" parent="ElementsTable/Table"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_group_ = true
+
+[node name="ElementName" type="Label" parent="ElementsTable/Table/row4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 70
+text = "огонь
+"
+horizontal_alignment = 1
+
+[node name="ArrowLeftFire" type="TextureButton" parent="ElementsTable/Table/row4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_hbrnv")
+texture_pressed = ExtResource("4_elvfh")
+
+[node name="CountFire" type="Label" parent="ElementsTable/Table/row4"]
+custom_minimum_size = Vector2(120, 2.08165e-12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="ArrowRightFire" type="TextureButton" parent="ElementsTable/Table/row4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_0egnb")
+texture_pressed = ExtResource("6_ongy5")
+
+[node name="BorderTableFooterText" type="TextureRect" parent="ElementsTable"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -214.983
+offset_top = -95.4805
+offset_right = 652.017
+offset_bottom = 179.52
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.516)
+texture = ExtResource("2_prlif")
+stretch_mode = 5
+
+[node name="ControlAvailableCountRow" type="HBoxContainer" parent="ElementsTable/BorderTableFooterText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -229.5
+offset_top = -52.5
+offset_right = 229.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlCountText" type="Label" parent="ElementsTable/BorderTableFooterText/ControlAvailableCountRow"]
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 76
+text = "доступно:  "
+horizontal_alignment = 1
+
+[node name="ControlAvailableCount" type="Label" parent="ElementsTable/BorderTableFooterText/ControlAvailableCountRow"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 70
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ElementsTable/Table/row1/ArrowLeftAir" to="." method="_on_arrow_left_air_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row1/ArrowRightAir" to="." method="_on_arrow_right_air_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row2/ArrowLeftWater" to="." method="_on_arrow_left_water_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row2/ArrowRightWater" to="." method="_on_arrow_right_water_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row3/ArrowLeftEarth" to="." method="_on_arrow_left_earth_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row3/ArrowRightEarth" to="." method="_on_arrow_right_earth_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row4/ArrowLeftFire" to="." method="_on_arrow_left_fire_pressed"]
+[connection signal="pressed" from="ElementsTable/Table/row4/ArrowRightFire" to="." method="_on_arrow_right_fire_pressed"]

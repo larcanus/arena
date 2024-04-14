@@ -1,7 +1,6 @@
 extends Node2D
 var backgroundScene = Color('1e113c');
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	changeScaleAspectToKeep();
@@ -31,7 +30,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_battle_btn_pressed():
 	print('on_battle_btn_pressed')
-
+	
 
 func _on_menu_btn_pressed():
 	get_tree().paused = !get_tree().paused
