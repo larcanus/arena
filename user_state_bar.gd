@@ -1,11 +1,11 @@
 extends Control
-var test := 123;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_set_mana_state(User.get_mana());
 	_set_hp_state(User.get_hp());
 	bindSignals();
+	setLvl();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -15,6 +15,10 @@ func _process(delta):
 func bindSignals() -> void :
 	UserStoreSignals.change_hp.connect(_change_hp_from_store);
 	UserStoreSignals.change_mana.connect(_change_mana_from_store);
+
+func setLvl():
+	var lvlStr = User.get_string_lvl();
+	get_node("MarginContainer/MarginContainer/Label").text = lvlStr;
 
 func _on_texture_button_pressed():
 	print('_on_texture_button_pressed')

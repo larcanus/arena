@@ -33,6 +33,35 @@ func get_controlOfElementsAvailable() -> int:
 
 func update_controlOfElementsAvailable(value: int) -> void:
 	state.update_controlOfElementsAvailable(value);
+	
+
+func get_lvl() -> Dictionary:
+	return state.lvl;
+
+func get_string_lvl():
+	var string = '';
+	if state.lvl.stage == 1:
+		string = 'Ученик'
+		
+	if state.lvl.stage == 2:
+		string = 'Адепт'
+		
+	if state.lvl.stage == 3:
+		string = 'Маг'
+		
+	if state.lvl.stage == 4:
+		string = 'АрхиМаг'
+	
+	string += ' ' + String.num(state.lvl.step) + ' ур.';
+	return string;
+
+func update_lvl(value: Dictionary) -> void:
+	state.lvl = value;
+
+
+
+
+
 
 class State:
 	var name: String
@@ -42,6 +71,7 @@ class State:
 	var hp = 100;
 	var mana = 100;
 	var isNewUser = true;
+	var lvl = { 'stage' : 2, 'step': 2 };
 
 	func _init(data):
 		print('UserStore.State._init ', data)
@@ -49,7 +79,8 @@ class State:
 		self.avatarPath = data.get('avatarPath', 'res://images/avawom1.png')
 		self.controlOfElements = data.get('controlOfElements', controlOfElements)
 		self.controlOfElementsAvailable = data.get('controlOfElementsAvailable', 0)
-		self.hp = data.get('hp', 100)
+		self.lvl = data.get('lvl', lvl);
+		self.hp = data.get('hp', 100);
 		self.mana = data.get('mana', 100)
 		
 	func update_hp(value: int) -> void:
@@ -70,3 +101,11 @@ class State:
 
 	func update_controlOfElementsAvailable(value: int) -> void:
 		self.controlOfElementsAvailable = value;
+		
+
+	func get_lvl() -> Dictionary:
+		return self.lvl;
+
+	func update_lvl(value: Dictionary) -> void:
+		self.lvl = value;
+		
