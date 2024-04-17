@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bufu54werar8w"]
+[gd_scene load_steps=12 format=3 uid="uid://bufu54werar8w"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_w5si6"]
 [ext_resource type="Texture2D" uid="uid://ba7fsij2ekmap" path="res://images/border-big-1920.png" id="2_oslsl"]
-[ext_resource type="Texture2D" uid="uid://1w7wpada15ic" path="res://images/border-elements-stone.png" id="3_bu1tl"]
 [ext_resource type="PackedScene" uid="uid://cct1i5jettv0w" path="res://elements_table.tscn" id="4_1c72h"]
 [ext_resource type="Texture2D" uid="uid://b6qyi4tiqwggm" path="res://images/avawom1.png" id="5_teyua"]
 [ext_resource type="Script" path="res://avatar.gd" id="6_371xj"]
 [ext_resource type="Texture2D" uid="uid://vv00pwlq68yx" path="res://images/border-avatar.png" id="7_t0o7x"]
 [ext_resource type="Texture2D" uid="uid://dmu4cmo4owy3y" path="res://images/border1.png" id="8_7g6m0"]
 [ext_resource type="Texture2D" uid="uid://2d4ygsviiauv" path="res://images/border1-press.png" id="9_y1x8i"]
-[ext_resource type="Texture2D" uid="uid://b4fpb87r7ypdy" path="res://images/separater-500.png" id="10_7spp6"]
+[ext_resource type="Texture2D" uid="uid://y2ah3em42va" path="res://images/progress-border-under.png" id="10_bpt68"]
+[ext_resource type="Texture2D" uid="uid://chd38pnm060aw" path="res://images/progress-border-over.png" id="11_oxguy"]
+[ext_resource type="Texture2D" uid="uid://by4xvkuocbf8j" path="res://images/progress-border-scale.png" id="12_6ebie"]
 
 [node name="Character" type="Control"]
 layout_mode = 3
@@ -40,28 +41,6 @@ grow_vertical = 2
 [node name="Border" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 texture = ExtResource("2_oslsl")
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -790.0
-offset_top = 50.0
-offset_right = 833.0
-offset_bottom = 1508.0
-grow_horizontal = 0
-scale = Vector2(0.449439, 0.45)
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
-visible = false
-layout_mode = 2
-texture = ExtResource("3_bu1tl")
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -110,7 +89,7 @@ scale = Vector2(0.13, 0.13)
 texture = ExtResource("7_t0o7x")
 stretch_mode = 5
 
-[node name="Control" type="Control" parent="."]
+[node name="ControlBtn" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -122,7 +101,7 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="ButtonBack" type="TextureButton" parent="Control"]
+[node name="ButtonBack" type="TextureButton" parent="ControlBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -141,7 +120,7 @@ texture_normal = ExtResource("8_7g6m0")
 texture_pressed = ExtResource("9_y1x8i")
 stretch_mode = 5
 
-[node name="LabelButtonBack" type="Label" parent="Control/ButtonBack"]
+[node name="LabelButtonBack" type="Label" parent="ControlBtn/ButtonBack"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -159,32 +138,92 @@ text = "НАЗАД"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer4" type="MarginContainer" parent="."]
+[node name="ControlLvl" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 114.0
-offset_top = -92.0
-offset_right = 614.0
-offset_bottom = 78.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
 grow_vertical = 2
-scale = Vector2(0.7, 0.7)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer4"]
+[node name="MarginContainer" type="MarginContainer" parent="ControlLvl"]
+layout_mode = 1
+offset_left = 78.0
+offset_top = -79.0
+offset_right = 2197.0
+offset_bottom = 554.0
+scale = Vector2(0.2, 0.2)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlLvl/MarginContainer"]
 layout_mode = 2
 
-[node name="LabelLvl" type="Label" parent="MarginContainer4/VBoxContainer"]
+[node name="LabelLvl" type="Label" parent="ControlLvl/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 165
 text = "--------------"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer4/VBoxContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ControlLvl/MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("10_7spp6")
+value = 50.0
+texture_under = ExtResource("10_bpt68")
+texture_over = ExtResource("11_oxguy")
+texture_progress = ExtResource("12_6ebie")
+
+[node name="ControlBtn2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ButtoUp" type="TextureButton" parent="ControlBtn2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -691.0
+offset_top = -132.5
+offset_right = 691.0
+offset_bottom = 132.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.33, 0.33)
+focus_mode = 0
+texture_normal = ExtResource("8_7g6m0")
+texture_pressed = ExtResource("9_y1x8i")
 stretch_mode = 5
 
-[connection signal="pressed" from="Control/ButtonBack" to="." method="_on_button_back_pressed"]
+[node name="LabelButtonUp" type="Label" parent="ControlBtn2/ButtoUp"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -22.5
+offset_right = 51.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "up lvl +10
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ControlBtn/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="ControlBtn2/ButtoUp" to="." method="_on_butto_up_pressed"]

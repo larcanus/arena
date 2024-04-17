@@ -36,7 +36,7 @@ func update_controlOfElementsAvailable(value: int) -> void:
 	
 
 func get_lvl() -> Dictionary:
-	return state.lvl;
+	return state.get_lvl();
 
 func get_string_lvl():
 	var string = '';
@@ -56,7 +56,14 @@ func get_string_lvl():
 	return string;
 
 func update_lvl(value: Dictionary) -> void:
-	state.lvl = value;
+	state.update_lvl(value);
+	
+
+func get_exp() -> int:
+	return state.get_exp();
+
+func update_exp(value: int) -> void:
+	state.update_exp(value);
 
 
 
@@ -71,7 +78,8 @@ class State:
 	var hp = 100;
 	var mana = 100;
 	var isNewUser = true;
-	var lvl = { 'stage' : 2, 'step': 2 };
+	var lvl = { 'stage' : 1, 'step': 1 };
+	var exp: int = 10;
 
 	func _init(data):
 		print('UserStore.State._init ', data)
@@ -81,7 +89,8 @@ class State:
 		self.controlOfElementsAvailable = data.get('controlOfElementsAvailable', 0)
 		self.lvl = data.get('lvl', lvl);
 		self.hp = data.get('hp', 100);
-		self.mana = data.get('mana', 100)
+		self.mana = data.get('mana', 100);
+		self.exp = data.get('xp', exp);
 		
 	func update_hp(value: int) -> void:
 			self.hp = value;
@@ -108,4 +117,10 @@ class State:
 
 	func update_lvl(value: Dictionary) -> void:
 		self.lvl = value;
+		
+	func get_exp() -> int:
+		return self.exp;
+
+	func update_exp(value: int) -> void:
+		self.exp = value;
 		
