@@ -70,6 +70,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ElementsTable" parent="." instance=ExtResource("8_yekxa")]
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -152.0
+offset_top = 4.0
+offset_right = -152.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="BorderInput" type="TextureRect" parent="."]
 layout_mode = 1
@@ -106,10 +115,10 @@ grow_vertical = 2
 focus_next = NodePath("../../ButtonOk")
 focus_previous = NodePath("../../ButtonOk")
 focus_mode = 1
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 130
 placeholder_text = "ИМЯ"
 alignment = 1
-max_length = 18
+max_length = 14
 flat = true
 caret_blink = true
 caret_blink_interval = 0.5
@@ -269,6 +278,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BlackoutScene" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

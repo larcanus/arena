@@ -130,22 +130,18 @@ libraries = {
 "animation": SubResource("AnimationLibrary_fbver")
 }
 
-[node name="textLabelUserState" type="RichTextLabel" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
+[node name="textLabelUserState" type="Label" parent="."]
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 135.378
-offset_top = 967.956
-offset_right = 735.378
-offset_bottom = 1017.96
-grow_horizontal = 2
+offset_left = 14.0
+offset_top = 1009.0
+offset_right = 514.0
+offset_bottom = 1068.0
 grow_vertical = 2
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 30
-text = "jvbkjjvcvbkjnkkjvhgcvjbkjnlnbjjcghvjhbkjnlmkm"
-scroll_active = false
+theme_override_font_sizes/font_size = 20
+text = "user state user state user state user state user state"
+autowrap_mode = 3
 
 [node name="BattleBtn" type="TextureButton" parent="."]
 anchors_preset = 8
@@ -236,14 +232,11 @@ libraries = {
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 color = Color(0.117647, 0.0666667, 0.235294, 1)
 
+[connection signal="gui_input" from="CanvasLayerMenu/PopupMenu" to="." method="_on_popup_menu_gui_input"]
 [connection signal="pressed" from="CanvasLayerMenu/MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BattleBtn" to="." method="_on_battle_btn_pressed"]

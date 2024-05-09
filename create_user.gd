@@ -12,6 +12,7 @@ func _ready() -> void:
 	$AnimationPlayer.play('blackinScene');
 	$Background.set_color(backgroundScene)
 	$BorderInput/InputName.insert_text_at_caret(userName)
+	$ElementsTable/ElementsTable.set_scale(Vector2(0.5, 0.5));
 	handlerButtonOk();
 	subscribeEvent();
 
@@ -93,7 +94,8 @@ func _on_input_name_text_submitted(new_text):
 	handlerButtonOk();
 
 
-func _on_input_name_text_change_rejected():
+func _on_input_name_text_change_rejected(value):
+	print(value)
 	User.state.name = $BorderInput/InputName.get_text();
 	handlerButtonOk();
 

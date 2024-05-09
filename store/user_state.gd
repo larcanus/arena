@@ -30,9 +30,15 @@ func update_mana(value: int) -> void:
 	
 func get_controlOfElementsAvailable() -> int:
 	return state.get_controlOfElementsAvailable();
+	
+func get_controlOfElements() -> Dictionary:
+	return state.get_controlOfElements();
 
 func update_controlOfElementsAvailable(value: int) -> void:
 	state.update_controlOfElementsAvailable(value);
+	
+func update_controlOfElements(value: Dictionary) -> void:
+	state.update_controlOfElements(value);
 	
 
 func get_lvl() -> Dictionary:
@@ -73,7 +79,7 @@ func update_exp(value: int) -> void:
 class State:
 	var name: String
 	var avatarPath: String
-	var controlOfElements = { 'air' : 5, 'water' : 5, 'earth' : 5, 'fire' : 5,  }
+	var controlOfElements: Dictionary = { 'air' : 5, 'water' : 5, 'earth' : 5, 'fire' : 5,  }
 	var controlOfElementsAvailable = 0;
 	var hp = 100;
 	var mana = 100;
@@ -86,7 +92,7 @@ class State:
 		self.name = data.get('name', '')
 		self.avatarPath = data.get('avatarPath', 'res://images/avawom1.png')
 		self.controlOfElements = data.get('controlOfElements', controlOfElements)
-		self.controlOfElementsAvailable = data.get('controlOfElementsAvailable', 0)
+		self.controlOfElementsAvailable = data.get('controlOfElementsAvailable', 10)
 		self.lvl = data.get('lvl', lvl);
 		self.hp = data.get('hp', 100);
 		self.mana = data.get('mana', 100);
@@ -104,7 +110,17 @@ class State:
 	func get_mana() -> int:
 		return self.mana;
 		
+
+	func get_controlOfElements() -> Dictionary:
+		var c = {};
+		c.merge(controlOfElements)
+		return c;
 		
+	
+	func update_controlOfElements(value: Dictionary) -> void:
+		controlOfElements = value;
+
+
 	func get_controlOfElementsAvailable() -> int:
 		return self.controlOfElementsAvailable;
 

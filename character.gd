@@ -6,6 +6,7 @@ func _ready():
 	changeScaleAspectToKeep();
 	setLvl();
 	setXp();
+	setName();
 	UserStoreSignals.update_exp.connect(_update_exp);
 	UserStoreSignals.update_lvl.connect(setLvl);
 
@@ -22,6 +23,9 @@ func setLvl():
 func setXp():
 	var lvlXp = User.get_exp();
 	get_node("ControlLvl/MarginContainer/VBoxContainer/TextureProgressBar").value = lvlXp;
+
+func setName() -> void:
+	get_node('ControlAvatar/AvatarSprite/BorderName/LabelName').text = User.state.name;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

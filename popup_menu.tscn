@@ -26,15 +26,9 @@ color = Color(0.117647, 0.0666667, 0.235294, 0.627451)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -43,14 +37,8 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(50, 50)
+position = Vector2(965.141, 545.619)
 scale = Vector2(0.437879, 0.47893)
 texture = ExtResource("1_1cg30")
 

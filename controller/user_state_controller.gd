@@ -13,6 +13,8 @@ func bindSignals() -> void :
 	print("UserStateSignals.change_mana bind done")
 	UserStateSignals.update_available_control_count.connect(_update_available_control_count);
 	print("UserStateSignals.update_available_control_count bind done")
+	UserStateSignals.update_elem_control.connect(_update_elem_control);
+	print("UserStateSignals.update_elem_control bind done")
 	UserStateSignals.up_exp.connect(_up_exp);
 	print("UserStateSignals.up_exp bind done")
 	
@@ -49,6 +51,17 @@ func _update_available_control_count(value) -> void:
 		print(actual_string);
 		
 		UserStoreSignals.update_available_control_count.emit(value);
+		
+		
+func _update_elem_control(value) -> void:
+	var prevState = User.get_controlOfElements();
+	User.update_controlOfElements(value);
+	var format_string = "control elements %s ---> %s"
+	var actual_string = format_string % [prevState, User.get_controlOfElements()]
+	print(actual_string);
+		
+	UserStoreSignals.update_elem_control.emit(value);
+
 
 func _up_exp(value) -> void:
 	var prevState = User.get_exp();
@@ -62,7 +75,7 @@ func _up_exp(value) -> void:
 		
 	
 	User.update_exp(newState);
-	var format_string = "Available count %s ---> %s"
+	var format_string = "exp %s ---> %s"
 	var actual_string = format_string % [String.num(prevState), String.num(newState)]
 	print(actual_string);
 	
@@ -71,10 +84,13 @@ func _up_exp(value) -> void:
 func new_lvl() -> void:
 	var prevLvl = User.get_lvl();
 	prevLvl.step += 1;
+	
+	var avlCount = User.get_controlOfElementsAvailable() + 5;
 
 	if prevLvl.step > 3:
 		prevLvl.step = 1;
 		prevLvl.stage += 1;
+		avlCount += 5;
 	
 	if prevLvl.stage >= 3:
 		prevLvl.stage = 3;
@@ -82,3 +98,4 @@ func new_lvl() -> void:
 	
 	User.update_lvl(prevLvl);
 	UserStoreSignals.update_lvl.emit();
+	_update_available_control_count(avlCount);

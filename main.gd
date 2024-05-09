@@ -35,3 +35,10 @@ func _on_battle_btn_pressed():
 func _on_menu_btn_pressed():
 	get_tree().paused = !get_tree().paused
 	$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;
+
+func _on_popup_menu_gui_input(event):
+	if event is InputEventMouseButton and event.get_button_index():
+		if $CanvasLayerMenu/PopupMenu.visible:
+			get_tree().paused = !get_tree().paused
+			$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;
+
