@@ -83,19 +83,44 @@ func _up_exp(value) -> void:
 
 func new_lvl() -> void:
 	var prevLvl = User.get_lvl();
-	prevLvl.step += 1;
+	var avlCount = User.get_controlOfElementsAvailable();
+	var intellect = User.get_intellect();
+	var will = User.get_will();
+	var power = User.get_power();
+	var dexterity = User.get_dexterity();
 	
-	var avlCount = User.get_controlOfElementsAvailable() + 5;
-
+	# up for step
+	prevLvl.step += 1;
+	avlCount += 5;
+	intellect += 5;
+	will += 2;
+	power += 5;
+	dexterity += 2;
+	
+	# up for stage
 	if prevLvl.step > 3:
 		prevLvl.step = 1;
 		prevLvl.stage += 1;
 		avlCount += 5;
+		intellect += 5;
+		will += 4;
+		power += 5;
+		dexterity += 4;
 	
+	# up for infinity
 	if prevLvl.stage >= 3:
 		prevLvl.stage = 3;
 		prevLvl.step = 3;
+		intellect += 5;
+		will += 5;
+		power += 5;
+		dexterity += 5;
 	
 	User.update_lvl(prevLvl);
+	User.update_intellect(intellect);
+	User.update_will(will);
+	User.update_power(power);
+	User.update_dexterity(dexterity);
 	UserStoreSignals.update_lvl.emit();
 	_update_available_control_count(avlCount);
+

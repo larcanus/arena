@@ -40,6 +40,35 @@ func update_controlOfElementsAvailable(value: int) -> void:
 func update_controlOfElements(value: Dictionary) -> void:
 	state.update_controlOfElements(value);
 	
+func get_intellect() -> int:
+	return state.get_intellect();
+
+func update_intellect(value: int) -> void:
+	state.update_intellect(value);
+
+func get_will() -> int:
+	return state.get_will();
+
+func update_will(value: int) -> void:
+	state.update_will(value);
+
+func get_power() -> int:
+	return state.get_power();
+
+func update_power(value: int) -> void:
+	state.update_power(value);
+
+func get_dexterity() -> int:
+	return state.get_dexterity();
+
+func update_dexterity(value: int) -> void:
+	state.update_dexterity(value);
+
+func get_physArmor() -> int:
+	return state.get_physArmor();
+
+func update_physArmor(value: int) -> void:
+	state.update_physArmor(value);
 
 func get_lvl() -> Dictionary:
 	return state.get_lvl();
@@ -86,6 +115,11 @@ class State:
 	var isNewUser = true;
 	var lvl = { 'stage' : 1, 'step': 1 };
 	var exp: int = 10;
+	var intellect = 15;
+	var will = 10;
+	var power = 15;
+	var dexterity = 10;
+	var physArmor = 0;
 
 	func _init(data):
 		print('UserStore.State._init ', data)
@@ -98,11 +132,17 @@ class State:
 		self.mana = data.get('mana', 100);
 		self.exp = data.get('xp', exp);
 		
+		self.intellect = data.get('intellect', intellect);
+		self.will = data.get('will', will);
+		self.power = data.get('power', power);
+		self.dexterity = data.get('dexterity', dexterity);
+		self.physArmor = data.get('physArmor', physArmor);
+
 	func update_hp(value: int) -> void:
-			self.hp = value;
-			
+		self.hp = value;
+
 	func update_mana(value: int) -> void:
-			self.mana = value;
+		self.mana = value;
 
 	func get_hp() -> int:
 		return self.hp;
@@ -115,7 +155,7 @@ class State:
 		var c = {};
 		c.merge(controlOfElements)
 		return c;
-		
+	
 	
 	func update_controlOfElements(value: Dictionary) -> void:
 		controlOfElements = value;
@@ -139,4 +179,33 @@ class State:
 
 	func update_exp(value: int) -> void:
 		self.exp = value;
+
+	func get_intellect() -> int:
+		return self.intellect;
+
+	func update_intellect(value: int) -> void:
+		self.intellect = value;
+
+	func get_will() -> int:
+		return self.will;
+
+	func update_will(value: int) -> void:
+		self.will = value;
 		
+	func get_power() -> int:
+		return self.power;
+
+	func update_power(value: int) -> void:
+		self.power = value;
+		
+	func get_dexterity() -> int:
+		return self.dexterity;
+		
+	func update_dexterity(value: int) -> void:
+		self.dexterity = value;
+	
+	func get_physArmor() -> int:
+		return self.physArmor;
+		
+	func update_physArmor(value: int) -> void:
+		self.physArmor = value;

@@ -1,5 +1,6 @@
 extends Control
 
+var tableInfoPathNode = 'ControlStateInfo/MarginContainer/ScrollContainer/TableColumn/'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -7,8 +8,8 @@ func _ready():
 	setLvl();
 	setXp();
 	setName();
-	UserStoreSignals.update_exp.connect(_update_exp);
-	UserStoreSignals.update_lvl.connect(setLvl);
+	setInfoState();
+	subscribeSignals();
 
 func changeScaleAspectToKeep():
 	if(get_tree().root.content_scale_aspect == Window.CONTENT_SCALE_ASPECT_KEEP):
@@ -18,15 +19,26 @@ func changeScaleAspectToKeep():
 func setLvl():
 	var lvlStr = User.get_string_lvl();
 	get_node("ControlLvl/MarginContainer/VBoxContainer/LabelLvl").text = lvlStr;
-
+	setInfoState();
 
 func setXp():
 	var lvlXp = User.get_exp();
 	get_node("ControlLvl/MarginContainer/VBoxContainer/TextureProgressBar").value = lvlXp;
 
 func setName() -> void:
-	get_node('ControlAvatar/AvatarSprite/BorderName/LabelName').text = User.state.name;
+	get_node('ControlAvatar/BorderName/LabelName').text = User.state.name;
 
+func setInfoState():
+	get_node(tableInfoPathNode + 'RowInt/Count').set_text(String.num(User.state.get_intellect()));
+	get_node(tableInfoPathNode + 'RowWill/Count').set_text(String.num(User.state.get_will()));
+	get_node(tableInfoPathNode + 'RowPower/Count').set_text(String.num(User.state.get_power()));
+	get_node(tableInfoPathNode + 'RowDex/Count').set_text(String.num(User.state.get_dexterity()));
+	get_node(tableInfoPathNode + 'RowPArmor/Count').set_text(String.num(User.state.get_physArmor()));
+	#get_node(tableInfoPathNode + 'RowPCSC/Count').set_text(String.num(User.state.get_intellect()));
+
+func subscribeSignals() -> void:
+	UserStoreSignals.update_exp.connect(_update_exp);
+	UserStoreSignals.update_lvl.connect(setLvl);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
