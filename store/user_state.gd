@@ -1,4 +1,3 @@
-@tool
 class_name UserStore
 extends Node
 
@@ -10,11 +9,16 @@ func _init() -> void:
 	print('UserStore._init')
 	state = State.new({})
 	stateController = controller.new();
-	
+
+
+func clearState():
+	state = State.new({});
+	stateController.updateCSC();
 
 func _ready():
 	print('UserStore._ready')
 	stateController.bindSignals();
+	stateController.updateCSC();
 
 func get_hp() -> int:
 	return state.get_hp();
@@ -69,6 +73,18 @@ func get_physArmor() -> int:
 
 func update_physArmor(value: int) -> void:
 	state.update_physArmor(value);
+	
+func get_mCSC() -> float:
+	return state.get_mCSC();
+
+func update_mCSC(value: float) -> void:
+	state.update_mCSC(value);
+	
+func get_pCSC() -> float:
+	return state.get_pCSC();
+
+func update_pCSC(value: float) -> void:
+	state.update_pCSC(value);
 
 func get_lvl() -> Dictionary:
 	return state.get_lvl();
@@ -103,8 +119,6 @@ func update_exp(value: int) -> void:
 
 
 
-
-
 class State:
 	var name: String
 	var avatarPath: String
@@ -120,6 +134,8 @@ class State:
 	var power = 15;
 	var dexterity = 10;
 	var physArmor = 0;
+	var pCSC = 0.0;
+	var mCSC = 0.0;
 
 	func _init(data):
 		print('UserStore.State._init ', data)
@@ -137,6 +153,8 @@ class State:
 		self.power = data.get('power', power);
 		self.dexterity = data.get('dexterity', dexterity);
 		self.physArmor = data.get('physArmor', physArmor);
+		self.pCSC = data.get('pCSC', pCSC);
+		self.mCSC = data.get('mCSC', mCSC);
 
 	func update_hp(value: int) -> void:
 		self.hp = value;
@@ -209,3 +227,15 @@ class State:
 		
 	func update_physArmor(value: int) -> void:
 		self.physArmor = value;
+		
+	func get_pCSC() -> float:
+		return self.pCSC;
+		
+	func update_pCSC(value: float) -> void:
+		self.pCSC = value;
+		
+	func get_mCSC() -> float:
+		return self.mCSC;
+		
+	func update_mCSC(value: float) -> void:
+		self.mCSC = value;

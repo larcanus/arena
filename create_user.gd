@@ -2,7 +2,6 @@ extends Control
 
 var userName: String
 var backgroundScene = Color('1e113c');
-var controlOfElementsAvailable = User.get_controlOfElementsAvailable();
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,7 +39,7 @@ func checkReadyScene() -> bool:
 		return false;
 
 func get_controlOfElementsAvailable() -> int:
-	return User.state.controlOfElementsAvailable;;
+	return User.get_controlOfElementsAvailable();
 
 func _update_available_control_count(value) -> void:
 	handlerButtonOk();
@@ -59,7 +58,6 @@ func _on_button_change_family_pressed() -> void:
 
 
 func _on_button_back_pressed() -> void:
-	User.state.controlOfElementsAvailable = controlOfElementsAvailable;
 	$BlackoutScene.visible = true;
 	$AnimationPlayer.play('blackoutScene');
 

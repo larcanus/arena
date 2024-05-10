@@ -66,7 +66,7 @@ func _update_elem_control(value) -> void:
 func _up_exp(value) -> void:
 	var prevState = User.get_exp();
 	var newState = prevState + value;
-	if newState >= 100 && User.get_lvl().stage == 3:
+	if newState >= 100 && User.get_lvl().stage == 5:
 		return;
 	
 	if newState >= 100:
@@ -108,8 +108,8 @@ func new_lvl() -> void:
 		dexterity += 4;
 	
 	# up for infinity
-	if prevLvl.stage >= 3:
-		prevLvl.stage = 3;
+	if prevLvl.stage >= 5:
+		prevLvl.stage = 4;
 		prevLvl.step = 3;
 		intellect += 5;
 		will += 5;
@@ -121,6 +121,22 @@ func new_lvl() -> void:
 	User.update_will(will);
 	User.update_power(power);
 	User.update_dexterity(dexterity);
+	updateCSC();
 	UserStoreSignals.update_lvl.emit();
 	_update_available_control_count(avlCount);
 
+
+func updateCSC():
+	var intellectPercentP = User.get_intellect() / 100.0;
+	var powerPercent = User.get_power() / 100.0;
+	var dexPercent = User.get_dexterity() / 10.0;
+	var pcsc = intellectPercentP + powerPercent + dexPercent;
+
+	var intellectPercentM = User.get_intellect() / 100.0;
+	var willPercent = User.get_will() / 10.0;
+	var mcsc = intellectPercentM + willPercent;
+	print( willPercent )
+	print( pcsc, mcsc )
+	User.update_pCSC(snappedf(pcsc, 0.1));
+	User.update_mCSC(snappedf(mcsc, 0.1));
+	

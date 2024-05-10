@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func on_press_btn_new_game():
-	User._init();
+	User.clearState();
 	$CanvasLayer/BlackoutScene.visible = true
 	$AnimationPlayer.play('blackoutScene')
 	
