@@ -21,3 +21,8 @@ func _on_item_list_item_selected(index: int) -> void:
 
 
 
+
+
+func _on_color_rect_gui_input(event):
+	if event is InputEventMouseButton and event.get_button_index():
+		get_tree().change_scene_to_file('res://create_user.tscn')
