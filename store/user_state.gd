@@ -127,6 +127,7 @@ class State:
 	var hp = 100;
 	var mana = 100;
 	var isNewUser = true;
+	var isBattle = false;
 	var lvl = { 'stage' : 1, 'step': 1 };
 	var exp: int = 10;
 	var intellect = 15;

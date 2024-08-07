@@ -26,6 +26,7 @@ User="*res://store/user_state.gd"
 UserStateSignals="*res://controller/user_state_signals.gd"
 UserStoreSignals="*res://controller/user_store_signals.gd"
 BattleSignals="*res://controller/battle_signals.gd"
+Timers="*res://timers.tscn"
 
 [display]
 

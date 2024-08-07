@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6weltdbg7uq3" path="res://battle/player.tscn" id="1_g1mm5"]
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_h2y2m"]
 [ext_resource type="PackedScene" uid="uid://c06ss6iwj2kdx" path="res://battle/mob.tscn" id="2_xki24"]
-[ext_resource type="PackedScene" uid="uid://3bjyupig62ha" path="res://popup_menu.tscn" id="3_syudr"]
+[ext_resource type="PackedScene" uid="uid://c5cb4b712jcud" path="res://battle_result.tscn" id="3_lka4v"]
 [ext_resource type="Script" path="res://battle/UI.gd" id="4_hdr2n"]
 [ext_resource type="Script" path="res://battle/CameraPlayer.gd" id="4_ukbjp"]
 
@@ -33,7 +33,7 @@ point_count = 5
 [node name="Battle" type="Node3D"]
 script = ExtResource("1_h2y2m")
 mob_scene = ExtResource("2_xki24")
-result_menu_scene = ExtResource("3_syudr")
+result_menu_scene = ExtResource("3_lka4v")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 2.08165e-12, 41, 2.08165e-12)
@@ -108,6 +108,17 @@ offset_right = 552.0
 offset_bottom = 240.0
 theme_override_font_sizes/font_size = 60
 text = "Очки: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 595.0
+offset_top = 115.0
+offset_right = 1059.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 60
+text = "Жизни: 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 

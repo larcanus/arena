@@ -89,4 +89,4 @@ func _on_area_3d_body_entered(body):
 # And this function at the bottom.
 func die():
 	hit.emit()
-	queue_free()
+	
