@@ -29,14 +29,13 @@ func setName() -> void:
 	get_node('ControlAvatar/BorderName/LabelName').text = User.state.name;
 
 func setInfoState():
-	print(User.state.get_mCSC())
-	get_node(tableInfoPathNode + 'RowInt/Count').set_text(String.num(User.state.get_intellect()));
-	get_node(tableInfoPathNode + 'RowWill/Count').set_text(String.num(User.state.get_will()));
-	get_node(tableInfoPathNode + 'RowPower/Count').set_text(String.num(User.state.get_power()));
-	get_node(tableInfoPathNode + 'RowDex/Count').set_text(String.num(User.state.get_dexterity()));
-	get_node(tableInfoPathNode + 'RowPArmor/Count').set_text(String.num(User.state.get_physArmor()));
-	get_node(tableInfoPathNode + 'RowPCSC/Count').set_text(String.num(User.state.get_pCSC()) + '%');
-	get_node(tableInfoPathNode + 'RowMCSC/Count').set_text(String.num(User.state.get_mCSC()) + '%');
+	get_node(tableInfoPathNode + 'RowInt/Count').set_text(String.num(User.get_intellect()));
+	get_node(tableInfoPathNode + 'RowWill/Count').set_text(String.num(User.get_will()));
+	get_node(tableInfoPathNode + 'RowPower/Count').set_text(String.num(User.get_power()));
+	get_node(tableInfoPathNode + 'RowDex/Count').set_text(String.num(User.get_dexterity()));
+	get_node(tableInfoPathNode + 'RowPArmor/Count').set_text(String.num(User.get_physArmor()));
+	get_node(tableInfoPathNode + 'RowPCSC/Count').set_text(String.num(User.get_pCSC()) + '%');
+	get_node(tableInfoPathNode + 'RowMCSC/Count').set_text(String.num(User.get_mCSC()) + '%');
 
 
 func subscribeSignals() -> void:

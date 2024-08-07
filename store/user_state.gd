@@ -116,8 +116,11 @@ func get_exp() -> int:
 func update_exp(value: int) -> void:
 	state.update_exp(value);
 
+func isBattle() -> bool:
+	return state.isBattle;
 
-
+func setBattle(value: bool) -> void:
+	state.isBattle = value;
 
 class State:
 	var name: String

@@ -74,7 +74,7 @@ grow_vertical = 2
 [node name="MarginContainer1" type="MarginContainer" parent="MarginContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = -1
 
 [node name="Mana" type="TextureRect" parent="MarginContainer/TextureRect/VBoxContainer/MarginContainer1"]
@@ -115,8 +115,8 @@ script = ExtResource("2_b4oxq")
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_bottom = -2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_bottom = -1
 
 [node name="HP" type="TextureRect" parent="MarginContainer/TextureRect/VBoxContainer/MarginContainer3"]
 material = SubResource("ShaderMaterial_1hdog")

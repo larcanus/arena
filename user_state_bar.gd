@@ -6,8 +6,7 @@ func _ready():
 	_set_hp_state(User.get_hp());
 	bindSignals();
 	setLvl();
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta):
 	pass
 	
@@ -22,7 +21,7 @@ func setLvl():
 
 func _on_texture_button_pressed():
 	print('_on_texture_button_pressed')
-	#var state = User.state.get_hp() - 10;
+	#var state = User.get_hp() - 10;
 	#UserStateSignals.change_hp.emit(state);
 	#UserStateSignals.change_mana.emit(state);
 	get_tree().change_scene_to_file('res://character.tscn')

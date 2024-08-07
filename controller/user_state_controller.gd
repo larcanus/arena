@@ -120,6 +120,7 @@ func new_lvl() -> void:
 	User.update_will(will);
 	User.update_power(power);
 	User.update_dexterity(dexterity);
+	User.update_hp(100);
 	updateCSC();
 	UserStoreSignals.update_lvl.emit();
 	_update_available_control_count(avlCount);

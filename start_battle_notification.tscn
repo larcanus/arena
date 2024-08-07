@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://8kqty4j5ygnl"]
+
+[ext_resource type="Texture2D" uid="uid://b11nmajpovo25" path="res://images/rect-simple-border-1920.png" id="1_6f80s"]
+[ext_resource type="Texture2D" uid="uid://df22ciddldqmo" path="res://images/text-border-black.png" id="2_0orao"]
+[ext_resource type="Texture2D" uid="uid://jop3t54k7oa6" path="res://images/text-border-black-presssed.png" id="3_h4lyb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4t4w8"]
+font_size = 35
+
+[sub_resource type="SystemFont" id="SystemFont_gob53"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7rcb3"]
+line_spacing = 12.0
+font = SubResource("SystemFont_gob53")
+font_size = 21
+
+[sub_resource type="SystemFont" id="SystemFont_a7wix"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_44ajb"]
+font = SubResource("SystemFont_a7wix")
+font_size = 23
+
+[sub_resource type="SystemFont" id="SystemFont_tbb0w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0i0qg"]
+font = SubResource("SystemFont_tbb0w")
+font_size = 23
+
+[node name="StartBattleNotification" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_left = 613.139
+offset_top = 391.333
+offset_right = 1313.14
+offset_bottom = 741.333
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_6f80s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 23
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 35
+
+[node name="LabelTitle" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Предупреждение!"
+label_settings = SubResource("LabelSettings_4t4w8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="LabelDesc" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Уровень вашего здоровья недостаточен для битвы. 
+Используйте зелья или дождитесь исцеления."
+label_settings = SubResource("LabelSettings_7rcb3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 683.0
+offset_top = 622.0
+offset_right = 1238.0
+offset_bottom = 704.0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReturnButton" type="TextureButton" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_0orao")
+texture_pressed = ExtResource("3_h4lyb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ReturnLabel" type="Label" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Вернуться
+"
+label_settings = SubResource("LabelSettings_44ajb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GoButton" type="TextureButton" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("2_0orao")
+texture_pressed = ExtResource("3_h4lyb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GoLabel" type="Label" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Все равно войти 
+"
+label_settings = SubResource("LabelSettings_0i0qg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer2/GoButton" to="." method="_on_go_button_pressed"]

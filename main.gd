@@ -1,6 +1,7 @@
 extends Node2D
 var backgroundScene = Color('1e113c');
-var battle_scene = preload("res://battle/battle.tscn");
+var battle_scene := preload("res://battle/battle.tscn");
+var startBattleNotificationScene := preload("res://start_battle_notification.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +31,19 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_battle_btn_pressed():
 	print('on_battle_btn_pressed')
+	if User.get_hp() < 100:
+		var inst = startBattleNotificationScene.instantiate()
+		add_child(inst);
+		$StartBattleNotification/HBoxContainer/MarginContainer/ReturnButton.pressed.connect(_notification_battle_return_btn)
+		$StartBattleNotification/HBoxContainer/MarginContainer2/GoButton.pressed.connect(_notification_battle_go_btn)
+		return;
 	
+	get_tree().change_scene_to_packed(battle_scene);
+
+func _notification_battle_return_btn():
+	remove_child($StartBattleNotification);
+	
+func _notification_battle_go_btn():
 	get_tree().change_scene_to_packed(battle_scene);
 
 func _on_menu_btn_pressed():
@@ -42,4 +55,3 @@ func _on_popup_menu_gui_input(event):
 		if $CanvasLayerMenu/PopupMenu.visible:
 			get_tree().paused = !get_tree().paused
 			$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;
-

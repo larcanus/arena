@@ -20,7 +20,7 @@ func _process(delta):
 	pass
 
 func setUserStateBattle(value) -> void:
-	User.state.isBattle = value;
+	User.setBattle(value);
 
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
