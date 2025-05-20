@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://blfw63wgrb11i"]
 
-[ext_resource type="Script" path="res://menu.gd" id="1_tmyup"]
+[ext_resource type="Script" uid="uid://bire2g0vjc1d3" path="res://menu.gd" id="1_tmyup"]
 [ext_resource type="Texture2D" uid="uid://dmu4cmo4owy3y" path="res://images/border1.png" id="2_uefsi"]
 [ext_resource type="Texture2D" uid="uid://2d4ygsviiauv" path="res://images/border1-press.png" id="3_oand7"]
 
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m56b4"]
 _data = {
-"blackinScene": SubResource("Animation_8mlif"),
-"blackoutScene": SubResource("Animation_khxdd")
+&"blackinScene": SubResource("Animation_8mlif"),
+&"blackoutScene": SubResource("Animation_khxdd")
 }
 
 [node name="menu" type="Control"]
@@ -168,7 +168,7 @@ color = Color(0.117647, 0.0666667, 0.235294, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_m56b4")
+&"": SubResource("AnimationLibrary_m56b4")
 }
 
 [connection signal="pressed" from="CanvasLayer/ButtonStart" to="." method="on_press_btn_new_game"]

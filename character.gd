@@ -53,6 +53,6 @@ func _on_button_back_pressed():
 
 func _on_butto_up_pressed():
 	UserStateSignals.up_exp.emit(10)
-	
+
 func _update_exp(value):
 	setXp();
