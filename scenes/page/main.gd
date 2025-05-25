@@ -10,7 +10,7 @@ func _ready():
 	$AnimationPlayerBtn.play('battleIcon')
 	$BackgroundColor.set_color(backgroundScene)
 	$CanvasLayerMenu/PopupMenu.visible = false;
-	$textLabelUserState.text = User.state.name + '  ' + JSON.stringify(User.state.controlOfElements);
+	$textLabelUserState.text = UserStoreGlobal.state.name + '  ' + JSON.stringify(UserStoreGlobal.state.controlOfElements);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -31,7 +31,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_battle_btn_pressed():
 	print('on_battle_btn_pressed')
-	if User.get_hp() < 100:
+	if UserStoreGlobal.get_hp() < 100:
 		var inst = startBattleNotificationScene.instantiate()
 		add_child(inst);
 		$StartBattleNotification/HBoxContainer/MarginContainer/ReturnButton.pressed.connect(_notification_battle_return_btn)

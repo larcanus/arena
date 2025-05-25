@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://giheu8rfvv6h" path="res://scenes/ui/user_state_bar.gd" id="1_f5x1g"]
 [ext_resource type="Texture2D" uid="uid://ct41lno18ggwg" path="res://assets/graphics/images/user-hud-source.png" id="1_jwndv"]
 [ext_resource type="Shader" uid="uid://defem6neihrl8" path="res://shaders/circle.gdshader" id="1_wlxjy"]
-[ext_resource type="Script" uid="uid://bbobja5nkdoir" path="res://scripts/autoload/avatar.gd" id="2_b4oxq"]
+[ext_resource type="Script" uid="uid://bbobja5nkdoir" path="res://scripts/ui/avatar.gd" id="2_b4oxq"]
 [ext_resource type="Texture2D" uid="uid://b6s2ojcmkihuk" path="res://assets/graphics/images/empty135.png" id="3_t62lm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_te4gg"]

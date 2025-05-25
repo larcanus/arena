@@ -20,5 +20,5 @@ func _timeout_sec_timer() -> void:
 	regenerationHP();
 
 func regenerationHP() -> void:
-	if User.get_hp() < 100 and User.isBattle() == false:
-		UserStateSignals.change_hp.emit(User.get_hp() + 1)
+	if UserStoreGlobal.get_hp() < 100 and UserStoreGlobal.isBattle() == false:
+		UserStoreGlobal.state_controller.change_hp(UserStoreGlobal.get_hp() + 1);

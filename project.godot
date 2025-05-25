@@ -22,9 +22,7 @@ driver/mix_rate.web=44100
 
 [autoload]
 
-User="*res://scripts/state/store/user_store.gd"
-UserStateSignals="*res://scripts/state/user_state_signals.gd"
-UserStoreSignals="*res://scripts/state/store/user_store_signals.gd"
+UserStoreGlobal="*res://scripts/state/user/user_store.gd"
 BattleSignals="*res://scripts/state/battle_signals.gd"
 Timers="*res://scenes/ui/timers.tscn"
 

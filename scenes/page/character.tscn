@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ba7fsij2ekmap" path="res://assets/graphics/images/border-big-1920.png" id="2_oslsl"]
 [ext_resource type="PackedScene" uid="uid://cct1i5jettv0w" path="res://scenes/ui/elements_table.tscn" id="4_1c72h"]
 [ext_resource type="Texture2D" uid="uid://b6qyi4tiqwggm" path="res://assets/graphics/images/avawom1.png" id="5_teyua"]
-[ext_resource type="Script" uid="uid://bbobja5nkdoir" path="res://scripts/autoload/avatar.gd" id="6_371xj"]
+[ext_resource type="Script" uid="uid://bbobja5nkdoir" path="res://scripts/ui/avatar.gd" id="6_371xj"]
 [ext_resource type="Texture2D" uid="uid://df22ciddldqmo" path="res://assets/graphics/images/text-border-black.png" id="7_5xaiu"]
 [ext_resource type="Texture2D" uid="uid://vv00pwlq68yx" path="res://assets/graphics/images/border-avatar.png" id="7_t0o7x"]
 [ext_resource type="Texture2D" uid="uid://dmu4cmo4owy3y" path="res://assets/graphics/images/border1.png" id="8_7g6m0"]

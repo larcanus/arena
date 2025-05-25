@@ -47,7 +47,7 @@ func _physics_process(delta):
 	if not is_on_floor(): # If in the air, fall towards the floor
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 		$AnimationPlayer.speed_scale = 0.3
-	
+
 	# Jumping.
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_impulse
@@ -76,7 +76,7 @@ func _physics_process(delta):
 	# Moving the Character
 	velocity = target_velocity
 	move_and_slide()
-	
+
 	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
 
@@ -89,4 +89,3 @@ func _on_area_3d_body_entered(body):
 # And this function at the bottom.
 func die():
 	hit.emit()
-	

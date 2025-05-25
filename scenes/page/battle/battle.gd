@@ -12,7 +12,8 @@ func _init():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	UserStateSignals.change_hp.emit(100) # TODO remove
+	UserStoreGlobal.state_controller.change_hp(100);
+	#UserStateSignals.change_hp.emit(100) # TODO remove
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,7 +21,7 @@ func _process(delta):
 	pass
 
 func setUserStateBattle(value) -> void:
-	User.setBattle(value);
+	UserStoreGlobal.setBattle(value);
 
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
@@ -47,16 +48,16 @@ func _on_mob_squashed() -> void:
 
 
 func _on_player_hit():
-	var hp = User.get_hp();
+	var hp = UserStoreGlobal.get_hp();
 	if hp > 0 and hp == 100:
-		UserStateSignals.change_hp.emit(50)
+		UserStoreGlobal.state_controller.change_hp(50)
 		return;
 
 	if hp == 0:
 		return;
 
 	if hp == 50:
-		UserStateSignals.change_hp.emit(0)
+		UserStoreGlobal.state_controller.change_hp(0)
 		battle_ended();
 
 
@@ -73,7 +74,7 @@ func battle_ended() -> void:
 	BattleSignals.battle_ended.emit();
 	show_result();
 	$Player.queue_free();
-	UserStateSignals.up_exp.emit(get_exp());
+	UserStoreGlobal.state_controller.up_exp(get_exp());
 	setUserStateBattle(false);
 
 func create_blackout_rect() -> void:
@@ -89,7 +90,7 @@ func show_result():
 	$MenuResult/LabelEXP.set_text(get_label_exp());
 
 func get_label_result() -> String:
-	var hp = User.get_hp();
+	var hp = UserStoreGlobal.get_hp();
 	if hp == 0:
 		return 'Поражение'
 

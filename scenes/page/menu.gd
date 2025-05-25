@@ -3,7 +3,7 @@ var backgroundScene = Color('1e113c');
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if User.state.name.length() > 1:
+	if UserStoreGlobal.state.name.length() > 1:
 		$CanvasLayer/"ButtonСontinue".visible = true;
 	else :
 		$CanvasLayer/"ButtonСontinue".visible = false;
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func on_press_btn_new_game():
-	User.clearState();
+	UserStoreGlobal.clearState();
 	$CanvasLayer/BlackoutScene.visible = true
 	$AnimationPlayer.play('blackoutScene')
 
@@ -21,7 +21,7 @@ func on_press_btn_new_game():
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'blackoutScene':
-		if User.state.isNewUser == true:
+		if UserStoreGlobal.state.isNewUser == true:
 			get_tree().change_scene_to_file('res://scenes/page/create_user.tscn')
 		else:
 			get_tree().change_scene_to_file('res://scenes/page/main.tscn')
