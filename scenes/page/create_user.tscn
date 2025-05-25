@@ -1,0 +1,305 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhd1y4fwaf7ww"]
+
+[ext_resource type="Script" uid="uid://c5ntscjakjy0h" path="res://scenes/page/create_user.gd" id="1_8nogr"]
+[ext_resource type="Texture2D" uid="uid://d1df8auhkx17" path="res://assets/graphics/images/border2.png" id="3_kynf2"]
+[ext_resource type="Texture2D" uid="uid://b6qyi4tiqwggm" path="res://assets/graphics/images/avawom1.png" id="3_mw70b"]
+[ext_resource type="Texture2D" uid="uid://dmu4cmo4owy3y" path="res://assets/graphics/images/border1.png" id="7_56vsd"]
+[ext_resource type="Texture2D" uid="uid://2d4ygsviiauv" path="res://assets/graphics/images/border1-press.png" id="8_andi1"]
+[ext_resource type="PackedScene" uid="uid://cct1i5jettv0w" path="res://scenes/ui/elements_table.tscn" id="8_yekxa"]
+[ext_resource type="Script" uid="uid://bbobja5nkdoir" path="res://scripts/autoload/avatar.gd" id="9_yyh4u"]
+[ext_resource type="Texture2D" uid="uid://vv00pwlq68yx" path="res://assets/graphics/images/border-avatar.png" id="10_4s6uh"]
+
+[sub_resource type="Animation" id="Animation_ss1bv"]
+resource_name = "blackinScene"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackoutScene:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.0666667, 0.235294, 1), Color(0.12549, 0.117647, 0.266667, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3wjgc"]
+resource_name = "blackoutScene"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackoutScene:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.12549, 0.117647, 0.266667, 0), Color(0.117647, 0.0666667, 0.235294, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vfs0"]
+_data = {
+&"blackinScene": SubResource("Animation_ss1bv"),
+&"blackoutScene": SubResource("Animation_3wjgc")
+}
+
+[node name="create_user_node" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8nogr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../ButtonOk")
+focus_previous = NodePath("../ButtonOk")
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ElementsTable" parent="." instance=ExtResource("8_yekxa")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -152.0
+offset_top = 4.0
+offset_right = -152.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="BorderInput" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = 332.0
+offset_right = 1547.0
+offset_bottom = 773.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+tooltip_text = "
+"
+texture = ExtResource("3_kynf2")
+stretch_mode = 5
+
+[node name="InputName" type="LineEdit" parent="BorderInput"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -728.5
+offset_top = -167.5
+offset_right = 738.5
+offset_bottom = 152.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../../ButtonOk")
+focus_previous = NodePath("../../ButtonOk")
+focus_mode = 1
+theme_override_font_sizes/font_size = 130
+placeholder_text = "ИМЯ"
+alignment = 1
+max_length = 14
+flat = true
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="ControlAvatar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AvatarSprite" type="TextureRect" parent="ControlAvatar"]
+layout_mode = 1
+offset_left = 185.0
+offset_top = 161.0
+offset_right = 339.0
+offset_bottom = 311.0
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("3_mw70b")
+stretch_mode = 5
+script = ExtResource("9_yyh4u")
+
+[node name="BorderAvatar" type="TextureRect" parent="ControlAvatar/AvatarSprite"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.4439
+offset_top = -87.7783
+offset_right = 1289.56
+offset_bottom = 1272.22
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("10_4s6uh")
+stretch_mode = 5
+
+[node name="ButtonChangeAvatar" type="TextureButton" parent="ControlAvatar/AvatarSprite/BorderAvatar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = 74.7861
+offset_right = 600.0
+offset_bottom = 324.786
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+texture_normal = ExtResource("7_56vsd")
+texture_pressed = ExtResource("8_andi1")
+stretch_mode = 5
+metadata/_edit_group_ = true
+
+[node name="LabelButtonBack" type="Label" parent="ControlAvatar/AvatarSprite/BorderAvatar/ButtonChangeAvatar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -387.5
+offset_top = -123.0
+offset_right = 387.5
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "сменить"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ControlAvatar/AvatarSprite"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonOk" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -541.0
+offset_top = -164.0
+offset_right = 841.0
+offset_bottom = 101.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.33, 0.33)
+focus_mode = 1
+texture_normal = ExtResource("7_56vsd")
+texture_pressed = ExtResource("8_andi1")
+stretch_mode = 5
+
+[node name="LabelButtonOk" type="Label" parent="ButtonOk"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -82.5
+offset_right = 101.0
+offset_bottom = 82.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.466667)
+theme_override_font_sizes/font_size = 120
+text = " ОК"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonBack" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = -164.0
+offset_right = 1470.0
+offset_bottom = 101.0
+grow_vertical = 0
+scale = Vector2(0.33, 0.33)
+focus_mode = 0
+texture_normal = ExtResource("7_56vsd")
+texture_pressed = ExtResource("8_andi1")
+stretch_mode = 5
+
+[node name="LabelButtonBack" type="Label" parent="ButtonBack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -22.5
+offset_right = 51.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "НАЗАД"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlackoutScene" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4vfs0")
+}
+
+[connection signal="mouse_entered" from="Background" to="." method="_on_color_rect_focus_entered"]
+[connection signal="focus_entered" from="BorderInput/InputName" to="." method="_on_input_name_focus_entered"]
+[connection signal="focus_exited" from="BorderInput/InputName" to="." method="_on_input_name_focus_exited"]
+[connection signal="text_change_rejected" from="BorderInput/InputName" to="." method="_on_input_name_text_change_rejected"]
+[connection signal="text_changed" from="BorderInput/InputName" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="BorderInput/InputName" to="." method="_on_input_name_text_submitted"]
+[connection signal="pressed" from="ControlAvatar/AvatarSprite/BorderAvatar/ButtonChangeAvatar" to="." method="_on_button_change_avatar_pressed"]
+[connection signal="pressed" from="ControlAvatar/AvatarSprite/Button" to="." method="_on_button_change_avatar_pressed"]
+[connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

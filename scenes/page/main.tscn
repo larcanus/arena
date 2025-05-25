@@ -1,0 +1,243 @@
+[gd_scene load_steps=25 format=3 uid="uid://cb43ne5killpg"]
+
+[ext_resource type="Script" uid="uid://76mej21w0clk" path="res://scenes/page/main.gd" id="1_iejb3"]
+[ext_resource type="Texture2D" uid="uid://djplyg0hktq1i" path="res://assets/graphics/images/main.png" id="2_w6cqp"]
+[ext_resource type="Texture2D" uid="uid://bnboh3akgkgh8" path="res://assets/graphics/images/swords-300.png" id="3_78ow4"]
+[ext_resource type="Texture2D" uid="uid://bthf01u260ixl" path="res://assets/graphics/images/swords-pressed-300.png" id="4_jbjvh"]
+[ext_resource type="Texture2D" uid="uid://cjoyw1ybjb2dy" path="res://assets/graphics/images/swords-hover-300.png" id="5_8y67j"]
+[ext_resource type="Texture2D" uid="uid://cy0hhy18yoi0t" path="res://assets/graphics/images/train-300-persp.png" id="6_1j3fv"]
+[ext_resource type="Texture2D" uid="uid://b6ebfyuvcbh66" path="res://assets/graphics/images/train-pressed-300-persp.png" id="7_pfo5e"]
+[ext_resource type="Texture2D" uid="uid://y1u6nnsthhgg" path="res://assets/graphics/images/train-hover-300-persp.png" id="8_f8fwr"]
+[ext_resource type="Texture2D" uid="uid://wrtvhykq3umj" path="res://assets/graphics/images/book-300-persp.png" id="9_ciger"]
+[ext_resource type="Texture2D" uid="uid://c6neuhb0tlks1" path="res://assets/graphics/images/book-pressed-300-persp.png" id="10_dgruq"]
+[ext_resource type="Texture2D" uid="uid://c75fomxfj51me" path="res://assets/graphics/images/book-hover-300-persp.png" id="11_0jgsq"]
+[ext_resource type="Texture2D" uid="uid://dax3216eqbw0s" path="res://assets/graphics/images/icon-store-300-persp.png" id="12_fyw7n"]
+[ext_resource type="Texture2D" uid="uid://4bocdkbbtpmy" path="res://assets/graphics/images/icon-store-pressed-300-persp.png" id="13_3m3fm"]
+[ext_resource type="Texture2D" uid="uid://cimskd14a7f7r" path="res://assets/graphics/images/icon-store-hover-300-persp.png" id="13_lb6s5"]
+[ext_resource type="Texture2D" uid="uid://ca5mkkpq11yy0" path="res://assets/graphics/images/border-menu-source.png" id="15_h0cnn"]
+[ext_resource type="Texture2D" uid="uid://b2xkw5puxwpbp" path="res://assets/graphics/images/border-menu-pressed.png" id="16_iunfx"]
+[ext_resource type="Texture2D" uid="uid://baoakrge1qqxr" path="res://assets/graphics/images/border-menu-hover.png" id="17_vduwb"]
+[ext_resource type="PackedScene" uid="uid://3bjyupig62ha" path="res://scenes/ui/popup_menu.tscn" id="18_oh6u5"]
+[ext_resource type="PackedScene" uid="uid://b43fcdkj1krjx" path="res://scenes/ui/user_state_bar.tscn" id="21_mp7sf"]
+
+[sub_resource type="Animation" id="Animation_apviq"]
+resource_name = "battleIcon"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(893, 615), Vector2(893, 620), Vector2(893, 625), Vector2(893, 620), Vector2(893, 615)]
+}
+
+[sub_resource type="Animation" id="Animation_rdtgp"]
+resource_name = "blackinScene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayerBk/BlackoutSceneColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.0666667, 0.235294, 1), Color(0.117647, 0.0666667, 0.235294, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_82se2"]
+resource_name = "blackoutScene"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayerBk/BlackoutSceneColor:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.117647, 0.0666667, 0.235294, 0), Color(0.117647, 0.0666667, 0.235294, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwm02"]
+_data = {
+"battleIcon": SubResource("Animation_apviq"),
+"blackinScene": SubResource("Animation_rdtgp"),
+"blackoutScene": SubResource("Animation_82se2")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbver"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_iejb3")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(2, -7.62939e-06)
+scale = Vector2(0.935547, 0.9375)
+texture = ExtResource("2_w6cqp")
+centered = false
+
+[node name="CanvasLayerUserState" type="CanvasLayer" parent="."]
+
+[node name="UserStateBar" parent="CanvasLayerUserState" instance=ExtResource("21_mp7sf")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
+
+[node name="CanvasLayerMenu" type="CanvasLayer" parent="."]
+
+[node name="PopupMenu" parent="CanvasLayerMenu" instance=ExtResource("18_oh6u5")]
+visible = false
+
+[node name="MenuBtn" type="TextureButton" parent="CanvasLayerMenu"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 800.0
+offset_top = -540.0
+offset_right = 958.0
+offset_bottom = -390.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_h0cnn")
+texture_pressed = ExtResource("16_iunfx")
+texture_hover = ExtResource("17_vduwb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwm02"),
+"animation": SubResource("AnimationLibrary_fbver")
+}
+
+[node name="textLabelUserState" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = 1009.0
+offset_right = 514.0
+offset_bottom = 1068.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "user state user state user state user state user state"
+autowrap_mode = 3
+
+[node name="BattleBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 893.0
+offset_top = 615.0
+offset_right = 1043.0
+offset_bottom = 765.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.01214, 1.01214)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_78ow4")
+texture_pressed = ExtResource("4_jbjvh")
+texture_hover = ExtResource("5_8y67j")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TrainBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 503.0
+offset_top = 749.0
+offset_right = 653.0
+offset_bottom = 899.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_1j3fv")
+texture_pressed = ExtResource("7_pfo5e")
+texture_hover = ExtResource("8_f8fwr")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SpellBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1275.0
+offset_top = 744.0
+offset_right = 1443.0
+offset_bottom = 904.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("9_ciger")
+texture_pressed = ExtResource("10_dgruq")
+texture_hover = ExtResource("11_0jgsq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StoreBtn" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 195.0
+offset_top = 779.0
+offset_right = 345.0
+offset_bottom = 929.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("12_fyw7n")
+texture_pressed = ExtResource("13_3m3fm")
+texture_hover = ExtResource("13_lb6s5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AnimationPlayerBtn" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dwm02"),
+"animation": SubResource("AnimationLibrary_fbver")
+}
+
+[node name="CanvasLayerBk" type="CanvasLayer" parent="."]
+
+[node name="BlackoutSceneColor" type="ColorRect" parent="CanvasLayerBk"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.0666667, 0.235294, 1)
+
+[connection signal="gui_input" from="CanvasLayerMenu/PopupMenu" to="." method="_on_popup_menu_gui_input"]
+[connection signal="pressed" from="CanvasLayerMenu/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="BattleBtn" to="." method="_on_battle_btn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayerBtn" to="." method="_on_animation_player_animation_finished"]
