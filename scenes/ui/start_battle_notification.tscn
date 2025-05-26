@@ -8,6 +8,7 @@
 font_size = 35
 
 [sub_resource type="SystemFont" id="SystemFont_gob53"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7rcb3"]
 line_spacing = 12.0
@@ -15,12 +16,14 @@ font = SubResource("SystemFont_gob53")
 font_size = 21
 
 [sub_resource type="SystemFont" id="SystemFont_a7wix"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_44ajb"]
 font = SubResource("SystemFont_a7wix")
 font_size = 23
 
 [sub_resource type="SystemFont" id="SystemFont_tbb0w"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i0qg"]
 font = SubResource("SystemFont_tbb0w")
@@ -95,8 +98,7 @@ stretch_mode = 5
 [node name="ReturnLabel" type="Label" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 23
-text = "Вернуться
-"
+text = "Вернуться"
 label_settings = SubResource("LabelSettings_44ajb")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -114,8 +116,7 @@ stretch_mode = 5
 
 [node name="GoLabel" type="Label" parent="HBoxContainer/MarginContainer2"]
 layout_mode = 2
-text = "Все равно войти 
-"
+text = "  Все равно войти "
 label_settings = SubResource("LabelSettings_0i0qg")
 horizontal_alignment = 1
 vertical_alignment = 1

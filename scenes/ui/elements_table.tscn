@@ -113,6 +113,7 @@ theme_override_font_sizes/font_size = 70
 text = "0
 "
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ArrowRightAir" type="TextureButton" parent="ElementsTable/Table/row1"]
 layout_mode = 2
@@ -167,9 +168,9 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 70
-text = "земля
-"
+text = "земля"
 horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="ArrowLeftEarth" type="TextureButton" parent="ElementsTable/Table/row3"]
 layout_mode = 2
@@ -204,8 +205,7 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 70
-text = "огонь
-"
+text = "огонь"
 horizontal_alignment = 1
 
 [node name="ArrowLeftFire" type="TextureButton" parent="ElementsTable/Table/row4"]

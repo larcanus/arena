@@ -129,10 +129,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.4439
-offset_top = -87.7783
-offset_right = 1289.56
-offset_bottom = 1272.22
+offset_left = -90.9685
+offset_top = -87.6149
+offset_right = 1290.04
+offset_bottom = 1272.38
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.13, 0.13)
@@ -146,10 +146,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -783.853
-offset_top = -149.904
-offset_right = -533.853
-offset_bottom = -118.904
+offset_left = -786.0
+offset_top = -141.0
+offset_right = -536.0
+offset_bottom = -110.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("7_5xaiu")
@@ -160,9 +160,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = -21.853
+offset_bottom = -2.00001
 grow_horizontal = 2
 grow_vertical = 2
-text = "name bnbn bnbn"
+text = "name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -304,8 +307,7 @@ offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 120
-text = "up lvl +10
-"
+text = "up lvl +10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -392,8 +394,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.2
 theme_override_font_sizes/font_size = 28
-text = "воля
-"
+text = "воля"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -429,8 +430,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.2
 theme_override_font_sizes/font_size = 28
-text = "физ.сила
-"
+text = "физ.сила"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -502,8 +502,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.2
 theme_override_font_sizes/font_size = 28
-text = "физ.защита
-"
+text = "физ.защита"
 horizontal_alignment = 1
 vertical_alignment = 1
 
