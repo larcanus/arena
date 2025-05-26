@@ -1,14 +1,14 @@
 extends Node2D
-var backgroundScene = Color('1e113c');
+var scene_background = Color('1e113c');
 var battle_scene := preload("res://scenes/page/battle/battle.tscn");
-var startBattleNotificationScene := preload("res://scenes/ui/start_battle_notification.tscn")
+var start_battle_notification_scene := preload("res://scenes/ui/start_battle_notification.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	changeScaleAspectToKeep();
+	change_scale_aspect_to_keep();
 	$AnimationPlayer.play('blackinScene')
 	$AnimationPlayerBtn.play('battleIcon')
-	$BackgroundColor.set_color(backgroundScene)
+	$BackgroundColor.set_color(scene_background)
 	$CanvasLayerMenu/PopupMenu.visible = false;
 	$textLabelUserState.text = UserStoreGlobal.state.name + '  ' + JSON.stringify(UserStoreGlobal.state.controlOfElements);
 
@@ -16,7 +16,7 @@ func _ready():
 func _process(_delta):
 	pass
 
-func changeScaleAspectToKeep():
+func change_scale_aspect_to_keep():
 	if(get_tree().root.content_scale_aspect != Window.CONTENT_SCALE_ASPECT_KEEP):
 		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP;
 		print('change scale_aspect = keep')
@@ -32,7 +32,7 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_battle_btn_pressed():
 	print('on_battle_btn_pressed')
 	if UserStoreGlobal.get_hp() < 100:
-		var inst = startBattleNotificationScene.instantiate()
+		var inst = start_battle_notification_scene.instantiate()
 		add_child(inst);
 		$StartBattleNotification/HBoxContainer/MarginContainer/ReturnButton.pressed.connect(_notification_battle_return_btn)
 		$StartBattleNotification/HBoxContainer/MarginContainer2/GoButton.pressed.connect(_notification_battle_go_btn)

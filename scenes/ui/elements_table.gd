@@ -20,31 +20,31 @@ func _ready():
 
 	controlElemCurState = UserStoreGlobal.get_controlOfElements();
 	countAvailableCurState = UserStoreGlobal.get_controlOfElementsAvailable();
-	setControlTable(controlElem);
-	setAvailableCount();
-	subscribeSignals();
-	setArrow();
+	set_control_table(controlElem);
+	set_available_count();
+	subscribe_signals();
+	set_arrow();
 
 func _process(delta):
 	pass
 
-func setControlTable(control: Dictionary) -> void:
+func set_control_table(control: Dictionary) -> void:
 	$ElementsTable/Table/row1/CountAir.set_text(String.num(control.air));
 	$ElementsTable/Table/row2/CountWater.set_text(String.num(control.water));
 	$ElementsTable/Table/row3/CountEarth.set_text(String.num(control.earth));
 	$ElementsTable/Table/row4/CountFire.set_text(String.num(control.fire));
 
 
-func isUseState() -> bool:
+func is_use_state() -> bool:
 	return !UserStoreGlobal.state.isNewUser;
 
 
-func setArrow() -> void:
+func set_arrow() -> void:
 	var count = countAvailable;
 	var countLowerValue = 0;
 	var control = controlElem;
 	var controlLowerValue = { 'air' : 0, 'water' : 0, 'earth' : 0, 'fire' : 0 };
-	if isUseState():
+	if is_use_state():
 		count = countAvailableCurState;
 		#controlAvailableLowerValue = controlElemAvailableStartState;
 		control = controlElemCurState;
@@ -85,32 +85,32 @@ func setArrow() -> void:
 
 
 
-func setAvailableCount() -> void:
-	if isUseState():
+func set_available_count() -> void:
+	if is_use_state():
 		$ElementsTable/BorderTableFooterText/ControlAvailableCountRow/ControlAvailableCount.text = String.num(countAvailableCurState);
-		handlerButtonOk();
-		handlerButtonRestart();
+		handler_button_ok();
+		handler_button_restart();
 	else:
 		$ElementsTable/BorderTableFooterText/ControlAvailableCountRow/ControlAvailableCount.text = String.num(countAvailable);
 		UserStoreGlobal.state_controller.update_available_control_count(countAvailable);
 
-	setArrow();
+	set_arrow();
 
 
-func handlerButtonOk():
+func handler_button_ok():
 	if countAvailableCurState != countAvailable:
 		$ElementsTable/MarginContainerOk.visible = true;
 	else:
 		$ElementsTable/MarginContainerOk.visible = false;
 
-func handlerButtonRestart():
+func handler_button_restart():
 	if countAvailableCurState != countAvailable:
 		$ElementsTable/MarginContainerRestart.visible = true;
 	else:
 		$ElementsTable/MarginContainerRestart.visible = false;
 
 
-func subscribeSignals() -> void:
+func subscribe_signals() -> void:
 	UserStoreGlobal.signals.update_available_control_count.connect(_on_update_available_control_count)
 
 
@@ -118,10 +118,10 @@ func _on_update_available_control_count(value):
 	$ElementsTable/BorderTableFooterText/ControlAvailableCountRow/ControlAvailableCount.text = String.num(value);
 	countAvailable = value;
 	countAvailableCurState = value;
-	setArrow();
+	set_arrow();
 
 func _on_arrow_left_air_pressed():
-	if isUseState():
+	if is_use_state():
 		if controlElemCurState.air == controlElemStartState.air:
 			return;
 
@@ -136,11 +136,11 @@ func _on_arrow_left_air_pressed():
 		countAvailable += 1;
 		$ElementsTable/Table/row1/CountAir.set_text(String.num(controlElem.air));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_right_air_pressed():
-	if isUseState():
+	if is_use_state():
 		if countAvailableCurState == 0:
 			return;
 
@@ -155,11 +155,11 @@ func _on_arrow_right_air_pressed():
 		countAvailable -= 1;
 		$ElementsTable/Table/row1/CountAir.set_text(String.num(controlElem.air));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_left_water_pressed():
-	if isUseState():
+	if is_use_state():
 		if controlElemCurState.water == controlElemStartState.water:
 			return;
 
@@ -174,11 +174,11 @@ func _on_arrow_left_water_pressed():
 		countAvailable += 1;
 		$ElementsTable/Table/row2/CountWater.set_text(String.num(controlElem.water));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_right_water_pressed():
-	if isUseState():
+	if is_use_state():
 		if countAvailableCurState == 0:
 			return;
 
@@ -193,11 +193,11 @@ func _on_arrow_right_water_pressed():
 		countAvailable -= 1;
 		$ElementsTable/Table/row2/CountWater.set_text(String.num(controlElem.water));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_left_earth_pressed():
-	if isUseState():
+	if is_use_state():
 		if controlElemCurState.earth == controlElemStartState.earth:
 			return;
 
@@ -212,11 +212,11 @@ func _on_arrow_left_earth_pressed():
 		countAvailable += 1;
 		$ElementsTable/Table/row3/CountEarth.set_text(String.num(controlElem.earth));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_right_earth_pressed():
-	if isUseState():
+	if is_use_state():
 		if countAvailableCurState == 0:
 			return;
 
@@ -231,11 +231,11 @@ func _on_arrow_right_earth_pressed():
 		countAvailable -= 1;
 		$ElementsTable/Table/row3/CountEarth.set_text(String.num(controlElem.earth));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_left_fire_pressed():
-	if isUseState():
+	if is_use_state():
 		if controlElemCurState.fire == controlElemStartState.fire:
 			return;
 
@@ -250,11 +250,11 @@ func _on_arrow_left_fire_pressed():
 		countAvailable += 1;
 		$ElementsTable/Table/row4/CountFire.set_text(String.num(controlElem.fire));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_arrow_right_fire_pressed():
-	if isUseState():
+	if is_use_state():
 		if countAvailableCurState == 0:
 			return;
 
@@ -269,7 +269,7 @@ func _on_arrow_right_fire_pressed():
 		countAvailable -= 1;
 		$ElementsTable/Table/row4/CountFire.set_text(String.num(controlElem.fire));
 
-	setAvailableCount()
+	set_available_count()
 
 
 func _on_texture_button_ok_pressed():
@@ -277,13 +277,13 @@ func _on_texture_button_ok_pressed():
 	UserStoreGlobal.state_controller.update_elem_control(controlElemCurState);
 	controlElemStartState = controlElemCurState.duplicate();
 	countAvailableCurState = countAvailable;
-	handlerButtonOk();
-	handlerButtonRestart();
-	setArrow();
+	handler_button_ok();
+	handler_button_restart();
+	set_arrow();
 
 
 func _on_texture_button_restart_pressed():
 	controlElemCurState = controlElemStartState.duplicate();
 	countAvailableCurState = countAvailable;
-	setControlTable(controlElemCurState);
-	setAvailableCount();
+	set_control_table(controlElemCurState);
+	set_available_count();

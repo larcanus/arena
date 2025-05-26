@@ -1,14 +1,14 @@
 extends Control
 
-var userStateAvatarPath = load(UserStoreGlobal.get_avatar_path())
+var user_state_avatar_path = load(UserStoreGlobal.get_avatar_path())
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.texture = userStateAvatarPath
-	print('_ready texture')
+	self.texture = user_state_avatar_path
+	print('avatar control:: _ready texture')
 
 
 
 func _init():
-	self.texture = userStateAvatarPath
-	print('_init texture')
+	self.texture = user_state_avatar_path
+	print('avatar control:: _init texture')

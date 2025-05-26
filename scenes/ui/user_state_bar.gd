@@ -4,18 +4,18 @@ extends Control
 func _ready():
 	_set_mana_state(UserStoreGlobal.get_mana());
 	_set_hp_state(UserStoreGlobal.get_hp());
-	bindSignals();
-	setLvl();
+	bind_signals();
+	set_lvl();
 
 func _process(delta):
 	pass
 
 
-func bindSignals() -> void :
+func bind_signals() -> void :
 	UserStoreGlobal.signals.change_hp.connect(_change_hp_from_store);
 	UserStoreGlobal.signals.change_mana.connect(_change_mana_from_store);
 
-func setLvl():
+func set_lvl():
 	var lvlStr = UserStoreGlobal.get_string_lvl();
 	get_node("MarginContainer/MarginContainer/Label").text = lvlStr;
 
