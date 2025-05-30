@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://pogx51fvhgvd"
-path="res://.godot/imported/mob.glb-e3ac7fe4c76ecd7b619b6f64f6585a1a.scn"
+path="res://.godot/imported/mob.glb-9700ae636cb7373d06774b6a5e9d8eb6.scn"
 
 [deps]
 
-source_file="res://scenes/page/battle/mob.glb"
-dest_files=["res://.godot/imported/mob.glb-e3ac7fe4c76ecd7b619b6f64f6585a1a.scn"]
+source_file="res://scenes/page/battle_3d/mob.glb"
+dest_files=["res://.godot/imported/mob.glb-9700ae636cb7373d06774b6a5e9d8eb6.scn"]
 
 [params]
 

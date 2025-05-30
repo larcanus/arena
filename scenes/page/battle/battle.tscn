@@ -1,126 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://r376o47820s6"]
+[gd_scene load_steps=2 format=3 uid="uid://duu6l3qkgvopr"]
 
-[ext_resource type="PackedScene" uid="uid://c6weltdbg7uq3" path="res://scenes/page/battle/player.tscn" id="1_g1mm5"]
-[ext_resource type="Script" uid="uid://dvh16l7x5akru" path="res://scenes/page/battle/battle.gd" id="1_h2y2m"]
-[ext_resource type="PackedScene" uid="uid://c06ss6iwj2kdx" path="res://scenes/page/battle/mob.tscn" id="2_xki24"]
-[ext_resource type="PackedScene" uid="uid://c5cb4b712jcud" path="res://scenes/ui/battle_result.tscn" id="3_lka4v"]
-[ext_resource type="Script" uid="uid://dsc2jd6oayg8m" path="res://scenes/page/battle/UI.gd" id="4_hdr2n"]
-[ext_resource type="Script" uid="uid://cbicqcovsbm6a" path="res://scenes/page/battle/CameraPlayer.gd" id="4_ukbjp"]
+[ext_resource type="Texture2D" uid="uid://bu7nicxueetxe" path="res://assets/graphics/5.jpg" id="1_m2ywx"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_knrka"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gwypm"]
-size = Vector3(100, 2, 100)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8ybj0"]
-size = Vector3(100, 2, 100)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8nhsu"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2gfa5"]
-size = Vector3(100, 10, 3)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_edpxt"]
-size = Vector3(3, 10, 100)
-
-[sub_resource type="Curve3D" id="Curve3D_7gsld"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -49.6148, 0, -49.5624, 0, 0, 0, 0, 0, 0, 48.7148, 0, -48.8061, 0, 0, 0, 0, 0, 0, 49.8494, 0, 49.5236, 0, 0, 0, 0, 0, 0, -49.2366, 0, 50.28, 0, 0, 0, 0, 0, 0, -49.6148, 0, -49.5624),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
-[node name="Battle" type="Node3D"]
-script = ExtResource("1_h2y2m")
-mob_scene = ExtResource("2_xki24")
-result_menu_scene = ExtResource("3_lka4v")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 2.08165e-12, 41, 2.08165e-12)
-shadow_enabled = true
-
-[node name="ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, 2.08165e-12)
-collision_layer = 4
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_knrka")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
-shape = SubResource("BoxShape3D_gwypm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ground"]
-mesh = SubResource("BoxMesh_8ybj0")
-
-[node name="Borders" type="StaticBody3D" parent="."]
-collision_layer = 4
-collision_mask = 0
-physics_material_override = SubResource("PhysicsMaterial_8nhsu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 51.5)
-shape = SubResource("BoxShape3D_2gfa5")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Borders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -51.5)
-shape = SubResource("BoxShape3D_2gfa5")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Borders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0, 0)
-shape = SubResource("BoxShape3D_edpxt")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Borders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0, 0)
-shape = SubResource("BoxShape3D_edpxt")
-
-[node name="Player" parent="." instance=ExtResource("1_g1mm5")]
-
-[node name="CameraPivot" type="Marker3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 2.08165e-12, 14, 13)
-current = true
-script = ExtResource("4_ukbjp")
-target = NodePath("../../Player")
-
-[node name="SpawnPath" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, 2.08165e-12)
-curve = SubResource("Curve3D_7gsld")
-
-[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.00769135, 0, -0.99997, 0, 0.999999, 0, 0.99997, 0, -0.00769135, -49.6148, 0, -49.5624)
-
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.504
-autostart = true
-
-[node name="UI" type="Control" parent="."]
+[node name="Node2D" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_hdr2n")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScoreLabel" type="Label" parent="UI"]
-layout_mode = 1
-offset_left = 120.0
-offset_top = 104.0
-offset_right = 552.0
-offset_bottom = 240.0
-theme_override_font_sizes/font_size = 60
-text = "Очки: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HPLabel" type="Label" parent="UI"]
+[node name="sky" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 595.0
-offset_top = 115.0
-offset_right = 1059.0
-offset_bottom = 235.0
-theme_override_font_sizes/font_size = 60
-text = "Жизни: 2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[connection signal="hit" from="Player" to="." method="_on_player_hit"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+offset_left = -1062.0
+offset_top = -572.0
+offset_right = 1146.0
+offset_bottom = 673.0
+texture = ExtResource("1_m2ywx")
+expand_mode = 1
+stretch_mode = 6

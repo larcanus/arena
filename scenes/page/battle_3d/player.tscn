@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6weltdbg7uq3"]
 
-[ext_resource type="Script" uid="uid://ciphna1huo83o" path="res://scenes/page/battle/player.gd" id="1_3wthv"]
-[ext_resource type="PackedScene" uid="uid://bhw3wv74xpf0y" path="res://scenes/page/battle/player.glb" id="2_gdbg0"]
+[ext_resource type="Script" uid="uid://ciphna1huo83o" path="res://scenes/page/battle_3d/player.gd" id="1_3wthv"]
+[ext_resource type="PackedScene" uid="uid://bhw3wv74xpf0y" path="res://scenes/page/battle_3d/player.glb" id="2_gdbg0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_li6u1"]
 height = 1.5
