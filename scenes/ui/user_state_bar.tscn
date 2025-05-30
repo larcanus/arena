@@ -43,6 +43,7 @@ grow_vertical = 2
 script = ExtResource("1_f5x1g")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -57,6 +58,7 @@ grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 z_index = 1
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("1_jwndv")
 expand_mode = 1
