@@ -1,23 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://duu6l3qkgvopr"]
+[gd_scene load_steps=4 format=3 uid="uid://duu6l3qkgvopr"]
 
-[ext_resource type="Texture2D" uid="uid://bu7nicxueetxe" path="res://assets/graphics/5.jpg" id="1_m2ywx"]
+[ext_resource type="Script" uid="uid://73rkwnrqcjll" path="res://scenes/page/battle/battle.gd" id="1_iproy"]
+[ext_resource type="PackedScene" uid="uid://la5gkufm4etq" path="res://scenes/ui/battle-log.tscn" id="2_hev4l"]
+[ext_resource type="Texture2D" uid="uid://bbd018otufvwv" path="res://assets/graphics/images/battle/battle-backgound-centred-4.png" id="2_iproy"]
 
-[node name="Node2D" type="Control"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_iproy")
 
-[node name="sky" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -1062.0
-offset_top = -572.0
-offset_right = 1146.0
-offset_bottom = 673.0
-texture = ExtResource("1_m2ywx")
-expand_mode = 1
-stretch_mode = 6
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1378, 557)
+texture = ExtResource("2_iproy")
+
+[node name="BattleLog" parent="." instance=ExtResource("2_hev4l")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

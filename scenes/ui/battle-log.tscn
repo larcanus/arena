@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://la5gkufm4etq"]
+
+[ext_resource type="Script" uid="uid://ddy846bi1qnlt" path="res://scenes/ui/battle_log.gd" id="1_e8l5t"]
+[ext_resource type="Texture2D" uid="uid://c2sriy60hneoy" path="res://assets/graphics/images/battle/battle-log-border.png" id="2_wihnc"]
+
+[node name="BattleLog" type="Control"]
+layout_mode = 3
+anchor_right = 0.25
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e8l5t")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.06666667, 0.23529412, 1)
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wihnc")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+horizontal_scroll_mode = 0
+
+[node name="LogContent" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
