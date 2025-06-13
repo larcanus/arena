@@ -24,4 +24,4 @@ func setup(texture_path: String, text: String = ""):
 		label.text = text
 
 	# Настройка размеров
-	self.custom_minimum_size = Vector2(64, 64)  # Базовый размер
+	self.custom_minimum_size = Vector2(32, 32)  # Базовый размер

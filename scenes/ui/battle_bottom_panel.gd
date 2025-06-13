@@ -30,7 +30,15 @@ func _update_size():
 	_resize_items()
 
 func _resize_items():
-	var item_size = size.y - item_margin * 2 # Квадрат по высоте панели
+	var available_width = items_container.size.x - item_margin * 2
+	var available_height = size.y - item_margin * 2 - 15  # Поправка по высоте
+
+	# Предполагаем, что итемы должны быть квадратными
+	var item_size = min(available_width, available_height)
+
+	# Если итемы могут переноситься на новую строку, учитываем их количество
+	var items_per_row = max(1, floor(available_width / item_size))
+	item_size = available_width / items_per_row  # Подгоняем под ширину
 
 	for item in items_container.get_children():
 		item.custom_minimum_size = Vector2(item_size, item_size)
@@ -42,7 +50,7 @@ func add_item(svg_path: String, text: String = ""):
 	item.setup(svg_path, text)
 
 	# Устанавливаем квадратный размер
-	var item_size = size.y - item_margin * 2
+	var item_size = size.y - item_margin * 2 - 15
 	item.custom_minimum_size = Vector2(item_size, item_size)
 
 	return item
