@@ -17,7 +17,16 @@ var current_item_size: float;
 func _ready():
 	_update_size()
 	get_tree().root.size_changed.connect(_update_size)
+	$HBoxContainer/LeftButton.disabled = true;
+	$HBoxContainer/RightButton.disabled = true;
 	_create_demo_items() # Для теста
+	await get_tree().process_frame
+	await get_tree().process_frame
+	update_buttons_state()
+
+func update_buttons_state():
+	$HBoxContainer/RightButton.disabled = await is_scroll_at_end()
+	$HBoxContainer/LeftButton.disabled = scroller.scroll_horizontal <= 0
 
 func _update_size():
 	var viewport = get_viewport_rect().size
@@ -30,17 +39,14 @@ func _update_size():
 		viewport.y * pos_y_ratio - panel_height
 	)
 
-	# Обновляем размеры итемов
 	_resize_items()
 
 func _resize_items():
 	var available_width = items_container.size.x - item_margin * 2
 	var available_height = size.y - item_margin * 2 - 15  # Поправка по высоте
 
-	# Предполагаем, что итемы должны быть квадратными
 	var item_size = min(available_width, available_height)
 
-	# Если итемы могут переноситься на новую строку, учитываем их количество
 	var items_per_row = max(1, floor(available_width / item_size))
 	item_size = available_width / items_per_row  # Подгоняем под ширину
 
@@ -49,6 +55,7 @@ func _resize_items():
 		item.size = Vector2(item_size, item_size)
 
 	current_item_size = item_size;
+	update_buttons_state()
 
 
 func add_item(svg_path: String, text: String = ""):
@@ -56,7 +63,6 @@ func add_item(svg_path: String, text: String = ""):
 	items_container.add_child(item)
 	item.setup(svg_path, text)
 
-	# Устанавливаем квадратный размер
 	var item_size = size.y - item_margin * 2 - 15
 	item.custom_minimum_size = Vector2(item_size, item_size)
 
@@ -67,24 +73,41 @@ func clear_items():
 	for item in items_container.get_children():
 		item.queue_free()
 
-# Тестовая функция (потом удалите)
+
 func _create_demo_items():
 	clear_items()
-	for i in 50:
+	for i in 25:
 		add_item("res://assets/graphics/icon.svg", "Item %d" % (i+1))
 
-
 func _on_left_button_pressed() -> void:
+	print(scroller.scroll_horizontal)
 	var target_x = scroller.scroll_horizontal - current_item_size
 	var tween = create_tween()
 
 	tween.tween_property(scroller, "scroll_horizontal", target_x, 0.3)\
 		 .set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
+	if scroller.scroll_horizontal == 0:
+		$HBoxContainer/LeftButton.disabled = true;
+
+	$HBoxContainer/RightButton.disabled = false;
+
 
 func _on_right_button_pressed() -> void:
 	var target_x = scroller.scroll_horizontal + current_item_size
+	if target_x != 0:
+		$HBoxContainer/LeftButton.disabled = false;
+
 	var tween = create_tween()
 
 	tween.tween_property(scroller, "scroll_horizontal", target_x, 0.3)\
 		 .set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+	if await is_scroll_at_end():
+		$HBoxContainer/RightButton.disabled = true;
+
+func is_scroll_at_end() -> bool:
+	await get_tree().process_frame
+	var h_scrollbar = scroller.get_h_scroll_bar()
+
+	return scroller.scroll_horizontal >= (h_scrollbar.max_value - h_scrollbar.page - 0.1)
