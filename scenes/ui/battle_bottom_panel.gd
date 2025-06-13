@@ -38,13 +38,13 @@ func _resize_items():
 
 func add_item(svg_path: String, text: String = ""):
 	var item = item_scene.instantiate()
+	items_container.add_child(item)
 	item.setup(svg_path, text)
 
 	# Устанавливаем квадратный размер
 	var item_size = size.y - item_margin * 2
 	item.custom_minimum_size = Vector2(item_size, item_size)
 
-	items_container.add_child(item)
 	return item
 
 func clear_items():
