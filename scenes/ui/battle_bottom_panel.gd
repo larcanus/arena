@@ -2,13 +2,17 @@ extends Control
 
 # Настройки
 @export var item_scene: PackedScene # Перетащите сюда panel_item.tscn
-@export var width_ratio: float = 0.6
+@export var width_ratio: float = 0.54
 @export var height_ratio: float = 0.1
-@export var pos_x_ratio: float = 0.6
+@export var pos_x_ratio: float = 0.57
 @export var pos_y_ratio: float = 0.95
 @export var item_margin: int = 10 # Отступ между итемами
 
-@onready var items_container: HBoxContainer = $Background/Frame/ContentMargin/Scroller/ItemsContainer
+@onready var items_container: HBoxContainer = $HBoxContainer/Background/Frame/ContentMargin/Scroller/ItemsContainer
+@onready var scroller: ScrollContainer = %Scroller;
+
+var current_item_size: float;
+
 
 func _ready():
 	_update_size()
@@ -44,6 +48,9 @@ func _resize_items():
 		item.custom_minimum_size = Vector2(item_size, item_size)
 		item.size = Vector2(item_size, item_size)
 
+	current_item_size = item_size;
+
+
 func add_item(svg_path: String, text: String = ""):
 	var item = item_scene.instantiate()
 	items_container.add_child(item)
@@ -53,6 +60,7 @@ func add_item(svg_path: String, text: String = ""):
 	var item_size = size.y - item_margin * 2 - 15
 	item.custom_minimum_size = Vector2(item_size, item_size)
 
+	current_item_size = item_size;
 	return item
 
 func clear_items():
@@ -64,3 +72,19 @@ func _create_demo_items():
 	clear_items()
 	for i in 50:
 		add_item("res://assets/graphics/icon.svg", "Item %d" % (i+1))
+
+
+func _on_left_button_pressed() -> void:
+	var target_x = scroller.scroll_horizontal - current_item_size
+	var tween = create_tween()
+
+	tween.tween_property(scroller, "scroll_horizontal", target_x, 0.3)\
+		 .set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+
+func _on_right_button_pressed() -> void:
+	var target_x = scroller.scroll_horizontal + current_item_size
+	var tween = create_tween()
+
+	tween.tween_property(scroller, "scroll_horizontal", target_x, 0.3)\
+		 .set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
