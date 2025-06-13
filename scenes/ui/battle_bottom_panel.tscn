@@ -1,17 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cydjfo04n5q7g"]
+[gd_scene load_steps=5 format=3 uid="uid://cydjfo04n5q7g"]
 
 [ext_resource type="Script" uid="uid://c2ric12oqxdk" path="res://scenes/ui/battle_bottom_panel.gd" id="1_k1n2b"]
+[ext_resource type="Texture2D" uid="uid://jga6sbk2r0r5" path="res://assets/graphics/images/battle/border-panel-250.png" id="2_byuc6"]
+[ext_resource type="PackedScene" uid="uid://bjrturmt8ko0k" path="res://scenes/ui/item.tscn" id="2_lof8k"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1n2b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byuc6"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -21,6 +19,7 @@ corner_detail = 5
 [node name="BattleBottomPanel" type="Control"]
 custom_minimum_size = Vector2(800, 150)
 layout_mode = 3
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,42 +29,45 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_k1n2b")
+item_scene = ExtResource("2_lof8k")
 
-[node name="Frame" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="Background" type="Panel" parent="Frame"]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k1n2b")
+theme_override_styles/panel = SubResource("StyleBoxFlat_byuc6")
 
-[node name="ContentMargin" type="MarginContainer" parent="Frame/Background"]
+[node name="Frame" type="TextureRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_byuc6")
+expand_mode = 1
 
-[node name="Scroller" type="ScrollContainer" parent="Frame/Background/ContentMargin"]
+[node name="ContentMargin" type="MarginContainer" parent="Background/Frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Scroller" type="ScrollContainer" parent="Background/Frame/ContentMargin"]
 layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="ItemsContainer" type="HBoxContainer" parent="Frame/Background/ContentMargin/Scroller"]
+[node name="ItemsContainer" type="HBoxContainer" parent="Background/Frame/ContentMargin/Scroller"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 11
 size_flags_vertical = 3
