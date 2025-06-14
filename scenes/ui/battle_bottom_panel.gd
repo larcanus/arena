@@ -18,7 +18,6 @@ var items_count: int = 35;
 
 func _ready():
 	_update_size()
-	get_tree().root.size_changed.connect(_update_size)
 	$HBoxContainer/LeftButton.disabled = true;
 	$HBoxContainer/RightButton.disabled = true;
 	_create_items()
@@ -100,16 +99,12 @@ func get_empty_items_by_count(count : int) -> Array :
 
 
 func bind_signals():
+	get_tree().root.size_changed.connect(_update_size)
 	scroller.gui_input.connect(_on_scroll_input)
-	BattleStoreGlobal.signals.battle_select_skill.connect(_on_battle_select_skill)
 
 func _on_scroll_input(event: InputEvent):
 	if event is InputEventMouseButton:
 		accept_event()
-
-
-func _on_battle_select_skill(skill_id:int) -> void:
-	print('BattlePanel._on_battle_select_skill ' + str(skill_id))
 
 
 func _on_left_button_pressed() -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://duu6l3qkgvopr"]
+[gd_scene load_steps=6 format=3 uid="uid://duu6l3qkgvopr"]
 
 [ext_resource type="Script" uid="uid://73rkwnrqcjll" path="res://scenes/page/battle/battle.gd" id="1_iproy"]
 [ext_resource type="PackedScene" uid="uid://la5gkufm4etq" path="res://scenes/ui/battle-log.tscn" id="2_hev4l"]
 [ext_resource type="Texture2D" uid="uid://bbd018otufvwv" path="res://assets/graphics/images/battle/battle-backgound-centred-4.png" id="2_iproy"]
 [ext_resource type="PackedScene" uid="uid://cydjfo04n5q7g" path="res://scenes/ui/battle_bottom_panel.tscn" id="4_hi87l"]
+[ext_resource type="PackedScene" uid="uid://cu8uxht3artxs" path="res://scenes/ui/battle_move_control.tscn" id="5_m5y5t"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_iproy")
@@ -20,12 +21,14 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="BattleBottomPanel" parent="." instance=ExtResource("4_hi87l")]
+offset_left = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="MoveControl" parent="." instance=ExtResource("5_m5y5t")]
 anchors_preset = 0
-anchor_top = 0.0
+anchor_left = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_right = 800.0
-offset_bottom = 150.0
 grow_horizontal = 1
 grow_vertical = 1

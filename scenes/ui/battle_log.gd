@@ -6,7 +6,7 @@ func _ready():
 	_update_size()
 	get_tree().root.size_changed.connect(_update_size)
 	connect("resized", _update_margins)
-	# Тест - добавление записей
+
 	TimerGlobal.add_callback(add_log_message);
 
 func _update_size():
