@@ -25,6 +25,7 @@ func _ready():
 	await get_tree().process_frame
 	await get_tree().process_frame
 	update_buttons_state()
+	bind_signals()
 
 func update_buttons_state():
 	$HBoxContainer/RightButton.disabled = await is_scroll_at_end()
@@ -99,6 +100,13 @@ func get_empty_items_by_count(count : int) -> Array :
 		empty_items.append(empty_item)
 
 	return empty_items;
+
+
+func bind_signals():
+	BattleStoreGlobal.signals.battle_select_skill.connect(_on_battle_select_skill)
+
+func _on_battle_select_skill(skill_id:int) -> void:
+	print('BattlePanel._on_battle_select_skill ' + str(skill_id))
 
 
 func _on_left_button_pressed() -> void:

@@ -7,7 +7,7 @@ signal update_elem_control(value: Dictionary);
 signal update_exp(value: int);
 signal update_lvl(value: Dictionary);
 
-const SIGNALS_NAME := {
+const SIGNAL_NAMES := {
 	"change_hp": "change_hp",
 	"change_mana": "change_mana",
 	"update_available_control_count": "update_available_control_count",

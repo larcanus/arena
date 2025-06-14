@@ -6,7 +6,7 @@ var state_controller;
 var user_default_state_resource: UserDefaultStateResource = UserDefaultStateResource.new();
 var user_state_controller := preload("res://scripts/state/user/user_state_controller.gd");
 var signals = UserStoreSignal.new();
-var signals_name = signals.SIGNALS_NAME;
+var signal_names = signals.SIGNAL_NAMES;
 
 func _init() -> void:
 	print('UserStore._init')

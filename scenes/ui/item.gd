@@ -37,6 +37,8 @@ func _on_icon_pressed() -> void:
 	if not item_data.type == 'empty':
 		animate_icon_click()
 
+	BattleStoreGlobal.state_controller.update_selected_skill(item_data.id)
+
 
 
 
