@@ -17,3 +17,4 @@ class_name UserDefaultStateResource extends Resource
 @export 	var physArmor = 0;
 @export 	var pCSC = 0.0;
 @export 	var mCSC = 0.0;
+@export 	var skills = [];

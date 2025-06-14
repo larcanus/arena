@@ -12,7 +12,7 @@ func _init(data: Dictionary):
 	name = data.get("name", "Unnamed")
 	type = data.get("type", "empty")
 
-# Ленивая загрузка иконки
+
 func get_icon() -> Texture2D:
 	if !icon and !path.is_empty():
 		icon = load(path)

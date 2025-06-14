@@ -3,38 +3,43 @@ extends Control
 @onready var icon: TextureButton = $Icon
 @onready var label: Label = $Label
 
-var item_type: String = 'empty';
+var item_data: RefCounted;
 
 
-func setup(texture_path: String, text: String = ""):
+func setup(item):
 	if not is_instance_valid(icon):
 		push_error("Panel item::Icon node is invalid!")
 		return
 
-	if texture_path == '':
+	if item.path == '':
 		print("Panel item::add empty item")
 		return
 
-	var texture = load(texture_path)
+	item_data = item;
+
+	var texture = load(item_data.path)
 	if not texture:
-		push_error("Panel item::Failed to load texture from path: ", texture_path)
+		push_error("Panel item::Failed to load texture from path: ", item_data.path)
 		return
 
 	icon.texture_normal = texture
 	icon.texture_pressed = texture
-	item_type = 'skill'
 
 	if is_instance_valid(label):
-		label.text = text
+		label.text = item_data.name
 
-	self.custom_minimum_size = Vector2(32, 32)  # Базовый размер
+	self.custom_minimum_size = Vector2(32, 32)
 
 
 func _on_icon_pressed() -> void:
-	print('_on_icon_pressed') # Replace with function body.
-	print(item_type)
-	if not item_type == 'empty':
+	print('_on_icon_pressed type: ' + item_data.type)
+
+	if not item_data.type == 'empty':
 		animate_icon_click()
+
+
+
+
 
 
 
@@ -56,4 +61,4 @@ func animate_icon_click():
 	tween.tween_property(icon, "scale", original_scale, 0.06)
 	tween.parallel().tween_property(icon, "position", original_pos, 0.06)
 
-	tween.finished.connect(func(): is_animating = false)  # Разблокируем после завершения
+	tween.finished.connect(func(): is_animating = false)

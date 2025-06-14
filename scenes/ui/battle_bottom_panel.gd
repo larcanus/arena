@@ -60,10 +60,10 @@ func _resize_items():
 	update_buttons_state()
 
 
-func add_item(svg_path: String, text: String = ""):
+func add_item(item_data):
 	var item = item_scene.instantiate()
 	items_container.add_child(item)
-	item.setup(svg_path, text)
+	item.setup(item_data)
 
 	var item_size = size.y - item_margin * 2 - 15
 	item.custom_minimum_size = Vector2(item_size, item_size)
@@ -79,7 +79,7 @@ func clear_items():
 func _create_items():
 	clear_items()
 
-	var user_items = ItemStoreGlobal.get_all_items()
+	var user_items = UserStoreGlobal.get_skills()
 	var need_empty_items_count = items_count - user_items.size();
 	print(items_count)
 	print(user_items.size())
@@ -89,7 +89,7 @@ func _create_items():
 	var all_items = user_items + epmty_items;
 
 	for item in all_items:
-		add_item(item.path, "Item %d" % (item.id))
+		add_item(item)
 
 
 func get_empty_items_by_count(count : int) -> Array :

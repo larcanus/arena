@@ -12,7 +12,7 @@ func _load_items():
 	for item_data in database.items:
 		_items.append(ItemDefaultStateResource.new(item_data))
 
-	print("Загружено предметов: ", _items.size())
+	print("ItemStore::load items: ", _items.size())
 
 func get_all_items() -> Array[ItemDefaultStateResource]:
 	return _items.duplicate()

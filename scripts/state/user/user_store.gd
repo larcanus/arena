@@ -20,8 +20,7 @@ func clearState():
 func _ready():
 	print('UserStore._ready')
 	state_controller.updateCSC();
-	ItemStoreGlobal.get_all_items();
-
+	state.skills = ItemStoreGlobal.get_all_items();
 
 
 func get_avatar_path() -> String:
@@ -132,3 +131,6 @@ func isBattle() -> bool:
 
 func setBattle(value: bool) -> void:
 	state.isBattle = value;
+
+func get_skills() -> Array:
+	return state.skills;
