@@ -82,9 +82,6 @@ func _create_items():
 
 	var user_items = UserStoreGlobal.get_skills()
 	var need_empty_items_count = items_count - user_items.size();
-	print(items_count)
-	print(user_items.size())
-	print(need_empty_items_count)
 
 	var epmty_items = get_empty_items_by_count(need_empty_items_count);
 	var all_items = user_items + epmty_items;
@@ -103,7 +100,13 @@ func get_empty_items_by_count(count : int) -> Array :
 
 
 func bind_signals():
+	scroller.gui_input.connect(_on_scroll_input)
 	BattleStoreGlobal.signals.battle_select_skill.connect(_on_battle_select_skill)
+
+func _on_scroll_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		accept_event()
+
 
 func _on_battle_select_skill(skill_id:int) -> void:
 	print('BattlePanel._on_battle_select_skill ' + str(skill_id))

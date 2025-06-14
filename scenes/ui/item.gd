@@ -32,7 +32,7 @@ func setup(item):
 
 
 func _on_icon_pressed() -> void:
-	print('_on_icon_pressed type: ' + item_data.type)
+	print('Panel item::_on_icon_pressed type: ' + item_data.type)
 
 	if not item_data.type == 'empty':
 		animate_icon_click()
