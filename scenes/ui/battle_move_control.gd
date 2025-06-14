@@ -18,7 +18,8 @@ func _update_position():
 	var margin_y = viewport.y * 0.01
 
 	var btn_size = Vector2(100, 50)
-
+	print(margin_y)
+	print(viewport.y - btn_size.y - margin_y)
 	position = Vector2(
 		viewport.x - btn_size.x - margin_x,
 		viewport.y - btn_size.y - margin_y

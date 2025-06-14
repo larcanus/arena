@@ -1,12 +1,12 @@
 extends Control
 
-# Настройки
-@export var item_scene: PackedScene # Перетащите сюда panel_item.tscn
-@export var width_ratio: float = 0.54
-@export var height_ratio: float = 0.1
-@export var pos_x_ratio: float = 0.57
-@export var pos_y_ratio: float = 0.95
-@export var item_margin: int = 10 # Отступ между итемами
+@export var item_scene: PackedScene
+@export var width_ratio: float = 0.54    # Ширина панели (54% от ширины экрана)
+@export var min_width: float = 400       # Минимальная ширина в пикселях
+@export var height_pixels: float = 60    # Фиксированная высота в пикселях
+@export var bottom_margin_pixels: float = 110  # Фиксированный отступ от низа в пикселях
+@export var center_offset_ratio: float = 0.07 # Смещение от центра (7% вправо)
+@export var item_margin: int = 10
 
 @onready var items_container: HBoxContainer = $HBoxContainer/Background/Frame/ContentMargin/Scroller/ItemsContainer
 @onready var scroller: ScrollContainer = %Scroller;
@@ -32,14 +32,13 @@ func update_buttons_state():
 
 func _update_size():
 	var viewport = get_viewport_rect().size
-	var panel_width = viewport.x * width_ratio
-	var panel_height = viewport.y * height_ratio
+	var panel_width = max(viewport.x * width_ratio, min_width)
+	var panel_height = height_pixels
+	var pos_y = viewport.y - panel_height - bottom_margin_pixels
+	var pos_x = (viewport.x * 0.5) + (viewport.x * center_offset_ratio) - (panel_width * 0.5)
 
 	size = Vector2(panel_width, panel_height)
-	position = Vector2(
-		viewport.x * pos_x_ratio - panel_width/2,
-		viewport.y * pos_y_ratio - panel_height
-	)
+	position = Vector2(pos_x, pos_y)
 
 	_resize_items()
 
