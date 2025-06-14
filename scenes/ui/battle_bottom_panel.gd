@@ -12,6 +12,8 @@ extends Control
 @onready var scroller: ScrollContainer = %Scroller;
 
 var current_item_size: float;
+var currert_items: Array = ['']
+var items_count: int = 35;
 
 
 func _ready():
@@ -19,7 +21,7 @@ func _ready():
 	get_tree().root.size_changed.connect(_update_size)
 	$HBoxContainer/LeftButton.disabled = true;
 	$HBoxContainer/RightButton.disabled = true;
-	_create_demo_items() # Для теста
+	_create_items()
 	await get_tree().process_frame
 	await get_tree().process_frame
 	update_buttons_state()
@@ -74,10 +76,30 @@ func clear_items():
 		item.queue_free()
 
 
-func _create_demo_items():
+func _create_items():
 	clear_items()
-	for i in 25:
-		add_item("res://assets/graphics/icon.svg", "Item %d" % (i+1))
+
+	var user_items = ItemStoreGlobal.get_all_items()
+	var need_empty_items_count = items_count - user_items.size();
+	print(items_count)
+	print(user_items.size())
+	print(need_empty_items_count)
+
+	var epmty_items = get_empty_items_by_count(need_empty_items_count);
+	var all_items = user_items + epmty_items;
+
+	for item in all_items:
+		add_item(item.path, "Item %d" % (item.id))
+
+
+func get_empty_items_by_count(count : int) -> Array :
+	var empty_items = [];
+	var empty_item = { 'name': 'unnamed', 'path': '', 'id': 0, 'type': 'empty' };
+	for i in range(count):
+		empty_items.append(empty_item)
+
+	return empty_items;
+
 
 func _on_left_button_pressed() -> void:
 	print(scroller.scroll_horizontal)
@@ -110,4 +132,7 @@ func is_scroll_at_end() -> bool:
 	await get_tree().process_frame
 	var h_scrollbar = scroller.get_h_scroll_bar()
 
-	return scroller.scroll_horizontal >= (h_scrollbar.max_value - h_scrollbar.page - 0.1)
+	var items_user_count = ItemStoreGlobal.get_all_items().size();
+	var max_h_value_user_items = items_user_count * current_item_size;
+
+	return scroller.scroll_horizontal >= (max_h_value_user_items - h_scrollbar.page - 0.1)

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=2 format=3 uid="uid://chpqvmbb4wj3e"]
+
+[ext_resource type="Script" uid="uid://8vttk21r75tc" path="res://data/items.gd" id="1_s8jlu"]
+
+[resource]
+script = ExtResource("1_s8jlu")
+items = Array[Dictionary]([{
+"id": 1,
+"name": "armor",
+"path": "res://assets/graphics/images/armor-temp-1-200.png",
+"type": "skill"
+}, {
+"id": 2,
+"name": "arrow",
+"path": "res://assets/graphics/images/arrow-left-alfa.png",
+"type": "skill"
+}, {
+"id": 3,
+"name": "arrow",
+"path": "res://assets/graphics/images/arrow-right-alfa.png",
+"type": "skill"
+}, {
+"id": 4,
+"name": "arrow",
+"path": "res://assets/graphics/images/arrow-right-alfa.png",
+"type": "skill"
+}, {
+"id": 5,
+"name": "arrow",
+"path": "res://assets/graphics/images/arrow-right-alfa.png",
+"type": "skill"
+}, {
+"id": 6,
+"name": "arrow",
+"path": "res://assets/graphics/images/arrow-right-alfa.png",
+"type": "skill"
+}, {
+"id": 7,
+"name": "arrow",
+"path": "res://assets/graphics/images/arrow-right-alfa.png",
+"type": "skill"
+}])
+metadata/_custom_type_script = "uid://8vttk21r75tc"

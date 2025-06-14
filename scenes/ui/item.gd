@@ -3,34 +3,38 @@ extends Control
 @onready var icon: TextureButton = $Icon
 @onready var label: Label = $Label
 
+var item_type: String = 'empty';
+
 
 func setup(texture_path: String, text: String = ""):
-	print('Panel item::setup' + texture_path)
 	if not is_instance_valid(icon):
 		push_error("Panel item::Icon node is invalid!")
 		return
 
-	# Загрузка текстуры
+	if texture_path == '':
+		print("Panel item::add empty item")
+		return
+
 	var texture = load(texture_path)
 	if not texture:
 		push_error("Panel item::Failed to load texture from path: ", texture_path)
 		return
 
-	# Назначение
 	icon.texture_normal = texture
 	icon.texture_pressed = texture
+	item_type = 'skill'
 
-	# Если есть текст
 	if is_instance_valid(label):
 		label.text = text
 
-	# Настройка размеров
 	self.custom_minimum_size = Vector2(32, 32)  # Базовый размер
 
 
 func _on_icon_pressed() -> void:
 	print('_on_icon_pressed') # Replace with function body.
-	animate_icon_click()
+	print(item_type)
+	if not item_type == 'empty':
+		animate_icon_click()
 
 
 

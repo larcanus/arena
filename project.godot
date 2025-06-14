@@ -26,6 +26,7 @@ TimerGlobal="*res://scripts/system/timer.gd"
 UserStoreGlobal="*res://scripts/state/user/user_store.gd"
 UserEffectsGlobal="*res://scripts/state/user/user_effects.gd"
 BattleSignals="*res://scripts/state/battle_signals.gd"
+ItemStoreGlobal="*res://scripts/state/item/item_store.gd"
 
 [display]
 

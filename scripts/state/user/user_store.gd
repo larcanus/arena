@@ -20,6 +20,7 @@ func clearState():
 func _ready():
 	print('UserStore._ready')
 	state_controller.updateCSC();
+	ItemStoreGlobal.get_all_items();
 
 
 
