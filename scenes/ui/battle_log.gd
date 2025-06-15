@@ -6,8 +6,8 @@ func _ready():
 	_update_size()
 	get_tree().root.size_changed.connect(_update_size)
 	connect("resized", _update_margins)
-
-	TimerGlobal.add_callback(add_log_message);
+	BattleStoreGlobal.signals.add_log.connect(_on_battle_add_log)
+	#TimerGlobal.add_callback(add_log_message);
 
 func _update_size():
 	var viewport_size = get_viewport_rect().size
@@ -28,6 +28,10 @@ func _update_margins():
 	$ScrollContainer.set("offset_bottom", -margin_top_bottom_px.y)
 
 	$ScrollContainer.queue_redraw()
+
+func _on_battle_add_log(log_data: LogState)-> void:
+	print(log_data)
+	add_log_message(log_data.text)
 
 
 func add_log_message(text: String = 'log_message'):

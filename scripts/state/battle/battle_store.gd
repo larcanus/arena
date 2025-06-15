@@ -13,5 +13,15 @@ func _init() -> void:
 	state_controller = battle_state_controller.new();
 
 func update_selected_skill(skill_id: int) -> void:
-	print('BattleStore::update_selected_skill %s'  % skill_id)
+	print('BattleStore.update_selected_skill %s'  % skill_id)
 	state.select_skill = skill_id;
+
+func start_move() -> void:
+	print('BattleStore.start_move')
+	state.is_move = true;
+
+func is_move() -> bool:
+	return state.is_move;
+
+func add_log(log_data: LogState) -> void:
+	state.log_list.append(log_data)

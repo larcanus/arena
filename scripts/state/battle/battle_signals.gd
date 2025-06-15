@@ -1,9 +1,10 @@
 class_name BattleStoreSignal extends Resource
 
-signal battle_start();
-signal battle_ended();
-signal battle_select_skill();
-signal battle_press_move();
+signal start();
+signal end();
+signal select_skill();
+signal is_move();
+signal add_log();
 
 
 func _ready():
