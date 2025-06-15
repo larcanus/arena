@@ -30,7 +30,6 @@ func _update_margins():
 	$ScrollContainer.queue_redraw()
 
 func _on_battle_add_log(log_data: LogState)-> void:
-	print(log_data)
 	add_log_message(log_data.text)
 
 

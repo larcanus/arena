@@ -3,10 +3,11 @@ extends Control
 @onready var icon: TextureButton = $Icon
 @onready var label: Label = $Label
 
-var item_data: RefCounted;
+var item_data: ItemDefaultStateResource;
 
 
 func setup(item):
+	item_data = ItemDefaultStateResource.new({});
 	if not is_instance_valid(icon):
 		push_error("Panel item::Icon node is invalid!")
 		return
@@ -38,8 +39,7 @@ func _on_icon_pressed() -> void:
 
 	if not item_data.type == 'empty':
 		animate_icon_click()
-
-	BattleStoreGlobal.state_controller.update_selected_skill(item_data.id)
+		BattleStoreGlobal.state_controller.update_selected_skill(item_data.id)
 
 
 
