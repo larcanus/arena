@@ -1,38 +1,61 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu8uxht3artxs"]
 
-[ext_resource type="Texture2D" uid="uid://dnck0hapru4m6" path="res://assets/graphics/images/boder-squ-1-source-footer-200.png" id="1_hwuug"]
 [ext_resource type="Script" uid="uid://bt0uxdq4bmk8h" path="res://scenes/ui/battle_move_control.gd" id="1_mgjf5"]
+[ext_resource type="Texture2D" uid="uid://btpqrgjvug5tg" path="res://assets/graphics/images/battle/button_move.png" id="2_mgjf5"]
 
 [node name="MoveControl" type="Control"]
 layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("1_mgjf5")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -300.0
+offset_top = -300.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("1_hwuug")
+script = ExtResource("1_mgjf5")
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect"]
+[node name="Skil" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -50.5
+offset_right = 51.5
+offset_bottom = 54.5
 grow_horizontal = 2
 grow_vertical = 2
+expand_mode = 1
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mgjf5")
+expand_mode = 1
+
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -138.0
+offset_right = 129.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_mgjf5")
+texture_pressed = ExtResource("2_mgjf5")
 stretch_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

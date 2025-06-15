@@ -10,14 +10,14 @@ func _on_battle_select_skill(skill_id:int) -> void:
 	print('BattleMoveControl._on_battle_select_skill ' + str(skill_id))
 	var selected_skill_data = ItemStoreGlobal.get_item_by_id(skill_id)
 	var texture = load(selected_skill_data.path)
-	$TextureRect/TextureButton.texture_normal = texture
+	$Skil.texture = texture
 
 func _update_position():
 	var viewport = get_viewport_rect().size
-	var margin_x = viewport.x * 0.02
+	var margin_x = viewport.x * 0.01
 	var margin_y = viewport.y * 0.01
 
-	var btn_size = Vector2(100, 50)
+	var btn_size = Vector2(300, 300)
 	print(margin_y)
 	print(viewport.y - btn_size.y - margin_y)
 	position = Vector2(
@@ -25,3 +25,7 @@ func _update_position():
 		viewport.y - btn_size.y - margin_y
 	)
 	size = btn_size
+
+
+func _on_button_pressed() -> void:
+	print('_on_button_pressed')

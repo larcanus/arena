@@ -5,7 +5,7 @@ extends Control
 @export var min_width: float = 400       # Минимальная ширина в пикселях
 @export var height_pixels: float = 60    # Фиксированная высота в пикселях
 @export var bottom_margin_pixels: float = 110  # Фиксированный отступ от низа в пикселях
-@export var center_offset_ratio: float = 0.07 # Смещение от центра (7% вправо)
+@export var center_offset_ratio: float = 0.05 # Смещение от центра (5% вправо)
 @export var item_margin: int = 10
 
 @onready var items_container: HBoxContainer = $HBoxContainer/Background/Frame/ContentMargin/Scroller/ItemsContainer
