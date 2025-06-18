@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://oqa05l44kw0"]
+
+[ext_resource type="Script" uid="uid://cid5kmee7x7pf" path="res://scenes/ui/round_state_panel.gd" id="1_htfb2"]
+[ext_resource type="Texture2D" uid="uid://bvk4wx5y1kbh5" path="res://assets/graphics/images/battle/round_panel/round_count_500.png" id="1_ywjyx"]
+[ext_resource type="Texture2D" uid="uid://yk3575mbn1uh" path="res://assets/graphics/images/battle/round_panel/border_1000_100.png" id="2_b6irw"]
+
+[sub_resource type="SystemFont" id="SystemFont_htfb2"]
+font_weight = 800
+font_stretch = 200
+
+[node name="RoundStatePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_right = 600.0
+offset_bottom = 150.0
+grow_horizontal = 2
+script = ExtResource("1_htfb2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+
+[node name="HPBarUserLeft" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_b6irw")
+expand_mode = 1
+
+[node name="HPBarUserRight" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_b6irw")
+expand_mode = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+
+[node name="MPBarUserLeft" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_b6irw")
+expand_mode = 1
+
+[node name="MPBarUserRight" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_b6irw")
+expand_mode = 1
+
+[node name="RoundCountTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -77.0
+offset_right = 90.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ywjyx")
+expand_mode = 1
+
+[node name="Count" type="Label" parent="RoundCountTexture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_htfb2")
+theme_override_font_sizes/font_size = 65
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1

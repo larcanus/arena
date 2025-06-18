@@ -19,5 +19,5 @@ func _on_resize():
 
 	$Background.scale = Vector2(target_scale, target_scale)
 	var position_y = viewport_size.y / 2;
-	var position_x = (viewport_size.x / 5) * 3;
+	var position_x = (viewport_size.x / 5) * 3.1;
 	$Background.position = Vector2(position_x, position_y)
