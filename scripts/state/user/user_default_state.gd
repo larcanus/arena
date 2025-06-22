@@ -4,7 +4,9 @@ class_name UserDefaultStateResource extends Resource
 @export var avatarPath: String = 'res://assets/graphics/images/avawom1.png';
 @export var controlOfElements: Dictionary = { 'air' : 5, 'water' : 5, 'earth' : 5, 'fire' : 5,  }
 @export 	var controlOfElementsAvailable = 5;
+@export 	var max_hp = 100;
 @export 	var hp = 100;
+@export 	var max_mana = 100;
 @export 	var mana = 100;
 @export 	var isNewUser = true;
 @export 	var isBattle = false;

@@ -21,3 +21,12 @@ func _on_resize():
 	var position_y = viewport_size.y / 2;
 	var position_x = (viewport_size.x / 5) * 3.1;
 	$Background.position = Vector2(position_x, position_y)
+
+
+func _on_button_pressed() -> void:
+	var hp = UserStoreGlobal.get_hp() - 5
+	UserStoreGlobal.state_controller.change_hp(hp)
+
+
+func _on_button_restore_pressed() -> void:
+	UserStoreGlobal.state_controller.change_hp(UserStoreGlobal.get_max_hp())

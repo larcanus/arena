@@ -2,7 +2,7 @@ class_name UserEffects extends Node
 
 func _ready() -> void:
 	print('user effect:: _ready')
-	TimerGlobal.add_callback(_timeout_sec_timer);
+	#TimerGlobal.add_callback(_timeout_sec_timer);
 
 func _timeout_sec_timer() -> void:
 	print('user effect:: _timeout_sec_timer')

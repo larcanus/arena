@@ -32,11 +32,17 @@ func set_avatar_path(value) -> void:
 func get_hp() -> int:
 	return state.hp;
 
+func get_max_hp() -> int:
+	return state.max_hp;
+
 func update_hp(value: int) -> void:
 	state.hp = value;
 
 func get_mana() -> int:
 	return state.mana;
+
+func get_max_mana() -> int:
+	return state.max_mana;
 
 func update_mana(value: int) -> void:
 	state.mana = value;
