@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://oqa05l44kw0"]
+[gd_scene load_steps=7 format=3 uid="uid://oqa05l44kw0"]
 
 [ext_resource type="Script" uid="uid://cid5kmee7x7pf" path="res://scenes/ui/round_state_panel.gd" id="1_htfb2"]
 [ext_resource type="Texture2D" uid="uid://bvk4wx5y1kbh5" path="res://assets/graphics/images/battle/round_panel/round_count_500.png" id="1_ywjyx"]
 [ext_resource type="Texture2D" uid="uid://dj63vvmjcfe6s" path="res://assets/graphics/images/battle/round_panel/hp_full_1000_100_rect.png" id="2_5absy"]
 [ext_resource type="Texture2D" uid="uid://yk3575mbn1uh" path="res://assets/graphics/images/battle/round_panel/border_1000_100.png" id="2_b6irw"]
+[ext_resource type="Texture2D" uid="uid://ch262cq0y1mhu" path="res://assets/graphics/images/battle/round_panel/border_hp_back_1000_100.png" id="2_lhoqe"]
 
 [sub_resource type="SystemFont" id="SystemFont_htfb2"]
 font_weight = 800
@@ -40,13 +41,22 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 100
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HPLeft" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 clip_children = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
-unique_name_in_owner = true
+[node name="HPUnder" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HPLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lhoqe")
+expand_mode = 1
+
+[node name="Margins" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/HPLeft"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,15 +64,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HPProgress" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control/MarginContainer"]
-unique_name_in_owner = true
+[node name="HPProgress" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HPLeft/Margins"]
 layout_mode = 2
 texture = ExtResource("2_5absy")
 expand_mode = 1
 flip_h = true
 
-[node name="HPBarUserLeft" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
-unique_name_in_owner = true
+[node name="HPBorder" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HPLeft"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -74,11 +82,70 @@ size_flags_horizontal = 3
 texture = ExtResource("2_b6irw")
 expand_mode = 1
 
-[node name="HPBarUserRight" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HPCount" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HPLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPRight" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+clip_children = 1
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HPUnder" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HPRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lhoqe")
+expand_mode = 1
+
+[node name="Margins" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/HPRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HPProgress" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HPRight/Margins"]
+layout_mode = 2
+texture = ExtResource("2_5absy")
+expand_mode = 1
+flip_h = true
+
+[node name="HPBorder" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HPRight"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_b6irw")
 expand_mode = 1
+
+[node name="HPCount" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HPRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,7 +1,9 @@
 extends Control
 
-@onready var progress = $MarginContainer/VBoxContainer/HBoxContainer/Control/MarginContainer
-@onready var border = $MarginContainer/VBoxContainer/HBoxContainer/Control/HPBarUserLeft
+@onready var progress = $MarginContainer/VBoxContainer/HBoxContainer/HPLeft/Margins
+@onready var border = $MarginContainer/VBoxContainer/HBoxContainer/HPLeft/HPBorder
+@onready var hp_count = $MarginContainer/VBoxContainer/HBoxContainer/HPLeft/HPCount
+
 var should_fix_progress_bar = false;
 
 func _ready() -> void:
@@ -11,7 +13,7 @@ func _ready() -> void:
 	get_tree().get_root().size_changed.connect(_update_position)
 	TimerGlobal.add_callback(_on_global_timer_callback);
 
-func _on_change_hp():
+func _on_change_hp(value):
 	update_hp()
 
 func _on_global_timer_callback():
@@ -50,13 +52,13 @@ func _update_position():
 
 func update_hp():
 	var percent_margin = border.size.x * 0.03  # 3% от ширины
-	print('percent_margin ' + str(percent_margin))
 	progress.add_theme_constant_override("margin_left", percent_margin)
 	progress.add_theme_constant_override("margin_right", percent_margin)
 
 	var bar_size_x = border.size.x # 100%
 	var max_hp = UserStoreGlobal.get_max_hp();
 	var hp = UserStoreGlobal.get_hp();
+	hp_count.text = str(hp) + '/' + str(max_hp);
 	progress.visible = true;
 
 	var size_progress_x = hp * (bar_size_x/100);

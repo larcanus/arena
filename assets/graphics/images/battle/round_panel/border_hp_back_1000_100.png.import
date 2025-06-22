@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmm366kmyhrlm"
-path="res://.godot/imported/hp_full_1000_100.png-b3ee22cce87d07b6b51cdf9c4c3f154d.ctex"
+uid="uid://ch262cq0y1mhu"
+path="res://.godot/imported/border_hp_back_1000_100.png-8953fc4780469798701a531c3738c813.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/images/battle/round_panel/hp_full_1000_100.png"
-dest_files=["res://.godot/imported/hp_full_1000_100.png-b3ee22cce87d07b6b51cdf9c4c3f154d.ctex"]
+source_file="res://assets/graphics/images/battle/round_panel/border_hp_back_1000_100.png"
+dest_files=["res://.godot/imported/border_hp_back_1000_100.png-8953fc4780469798701a531c3738c813.ctex"]
 
 [params]
 
