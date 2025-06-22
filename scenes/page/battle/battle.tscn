@@ -135,7 +135,7 @@ grow_vertical = 2
 text = " hp restore ememy
 "
 
-[node name="ButtonMp2" type="Button" parent="."]
+[node name="ButtonMpenemy" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -150,7 +150,7 @@ grow_vertical = 2
 text = " mp down
 "
 
-[node name="ButtonRestoreMP2" type="Button" parent="."]
+[node name="ButtonRestoreMPEnemy" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -171,3 +171,5 @@ text = "mp restore
 [connection signal="pressed" from="ButtonRestoreMP" to="." method="_on_button_restore_mp_pressed"]
 [connection signal="pressed" from="ButtonEnemy" to="." method="_on_button_enemy_pressed"]
 [connection signal="pressed" from="ButtonRestoreEnemy" to="." method="_on_button_restore_enemy_pressed"]
+[connection signal="pressed" from="ButtonMpenemy" to="." method="_on_button_mpenemy_pressed"]
+[connection signal="pressed" from="ButtonRestoreMPEnemy" to="." method="_on_button_restore_mp_enemy_pressed"]

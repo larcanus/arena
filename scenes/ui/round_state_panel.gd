@@ -13,7 +13,6 @@ extends Control
 @onready var enemy_border_mp = $MarginContainer/VBoxContainer/HBoxMP/MPRight/Border
 @onready var enemy_count_mp = $MarginContainer/VBoxContainer/HBoxMP/MPRight/Count
 
-
 var should_fix_progress_bar = false;
 
 func _ready() -> void:
@@ -40,31 +39,29 @@ func _on_enemy_change_hp(value):
 func _on_enemy_change_mp(value):
 	update_enemy_mp()
 
+
+func update_all_bars():
+	update_user_hp()
+	update_user_mp()
+	update_enemy_hp()
+	update_enemy_mp()
+
 func _on_global_timer_callback():
 	if should_fix_progress_bar == true:
 		should_fix_progress_bar = false
 		print('Force update progress bar')
-		update_user_hp()
-		update_user_mp()
-		update_enemy_hp()
-		update_enemy_mp()
-
+		update_all_bars()
 
 func on_change_scale():
 	print('on_change_scale')
 	should_fix_progress_bar = true;
 	_update_position()
-	update_user_hp()
-	update_user_mp()
-	update_enemy_hp()
-	update_enemy_mp()
 
 @export var width_ratio: float = 0.60    # Ширина панели (60% от ширины экрана)
 @export var min_width: float = 400       # Минимальная ширина в пикселях
 @export var height_pixels: float = 140    # Фиксированная высота в пикселях
 @export var top_margin_ratio: float = 0.02  # Отступ от верха (2% от высоты экрана)
 @export var center_offset_ratio: float = 0.117 # Смещение от центра (12% вправо)
-
 
 func _update_position():
 	var viewport = get_viewport_rect().size
@@ -77,142 +74,86 @@ func _update_position():
 	position = Vector2(pos_x, pos_y)
 
 	should_fix_progress_bar = true;
-	update_user_hp()
-	update_user_mp()
-	update_enemy_hp()
-	update_enemy_mp()
+	update_all_bars()
 
 
 func update_user_hp():
-	var percent_margin = border_hp.size.x * 0.03  # 3% от ширины
-	progress_hp.add_theme_constant_override("margin_left", percent_margin)
-	progress_hp.add_theme_constant_override("margin_right", percent_margin)
-
-	var bar_size_x = border_hp.size.x # 100%
-	var max_hp = UserStoreGlobal.get_max_hp();
-	var hp = UserStoreGlobal.get_hp();
-	count_hp.text = str(hp) + '/' + str(max_hp);
-	progress_hp.visible = true;
-
-	var size_progress_x = hp * (bar_size_x/100);
-	if not hp == max_hp and not hp == 0:
-		size_progress_x = hp * (bar_size_x/100) + percent_margin;
-
-	if hp == 0:
-		size_progress_x = 0
-		progress_hp.get_child(0).size.x = 0
-		progress_hp.custom_minimum_size.x = 0
-		progress_hp.get_child(0).custom_minimum_size.x = 0
-		progress_hp.add_theme_constant_override("margin_left", 0)
-		progress_hp.add_theme_constant_override("margin_right", 0)
-		progress_hp.visible = false;
-
-	progress_hp.size.x = float(size_progress_x);
-	progress_hp.position.x = 0;
-	print("Frame %d: HP=%d Size=%.1f ChildSize=%.1f" % [
-	Engine.get_frames_drawn(),
-	hp,
-	progress_hp.size.x,
-	progress_hp.get_child(0).size.x
-	])
+	_update_progress_bar(
+		progress_hp,
+		border_hp,
+		count_hp,
+		UserStoreGlobal.get_hp(),
+		UserStoreGlobal.get_max_hp(),
+		false
+	)
 
 func update_user_mp():
-	var percent_margin = border_mp.size.x * 0.03  # 3% от ширины
-	progress_mp.add_theme_constant_override("margin_left", percent_margin)
-	progress_mp.add_theme_constant_override("margin_right", percent_margin)
-
-	var bar_size_x = border_mp.size.x # 100%
-	var max_mp = UserStoreGlobal.get_max_mp();
-	var mp = UserStoreGlobal.get_mp();
-	count_mp.text = str(mp) + '/' + str(max_mp);
-	progress_mp.visible = true;
-
-	var size_progress_x = mp * (bar_size_x/100);
-	if not mp == max_mp and not mp == 0:
-		size_progress_x = mp * (bar_size_x/100) + percent_margin;
-
-	if mp == 0:
-		size_progress_x = 0
-		progress_mp.get_child(0).size.x = 0
-		progress_mp.custom_minimum_size.x = 0
-		progress_mp.get_child(0).custom_minimum_size.x = 0
-		progress_mp.add_theme_constant_override("margin_left", 0)
-		progress_mp.add_theme_constant_override("margin_right", 0)
-		progress_mp.visible = false;
-
-	progress_mp.size.x = float(size_progress_x);
-	progress_mp.position.x = 0;
-	print("Frame %d: MP=%d Size=%.1f ChildSize=%.1f" % [
-	Engine.get_frames_drawn(),
-	mp,
-	progress_mp.size.x,
-	progress_mp.get_child(0).size.x
-	])
-
+	_update_progress_bar(
+		progress_mp,
+		border_mp,
+		count_mp,
+		UserStoreGlobal.get_mp(),
+		UserStoreGlobal.get_max_mp(),
+		false
+	)
 
 func update_enemy_hp():
-	print('Update_enemy_hp')
-	var percent_margin = enemy_border_hp.size.x * 0.03  # 3% от ширины
-	enemy_progress_hp.add_theme_constant_override("margin_left", percent_margin)
-	enemy_progress_hp.add_theme_constant_override("margin_right", percent_margin)
-
-	var bar_size_x = enemy_border_hp.size.x # 100%
-	var max_hp = EnemyStoreGlobal.get_max_hp();
-	var hp = EnemyStoreGlobal.get_hp();
-	enemy_count_hp.text = str(hp) + '/' + str(max_hp);
-	enemy_progress_hp.visible = true;
-
-	var size_progress_x = hp * (bar_size_x/100);
-	if not hp == max_hp and not hp == 0:
-		size_progress_x = hp * (bar_size_x/100) + percent_margin;
-
-	if hp == 0:
-		size_progress_x = 0
-		enemy_progress_hp.get_child(0).size.x = 0
-		enemy_progress_hp.custom_minimum_size.x = 0
-		enemy_progress_hp.get_child(0).custom_minimum_size.x = 0
-		enemy_progress_hp.add_theme_constant_override("margin_left", 0)
-		enemy_progress_hp.add_theme_constant_override("margin_right", 0)
-		enemy_progress_hp.visible = false;
-
-	enemy_progress_hp.size.x = float(size_progress_x);
-	enemy_progress_hp.position.x = 0;
-	print("Update_enemy_hp Frame %d: HP=%d Size=%.1f ChildSize=%.1f" % [
-	Engine.get_frames_drawn(),
-	hp,
-	enemy_progress_hp.size.x,
-	enemy_progress_hp.get_child(0).size.x
-	])
+	_update_progress_bar(
+		enemy_progress_hp,
+		enemy_border_hp,
+		enemy_count_hp,
+		EnemyStoreGlobal.get_hp(),
+		EnemyStoreGlobal.get_max_hp(),
+		true
+	)
 
 func update_enemy_mp():
-	var percent_margin = enemy_border_mp.size.x * 0.03  # 3% от ширины
-	enemy_progress_mp.add_theme_constant_override("margin_left", percent_margin)
-	enemy_progress_mp.add_theme_constant_override("margin_right", percent_margin)
+	_update_progress_bar(
+		enemy_progress_mp,
+		enemy_border_mp,
+		enemy_count_mp,
+		EnemyStoreGlobal.get_mp(),
+		EnemyStoreGlobal.get_max_mp(),
+		true
+	)
 
-	var bar_size_x = border_mp.size.x # 100%
-	var max_mp = EnemyStoreGlobal.get_max_mp();
-	var mp = EnemyStoreGlobal.get_mp();
-	enemy_count_mp.text = str(mp) + '/' + str(max_mp);
-	enemy_progress_mp.visible = true;
+func _update_progress_bar(progress, border, count_label, current_value, max_value, is_enemy):
+	if border.size.x <= 0:
+		return
 
-	var size_progress_x = mp * (bar_size_x/100);
-	if not mp == max_mp and not mp == 0:
-		size_progress_x = mp * (bar_size_x/100) + percent_margin;
+	var percent_margin = border.size.x * 0.03
+	progress.add_theme_constant_override("margin_left", percent_margin)
+	progress.add_theme_constant_override("margin_right", percent_margin)
 
-	if mp == 0:
+	var bar_size_x = border.size.x
+	count_label.text = "%d/%d" % [current_value, max_value]
+	progress.visible = true
+
+	var size_progress_x = current_value * (bar_size_x / 100.0)
+
+	if not current_value == max_value and not current_value == 0:
+		size_progress_x += percent_margin
+
+	if current_value == 0:
 		size_progress_x = 0
-		enemy_progress_mp.get_child(0).size.x = 0
-		enemy_progress_mp.custom_minimum_size.x = 0
-		enemy_progress_mp.get_child(0).custom_minimum_size.x = 0
-		enemy_progress_mp.add_theme_constant_override("margin_left", 0)
-		enemy_progress_mp.add_theme_constant_override("margin_right", 0)
-		enemy_progress_mp.visible = false;
+		progress.get_child(0).size.x = 0
+		progress.custom_minimum_size.x = 0
+		progress.get_child(0).custom_minimum_size.x = 0
+		progress.add_theme_constant_override("margin_left", 0)
+		progress.add_theme_constant_override("margin_right", 0)
+		progress.visible = false
 
-	enemy_progress_mp.size.x = float(size_progress_x);
-	enemy_progress_mp.position.x = 0;
-	print("Frame %d: MP=%d Size=%.1f ChildSize=%.1f" % [
-	Engine.get_frames_drawn(),
-	mp,
-	enemy_progress_mp.size.x,
-	enemy_progress_mp.get_child(0).size.x
+	progress.size.x = float(size_progress_x)
+
+	if is_enemy:
+		progress.position.x = border.position.x + bar_size_x - progress.size.x
+	else:
+		progress.position.x = 0
+
+	print("Update %s Frame %d: Value=%d Size=%.1f ChildSize=%.1f" % [
+		progress.name,
+		Engine.get_frames_drawn(),
+		current_value,
+		progress.size.x,
+		progress.get_child(0).size.x
 	])

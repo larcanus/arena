@@ -48,3 +48,12 @@ func _on_button_enemy_pressed() -> void:
 
 func _on_button_restore_enemy_pressed() -> void:
 	EnemyStoreGlobal.state_controller.change_hp(EnemyStoreGlobal.get_max_hp())
+
+
+func _on_button_mpenemy_pressed() -> void:
+	var mp = EnemyStoreGlobal.get_mp() - 5
+	EnemyStoreGlobal.state_controller.change_mp(mp)
+
+
+func _on_button_restore_mp_enemy_pressed() -> void:
+	EnemyStoreGlobal.state_controller.change_mp(EnemyStoreGlobal.get_max_mp())
