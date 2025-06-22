@@ -1,4 +1,4 @@
-class_name UserStore extends Node
+class_name EnemyStore extends Node
 
 var state;
 var state_controller;
@@ -9,7 +9,7 @@ var signals = UserStoreSignal.new();
 var signal_names = signals.SIGNAL_NAMES;
 
 func _init() -> void:
-	print('UserStore._init')
+	print('EnemyStore._init')
 	state = user_default_state_resource;
 
 func clearState():
@@ -17,8 +17,8 @@ func clearState():
 	state_controller.updateCSC();
 
 func _ready():
-	print('UserStore._ready')
-	state_controller = user_state_controller.new(UserStoreGlobal);
+	print('EnemyStore._ready')
+	state_controller = user_state_controller.new(EnemyStoreGlobal);
 	state_controller.updateCSC();
 	state.skills = ItemStoreGlobal.get_all_items();
 
@@ -36,6 +36,7 @@ func get_max_hp() -> int:
 	return state.max_hp;
 
 func update_hp(value: int) -> void:
+	print('EnemyStore update_hp' + str(value))
 	state.hp = value;
 
 func get_mp() -> int:
