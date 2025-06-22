@@ -14,9 +14,11 @@ extends Control
 @onready var enemy_count_mp = $MarginContainer/VBoxContainer/HBoxMP/MPRight/Count
 
 var should_fix_progress_bar = false;
+var health_material: ShaderMaterial
 
 func _ready() -> void:
 	await get_tree().process_frame
+	add_blink_shader(progress_hp.get_child(0))
 	on_change_scale();
 	UserStoreGlobal.signals.change_hp.connect(_on_user_change_hp)
 	UserStoreGlobal.signals.change_mp.connect(_on_user_change_mp)
@@ -24,6 +26,13 @@ func _ready() -> void:
 	EnemyStoreGlobal.signals.change_mp.connect(_on_enemy_change_mp)
 	get_tree().get_root().size_changed.connect(_update_position)
 	TimerGlobal.add_callback(_on_global_timer_callback);
+
+
+func add_blink_shader(node):
+	node.material = ShaderMaterial.new()
+	health_material = node.material
+	health_material.shader = preload("res://assets/shaders/raund-state-panel-blink.gdshader")
+
 
 func _on_user_change_hp(value):
 	print('_on_user_change_hp')
@@ -86,6 +95,7 @@ func update_user_hp():
 		UserStoreGlobal.get_max_hp(),
 		false
 	)
+	enable_hp_blink_shader()
 
 func update_user_mp():
 	_update_progress_bar(
@@ -157,3 +167,29 @@ func _update_progress_bar(progress, border, count_label, current_value, max_valu
 		progress.size.x,
 		progress.get_child(0).size.x
 	])
+
+func enable_hp_blink_shader():
+	var current_value =	UserStoreGlobal.get_hp();
+	var max_value =	UserStoreGlobal.get_max_hp();
+	var hp_percent = current_value / max_value
+	if hp_percent < 0.3:
+		set_blinking(true)
+	if hp_percent < 0.1:
+		health_material.set_shader_parameter("intensity", 0.6)
+	else:
+		set_blinking(false)
+
+
+func set_blinking(active: bool):
+	print("Shader active: ", health_material != null)
+	print("Shader params: ",
+	health_material.get_shader_parameter("speed"),
+	health_material.get_shader_parameter("intensity"))
+	if not health_material:
+		return
+
+	if active:
+		health_material.set_shader_parameter("speed", 4.0)
+		health_material.set_shader_parameter("intensity", 0.4)
+	else:
+		health_material.set_shader_parameter("intensity", 0.0)
