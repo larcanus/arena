@@ -6,8 +6,8 @@ class_name UserDefaultStateResource extends Resource
 @export 	var controlOfElementsAvailable = 5;
 @export 	var max_hp = 100;
 @export 	var hp = 100;
-@export 	var max_mana = 100;
-@export 	var mana = 100;
+@export 	var max_mp = 100;
+@export 	var mp = 100;
 @export 	var isNewUser = true;
 @export 	var isBattle = false;
 @export 	var lvl = { 'stage' : 1, 'step': 1 };

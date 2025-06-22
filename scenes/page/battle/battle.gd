@@ -30,3 +30,12 @@ func _on_button_pressed() -> void:
 
 func _on_button_restore_pressed() -> void:
 	UserStoreGlobal.state_controller.change_hp(UserStoreGlobal.get_max_hp())
+
+
+func _on_button_mp_pressed() -> void:
+	var mp = UserStoreGlobal.get_mp() - 5
+	UserStoreGlobal.state_controller.change_mp(mp)
+
+
+func _on_button_restore_mp_pressed() -> void:
+	UserStoreGlobal.state_controller.change_mp(UserStoreGlobal.get_max_mp())

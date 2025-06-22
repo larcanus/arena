@@ -15,17 +15,17 @@ func change_hp(value) -> void:
 
 		UserStoreGlobal.signals.change_hp.emit(value);
 
-func change_mana(value) -> void:
+func change_mp(value) -> void:
 		if value < 0:
 			return;
 
-		var prevState = UserStoreGlobal.get_mana();
-		UserStoreGlobal.update_mana(value);
+		var prevState = UserStoreGlobal.get_mp();
+		UserStoreGlobal.update_mp(value);
 		var format_string = "MANA %s ---> %s"
-		var actual_string = format_string % [String.num(prevState), String.num(UserStoreGlobal.get_mana())]
+		var actual_string = format_string % [String.num(prevState), String.num(UserStoreGlobal.get_mp())]
 		print(actual_string);
 
-		UserStoreGlobal.signals.change_mana.emit(value);
+		UserStoreGlobal.signals.change_mp.emit(value);
 
 func update_available_control_count(value) -> void:
 		var prevState = UserStoreGlobal.get_controlOfElementsAvailable();

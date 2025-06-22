@@ -38,14 +38,14 @@ func get_max_hp() -> int:
 func update_hp(value: int) -> void:
 	state.hp = value;
 
-func get_mana() -> int:
-	return state.mana;
+func get_mp() -> int:
+	return state.mp;
 
-func get_max_mana() -> int:
-	return state.max_mana;
+func get_max_mp() -> int:
+	return state.max_mp;
 
-func update_mana(value: int) -> void:
-	state.mana = value;
+func update_mp(value: int) -> void:
+	state.mp = value;
 
 func get_controlOfElementsAvailable() -> int:
 	return state.controlOfElementsAvailable;
