@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cid5kmee7x7pf" path="res://scenes/ui/round_state_panel.gd" id="1_htfb2"]
 [ext_resource type="Texture2D" uid="uid://bvk4wx5y1kbh5" path="res://assets/graphics/images/battle/round_panel/round_count_500.png" id="1_ywjyx"]
-[ext_resource type="Texture2D" uid="uid://dj63vvmjcfe6s" path="res://assets/graphics/images/battle/round_panel/hp_full_1000_100_rect.png" id="2_5absy"]
+[ext_resource type="Texture2D" uid="uid://b5v53pqo2hdqn" path="res://assets/graphics/images/battle/round_panel/hp_full_1000_100_rect.png" id="2_5absy"]
 [ext_resource type="Texture2D" uid="uid://yk3575mbn1uh" path="res://assets/graphics/images/battle/round_panel/border_1000_100.png" id="2_b6irw"]
 [ext_resource type="Texture2D" uid="uid://ch262cq0y1mhu" path="res://assets/graphics/images/battle/round_panel/border_hp_back_1000_100.png" id="2_lhoqe"]
 [ext_resource type="Texture2D" uid="uid://b53hq03tn2irk" path="res://assets/graphics/images/battle/round_panel/border_mp_back_1000_100.png" id="5_s6rur"]
-[ext_resource type="Texture2D" uid="uid://bkutnfqaxbjo5" path="res://assets/graphics/images/battle/round_panel/mp_full_1000_100_rect.png" id="6_gbchg"]
+[ext_resource type="Texture2D" uid="uid://7akdlo7sva38" path="res://assets/graphics/images/battle/round_panel/mp_full_1000_100_rect.png" id="6_gbchg"]
 
 [sub_resource type="SystemFont" id="SystemFont_htfb2"]
 subpixel_positioning = 0
