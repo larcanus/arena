@@ -18,7 +18,6 @@ var health_material: ShaderMaterial
 
 func _ready() -> void:
 	await get_tree().process_frame
-	add_blink_shader(progress_hp.get_child(0))
 	on_change_scale();
 	UserStoreGlobal.signals.change_hp.connect(_on_user_change_hp)
 	UserStoreGlobal.signals.change_mp.connect(_on_user_change_mp)
@@ -171,25 +170,23 @@ func _update_progress_bar(progress, border, count_label, current_value, max_valu
 func enable_hp_blink_shader():
 	var current_value =	UserStoreGlobal.get_hp();
 	var max_value =	UserStoreGlobal.get_max_hp();
-	var hp_percent = current_value / max_value
-	if hp_percent < 0.3:
+	var hp_percent = float(current_value) / float(max_value)
+	if hp_percent <= 0.3:
 		set_blinking(true)
+		return
 	if hp_percent < 0.1:
 		health_material.set_shader_parameter("intensity", 0.6)
+		return
 	else:
 		set_blinking(false)
 
 
 func set_blinking(active: bool):
-	print("Shader active: ", health_material != null)
-	print("Shader params: ",
-	health_material.get_shader_parameter("speed"),
-	health_material.get_shader_parameter("intensity"))
 	if not health_material:
-		return
+		add_blink_shader(progress_hp.get_child(0))
 
 	if active:
-		health_material.set_shader_parameter("speed", 4.0)
-		health_material.set_shader_parameter("intensity", 0.4)
+		health_material.set_shader_parameter("speed", 6.0)
+		health_material.set_shader_parameter("intensity", 0.5)
 	else:
 		health_material.set_shader_parameter("intensity", 0.0)

@@ -1,20 +1,22 @@
 shader_type canvas_item;
 
-// Настройки эффекта
-uniform float speed = 3.0;          // Скорость мерцания
-uniform float intensity = 0.3;      // Сила эффекта (0-1)
-uniform vec4 base_color : source_color = vec4(1.0); // Базовый цвет текстуры
+uniform float speed = 3.0;          // Частота мерцания (2-5)
+uniform float intensity = 0.3;      // Сила эффекта (0.1-0.5)
+//uniform vec4 highlight_color = vec4(1.5, 0.4, 0.4, 1.0); // красный
+uniform vec4 highlight_color = vec4(1.3, 0.6, 0.6, 1.0); // светло красный
+//uniform vec4 highlight_color = vec4(1.5, 0.8, 0.8, 1.0); // белый
+//uniform vec4 highlight_color = vec4(0.5, 1.5, 0.5, 1.0); // Яркий зелёный
 
 void fragment() {
-    // Получаем исходный цвет пикселя
+    // Получаем исходный цвет текстуры
     vec4 tex_color = texture(TEXTURE, UV);
     
-    // Генерация пульсации через синусоиду
-    float pulse = sin(TIME * speed) * intensity;
+    // Плавное пульсирующее значение (0-1)
+    float pulse = (sin(TIME * speed) + 1.0) * 0.5; 
     
-    // Усиливаем красный канал при мерцании
-    vec3 blink_color = tex_color.rgb * (1.0 + pulse * vec3(2.0, 0.5, 0.5));
+    // Смешиваем с цветом подсветки
+    vec3 blended_color = mix(tex_color.rgb, highlight_color.rgb, pulse * intensity);
     
-    // Комбинируем с прозрачностью
-    COLOR = vec4(blink_color, tex_color.a);
+    // Сохраняем оригинальную прозрачность
+    COLOR = vec4(blended_color, tex_color.a);
 }
