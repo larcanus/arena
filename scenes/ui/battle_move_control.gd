@@ -9,17 +9,16 @@ func _ready():
 	print('BattleMoveControl_ready eee')
 
 
+func bind_signals() -> void:
+	BattleStoreGlobal.signals.select_skill.connect(_on_battle_select_skill)
+	BattleStoreGlobal.signals.is_enemy_move.connect(_on_battle_is_enemy_move)
+
+
 func set_default_skill():
 	var user_items = UserStoreGlobal.get_skills()
 	var first_skill = user_items[0];
 	if not first_skill.type == 'empty':
 		BattleStoreGlobal.state_controller.update_selected_skill(first_skill.id)
-
-
-
-func bind_signals() -> void:
-	BattleStoreGlobal.signals.select_skill.connect(_on_battle_select_skill)
-	BattleStoreGlobal.signals.is_move.connect(_on_battle_is_move)
 
 
 func is_battle_move() -> bool:
@@ -31,8 +30,9 @@ func _on_battle_select_skill(skill_id:int) -> void:
 	var texture = load(selected_skill_data.path)
 	$Skil.texture = texture
 
-func _on_battle_is_move()-> void:
-	print('_on_battle_is_move')
+func _on_battle_is_enemy_move()-> void:
+	var value = is_battle_move();
+	print('BattleMoveControl._on_battle_is_enemy_move ' + str(value))
 
 func _update_position():
 	var viewport = get_viewport_rect().size
@@ -51,7 +51,7 @@ func _on_button_pressed() -> void:
 	print('_on_button_pressed')
 	if not is_battle_move():
 		animate_icon_click()
-		BattleStoreGlobal.state_controller.start_move();
+		BattleStoreGlobal.state_controller.start_user_move();
 		BattleStoreGlobal.state_controller.add_log('system', 'move press');
 
 var is_animating = false

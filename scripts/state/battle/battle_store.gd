@@ -16,12 +16,31 @@ func update_selected_skill(skill_id: int) -> void:
 	print('BattleStore.update_selected_skill %s'  % skill_id)
 	state.select_skill = skill_id;
 
-func start_move() -> void:
-	print('BattleStore.start_move')
-	state.is_move = true;
+func start_user_move() -> void:
+	print('BattleStore.start_user_move')
+	state.is_user_move = true;
+
+func end_user_move() -> void:
+	print('BattleStore.end_user_move')
+	state.is_user_move = false;
+
+func start_enemy_move() -> void:
+	print('BattleStore.start_enemy_move')
+	state.is_enemy_move = true;
+
+func end_enemy_move() -> void:
+	print('BattleStore.end_enemy_move')
+	state.is_enemy_move = false;
 
 func is_move() -> bool:
-	return state.is_move;
+	return state.is_user_move or state.is_enemy_move;
+
+func update_round(value: int) -> void:
+	print('BattleStore.update_round')
+	state.round_count = value;
+
+func current_round() -> int:
+	return state.round_count;
 
 func add_log(log_data: LogState) -> void:
 	state.log_list.append(log_data)

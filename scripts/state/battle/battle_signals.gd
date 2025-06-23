@@ -3,7 +3,9 @@ class_name BattleStoreSignal extends Resource
 signal start();
 signal end();
 signal select_skill();
-signal is_move();
+signal is_user_move();
+signal is_enemy_move();
+signal new_round();
 signal add_log();
 
 

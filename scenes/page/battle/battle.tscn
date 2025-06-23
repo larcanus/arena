@@ -45,131 +45,165 @@ offset_top = 11.0
 offset_right = 1739.0
 offset_bottom = 161.0
 
-[node name="Button" type="Button" parent="."]
+[node name="devBtns" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1078.2124
+offset_top = 578.7949
+offset_right = 1118.2124
+offset_bottom = 618.7949
+
+[node name="Button" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1005.0
-offset_top = 722.0
-offset_right = 1055.0
-offset_bottom = 772.0
+offset_left = -108.2124
+offset_top = 123.20508
+offset_right = -28.212402
+offset_bottom = 173.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = " hp down
 "
 
-[node name="ButtonRestore" type="Button" parent="."]
+[node name="ButtonRestore" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1106.0
-offset_top = 724.0
-offset_right = 1186.0
-offset_bottom = 774.0
+offset_left = 1.2875977
+offset_top = 125.20508
+offset_right = 94.2876
+offset_bottom = 175.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = " hp restore
 "
 
-[node name="ButtonMp" type="Button" parent="."]
+[node name="ButtonMp" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 987.5
-offset_top = 788.0
-offset_right = 1072.5
-offset_bottom = 838.0
+offset_left = -110.7124
+offset_top = 189.20508
+offset_right = -25.712402
+offset_bottom = 239.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = " mp down
 "
 
-[node name="ButtonRestoreMP" type="Button" parent="."]
+[node name="ButtonRestoreMP" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1099.5
-offset_top = 784.0
-offset_right = 1192.5
-offset_bottom = 834.0
+offset_left = 0.78759766
+offset_top = 185.20508
+offset_right = 94.7876
+offset_bottom = 235.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = "mp restore
 "
 
-[node name="ButtonEnemy" type="Button" parent="."]
+[node name="ButtonEnemy" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1272.0
-offset_top = 723.0
-offset_right = 1409.0
-offset_bottom = 773.0
+offset_left = 173.7876
+offset_top = 124.20508
+offset_right = 310.7876
+offset_bottom = 174.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = " hp down enemy
 "
 
-[node name="ButtonRestoreEnemy" type="Button" parent="."]
+[node name="ButtonRestoreEnemy" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1422.0
-offset_top = 724.0
-offset_right = 1577.0
-offset_bottom = 774.0
+offset_left = 323.7876
+offset_top = 125.20508
+offset_right = 478.7876
+offset_bottom = 175.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = " hp restore ememy
 "
 
-[node name="ButtonMpenemy" type="Button" parent="."]
+[node name="ButtonMpenemy" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1270.5
-offset_top = 788.0
-offset_right = 1355.5
-offset_bottom = 838.0
+offset_left = 172.2876
+offset_top = 189.20508
+offset_right = 257.2876
+offset_bottom = 239.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = " mp down
 "
 
-[node name="ButtonRestoreMPEnemy" type="Button" parent="."]
+[node name="ButtonRestoreMPEnemy" type="Button" parent="devBtns"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1415.0
-offset_top = 790.0
-offset_right = 1509.0
-offset_bottom = 840.0
+offset_left = 307.7876
+offset_top = 191.20508
+offset_right = 401.7876
+offset_bottom = 241.20508
 grow_horizontal = 2
 grow_vertical = 2
 text = "mp restore
 "
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="ButtonRestore" to="." method="_on_button_restore_pressed"]
-[connection signal="pressed" from="ButtonMp" to="." method="_on_button_mp_pressed"]
-[connection signal="pressed" from="ButtonRestoreMP" to="." method="_on_button_restore_mp_pressed"]
-[connection signal="pressed" from="ButtonEnemy" to="." method="_on_button_enemy_pressed"]
-[connection signal="pressed" from="ButtonRestoreEnemy" to="." method="_on_button_restore_enemy_pressed"]
-[connection signal="pressed" from="ButtonMpenemy" to="." method="_on_button_mpenemy_pressed"]
-[connection signal="pressed" from="ButtonRestoreMPEnemy" to="." method="_on_button_restore_mp_enemy_pressed"]
+[node name="ButtonEndmove" type="Button" parent="devBtns"]
+layout_mode = 0
+offset_left = 214.7876
+offset_top = 82.20508
+offset_right = 299.7876
+offset_bottom = 113.20508
+text = "end move"
+
+[node name="ButtonEnemyMoveEnd" type="Button" parent="devBtns"]
+layout_mode = 0
+offset_left = 364.41016
+offset_top = 103.28198
+offset_right = 505.41016
+offset_bottom = 134.28198
+text = "end enemy move"
+
+[connection signal="pressed" from="devBtns/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="devBtns/ButtonRestore" to="." method="_on_button_restore_pressed"]
+[connection signal="pressed" from="devBtns/ButtonMp" to="." method="_on_button_mp_pressed"]
+[connection signal="pressed" from="devBtns/ButtonRestoreMP" to="." method="_on_button_restore_mp_pressed"]
+[connection signal="pressed" from="devBtns/ButtonEnemy" to="." method="_on_button_enemy_pressed"]
+[connection signal="pressed" from="devBtns/ButtonRestoreEnemy" to="." method="_on_button_restore_enemy_pressed"]
+[connection signal="pressed" from="devBtns/ButtonMpenemy" to="." method="_on_button_mpenemy_pressed"]
+[connection signal="pressed" from="devBtns/ButtonRestoreMPEnemy" to="." method="_on_button_restore_mp_enemy_pressed"]
+[connection signal="pressed" from="devBtns/ButtonEndmove" to="." method="_on_button_endmove_pressed"]
+[connection signal="pressed" from="devBtns/ButtonEnemyMoveEnd" to="." method="_on_button_enemy_move_end_pressed"]

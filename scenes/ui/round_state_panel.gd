@@ -12,6 +12,7 @@ extends Control
 @onready var enemy_progress_mp = $MarginContainer/VBoxContainer/HBoxMP/MPRight/Margins
 @onready var enemy_border_mp = $MarginContainer/VBoxContainer/HBoxMP/MPRight/Border
 @onready var enemy_count_mp = $MarginContainer/VBoxContainer/HBoxMP/MPRight/Count
+@onready var round_label = $RoundCountTexture/Count
 
 var should_fix_progress_bar = false;
 var health_material: ShaderMaterial
@@ -23,8 +24,10 @@ func _ready() -> void:
 	UserStoreGlobal.signals.change_mp.connect(_on_user_change_mp)
 	EnemyStoreGlobal.signals.change_hp.connect(_on_enemy_change_hp)
 	EnemyStoreGlobal.signals.change_mp.connect(_on_enemy_change_mp)
+	BattleStoreGlobal.signals.new_round.connect(_on_new_round)
 	get_tree().get_root().size_changed.connect(_update_position)
 	TimerGlobal.add_callback(_on_global_timer_callback);
+	set_round()
 
 
 func add_blink_shader(node):
@@ -51,6 +54,15 @@ func update_all_bars():
 	update_user_mp()
 	update_enemy_hp()
 	update_enemy_mp()
+
+
+func _on_new_round(round):
+		print('_on_new_round ' + str(round))
+		set_round()
+
+
+func set_round():
+	round_label.text = str(BattleStoreGlobal.current_round())
 
 func _on_global_timer_callback():
 	if should_fix_progress_bar == true:

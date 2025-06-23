@@ -57,3 +57,11 @@ func _on_button_mpenemy_pressed() -> void:
 
 func _on_button_restore_mp_enemy_pressed() -> void:
 	EnemyStoreGlobal.state_controller.change_mp(EnemyStoreGlobal.get_max_mp())
+
+
+func _on_button_endmove_pressed() -> void:
+	BattleStoreGlobal.state_controller.end_user_move();
+
+
+func _on_button_enemy_move_end_pressed() -> void:
+	BattleStoreGlobal.state_controller.end_enemy_move();
