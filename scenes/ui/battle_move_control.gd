@@ -1,9 +1,20 @@
 extends Control
 
 func _ready():
+	print('BattleMoveControl_ready')
 	_update_position()
 	get_tree().root.size_changed.connect(_update_position)
 	bind_signals()
+	set_default_skill()
+	print('BattleMoveControl_ready eee')
+
+
+func set_default_skill():
+	var user_items = UserStoreGlobal.get_skills()
+	var first_skill = user_items[0];
+	if not first_skill.type == 'empty':
+		BattleStoreGlobal.state_controller.update_selected_skill(first_skill.id)
+
 
 
 func bind_signals() -> void:

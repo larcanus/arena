@@ -34,14 +34,12 @@ func add_blink_shader(node):
 
 
 func _on_user_change_hp(value):
-	print('_on_user_change_hp')
 	update_user_hp()
 
 func _on_user_change_mp(value):
 	update_user_mp()
 
 func _on_enemy_change_hp(value):
-	print('_on_enemy_change_hp')
 	update_enemy_hp()
 
 func _on_enemy_change_mp(value):
