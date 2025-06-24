@@ -3,6 +3,7 @@ extends Node2D
 
 func _ready() -> void:
 	on_change_scale();
+	BattleStoreGlobal.state_controller.battle_start();
 
 
 func on_change_scale():

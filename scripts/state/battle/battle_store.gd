@@ -12,6 +12,9 @@ func _init() -> void:
 	state = battle_default_state;
 	state_controller = battle_state_controller.new();
 
+func clear_state():
+	state =  BattleDefaultState.new();
+
 func update_selected_skill(skill_id: int) -> void:
 	print('BattleStore.update_selected_skill %s'  % skill_id)
 	state.select_skill = skill_id;

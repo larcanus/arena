@@ -5,8 +5,15 @@ func _init():
 	print('BattleController._init')
 
 
-func _battle_ended() -> void:
-	print('ended')
+func battle_start() -> void:
+	print('battle_start')
+	BattleStoreGlobal.update_round(1);
+	BattleStoreGlobal.signals.new_round.emit(1);
+	add_log('system', 'new round ' + str(1))
+
+func battle_end() -> void:
+	print('battle_end')
+	BattleStoreGlobal.clear_state();
 
 func start_user_move() -> void:
 	print('BattleController.start_user_move')

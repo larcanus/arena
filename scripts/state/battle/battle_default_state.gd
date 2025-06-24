@@ -1,6 +1,6 @@
 class_name BattleDefaultState extends RefCounted
 
-var round_count: int = 1
+var round_count: int = 0
 var is_user_move: bool = false
 var is_enemy_move: bool = false
 var select_skill: int = 1
