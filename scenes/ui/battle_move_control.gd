@@ -12,7 +12,7 @@ func _ready():
 func bind_signals() -> void:
 	BattleStoreGlobal.signals.select_skill.connect(_on_battle_select_skill)
 	BattleStoreGlobal.signals.is_enemy_move.connect(_on_battle_is_enemy_move)
-
+	BattleStoreGlobal.signals.new_round.connect(_on_new_round)
 
 func set_default_skill():
 	var user_items = UserStoreGlobal.get_skills()
@@ -34,6 +34,10 @@ func _on_battle_is_enemy_move()-> void:
 	var value = is_battle_move();
 	print('BattleMoveControl._on_battle_is_enemy_move ' + str(value))
 
+
+func _on_new_round(current_round):
+	animate_icon_disable()
+
 func _update_position():
 	var viewport = get_viewport_rect().size
 	var margin_x = viewport.x * 0.01
@@ -53,13 +57,14 @@ func _on_button_pressed() -> void:
 		animate_icon_click()
 		BattleStoreGlobal.state_controller.start_user_move();
 		BattleStoreGlobal.state_controller.add_log('system', 'move press');
+		animate_icon_disable()
 
-var is_animating = false
+var is_click_animating = false
 func animate_icon_click():
-	if is_animating:
+	if is_click_animating:
 		return
 
-	is_animating = true
+	is_click_animating = true
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	var click_scale = Vector2(0.85, 0.85)
 	var original_pos = position
@@ -72,4 +77,16 @@ func animate_icon_click():
 	tween.tween_property(self, "scale", original_scale, 0.06)
 	tween.parallel().tween_property(self, "position", original_pos, 0.06)
 
-	tween.finished.connect(func(): is_animating = false)
+	tween.finished.connect(func(): is_click_animating = false)
+
+
+var disable_tween: Tween
+func animate_icon_disable():
+	if disable_tween and disable_tween.is_valid():
+		disable_tween.kill()
+
+	if is_battle_move():
+		disable_tween = create_tween()
+		disable_tween.tween_property(self, "modulate:a", 0.5, 0.2)
+	else:
+		self.modulate.a = 1.0
