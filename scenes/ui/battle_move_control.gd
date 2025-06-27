@@ -87,6 +87,6 @@ func animate_icon_disable():
 
 	if is_battle_move():
 		disable_tween = create_tween()
-		disable_tween.tween_property(self, "modulate:a", 0.5, 0.2)
+		disable_tween.tween_property(self, "modulate:a", 0.7, 0.2)
 	else:
 		self.modulate.a = 1.0

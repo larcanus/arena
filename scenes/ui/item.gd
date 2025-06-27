@@ -50,7 +50,7 @@ func animate_icon_click():
 
 	is_animating = true
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	var click_scale = Vector2(0.85, 0.85)
+	var click_scale = Vector2(0.9, 0.9)
 	var original_pos = icon.position
 	var original_scale = icon.scale
 	var offset = (icon.size * (1.0 - click_scale.x)) / 2
