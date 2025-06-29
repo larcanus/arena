@@ -6,8 +6,7 @@ extends Control
 var item_data: ItemDefaultStateResource;
 
 
-func setup(item):
-	item_data = ItemDefaultStateResource.new({});
+func setup(item: ItemDefaultStateResource):
 	if not is_instance_valid(icon):
 		push_error("Panel item::Icon node is invalid!")
 		return

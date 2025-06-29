@@ -139,4 +139,7 @@ func setBattle(value: bool) -> void:
 	state.isBattle = value;
 
 func get_skills() -> Array:
+	if state.skills.size() == 0:
+		state.skills = ItemStoreGlobal.get_all_items()
+
 	return state.skills;

@@ -17,3 +17,12 @@ func get_icon() -> Texture2D:
 	if !icon and !path.is_empty():
 		icon = load(path)
 	return icon
+
+static func new_empty() -> ItemDefaultStateResource:
+	var item := ItemDefaultStateResource.new({
+		"id": 0,
+		"path": "",
+		"name": "unnamed",
+		"type": "empty"
+	})
+	return item

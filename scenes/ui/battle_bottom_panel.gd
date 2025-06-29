@@ -90,9 +90,8 @@ func _create_items():
 
 func get_empty_items_by_count(count : int) -> Array :
 	var empty_items = [];
-	var empty_item = { 'name': 'unnamed', 'path': '', 'id': 0, 'type': 'empty' };
 	for i in range(count):
-		empty_items.append(empty_item)
+		empty_items.append(ItemDefaultStateResource.new_empty())
 
 	return empty_items;
 
