@@ -15,6 +15,10 @@ class_name ItemDatabase
 		{"id": 10, "path": "res://assets/graphics/images/skills/shield-water.png", "name": "shield", "type": "skill"},
 		{"id": 11, "path": "res://assets/graphics/images/skills/fog-water.png", "name": "dot", "type": "skill"},
 		{"id": 12, "path": "res://assets/graphics/images/skills/tsunami-water.png", "name": "ult", "type": "skill"},
-		{"id": 13, "path": "res://assets/graphics/images/arrow-right-alfa.png", "name": "arrow", "type": "skill"},
-
+		{"id": 13, "path": "res://assets/graphics/images/skills/blade-air.png", "name": "strike", "type": "skill"},
+		{"id": 14, "path": "res://assets/graphics/images/skills/spear-air.png", "name": "strike", "type": "skill"},
+		{"id": 15, "path": "res://assets/graphics/images/skills/seal-air.png", "name": "debaf", "type": "skill"},
+		{"id": 16, "path": "res://assets/graphics/images/skills/shield-air.png", "name": "shield", "type": "skill"},
+		{"id": 17, "path": "res://assets/graphics/images/skills/ring-air.png", "name": "dot", "type": "skill"},
+		{"id": 18, "path": "res://assets/graphics/images/skills/tornado-air.png", "name": "ult", "type": "skill"},
 	]

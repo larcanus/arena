@@ -66,8 +66,33 @@ items = Array[Dictionary]([{
 "type": "skill"
 }, {
 "id": 13,
-"name": "arrow",
-"path": "res://assets/graphics/images/arrow-right-alfa.png",
+"name": "strike",
+"path": "res://assets/graphics/images/skills/blade-air.png",
+"type": "skill"
+}, {
+"id": 14,
+"name": "strike",
+"path": "res://assets/graphics/images/skills/spear-air.png",
+"type": "skill"
+}, {
+"id": 15,
+"name": "debaf",
+"path": "res://assets/graphics/images/skills/seal-air.png",
+"type": "skill"
+}, {
+"id": 16,
+"name": "shield",
+"path": "res://assets/graphics/images/skills/shield-air.png",
+"type": "skill"
+}, {
+"id": 17,
+"name": "dot",
+"path": "res://assets/graphics/images/skills/ring-air.png",
+"type": "skill"
+}, {
+"id": 18,
+"name": "ult",
+"path": "res://assets/graphics/images/skills/tornado-air.png",
 "type": "skill"
 }])
 metadata/_custom_type_script = "uid://8vttk21r75tc"
