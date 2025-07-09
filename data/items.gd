@@ -21,4 +21,11 @@ class_name ItemDatabase
 		{"id": 16, "path": "res://assets/graphics/images/skills/shield-air.png", "name": "shield", "type": "skill"},
 		{"id": 17, "path": "res://assets/graphics/images/skills/ring-air.png", "name": "dot", "type": "skill"},
 		{"id": 18, "path": "res://assets/graphics/images/skills/tornado-air.png", "name": "ult", "type": "skill"},
+		{"id": 19, "path": "res://assets/graphics/images/skills/rock-earth.png", "name": "strike", "type": "skill"},
+		{"id": 20, "path": "res://assets/graphics/images/skills/spikes-earth.png", "name": "strike", "type": "skill"},
+		{"id": 21, "path": "res://assets/graphics/images/skills/rain-earth.png", "name": "strike", "type": "skill"},
+		{"id": 22, "path": "res://assets/graphics/images/skills/seal-earth.png", "name": "debaf", "type": "skill"},
+		{"id": 23, "path": "res://assets/graphics/images/skills/shield-earth.png", "name": "shield", "type": "skill"},
+		{"id": 24, "path": "res://assets/graphics/images/skills/sands-earth.png", "name": "dot", "type": "skill"},
+		{"id": 25, "path": "res://assets/graphics/images/skills/earthquake-earth.png", "name": "ult", "type": "skill"},
 	]

@@ -10,12 +10,12 @@ func setup(item: ItemDefaultStateResource):
 	if not is_instance_valid(icon):
 		push_error("Panel item::Icon node is invalid!")
 		return
+	item_data = item;
 
 	if item.path == '':
 		print("Panel item::add empty item")
 		return
 
-	item_data = item;
 
 	var texture = load(item_data.path)
 	if not texture:
@@ -32,7 +32,7 @@ func setup(item: ItemDefaultStateResource):
 
 
 func _on_icon_pressed() -> void:
-	print('Panel item::_on_icon_pressed type: ' + item_data.type)
+	print('Panel item::_on_icon_pressed type: ' + str(item_data))
 	if BattleStoreGlobal.is_move():
 		return;
 
