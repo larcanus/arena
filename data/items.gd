@@ -9,18 +9,23 @@ class_name ItemDatabase
 		{"id": 4, "path": "res://assets/graphics/images/skills/shield-fire.png", "name": "shield", "type": "skill"},
 		{"id": 5, "path": "res://assets/graphics/images/skills/floor-fire.png", "name": "dot", "type": "skill"},
 		{"id": 6, "path": "res://assets/graphics/images/skills/meteor-fire.png", "name": "ult", "type": "skill"},
+		{"id": 7, "path": "res://assets/graphics/images/skills/dash-fire.png", "name": "move-strike", "type": "skill"},
+
+
 		{"id": 7, "path": "res://assets/graphics/images/skills/strike-water.png", "name": "strike", "type": "skill"},
 		{"id": 8, "path": "res://assets/graphics/images/skills/whip-water.png", "name": "strike", "type": "skill"},
 		{"id": 9, "path": "res://assets/graphics/images/skills/seal-water.png", "name": "debaf", "type": "skill"},
 		{"id": 10, "path": "res://assets/graphics/images/skills/shield-water.png", "name": "shield", "type": "skill"},
 		{"id": 11, "path": "res://assets/graphics/images/skills/fog-water.png", "name": "dot", "type": "skill"},
 		{"id": 12, "path": "res://assets/graphics/images/skills/tsunami-water.png", "name": "ult", "type": "skill"},
+
 		{"id": 13, "path": "res://assets/graphics/images/skills/blade-air.png", "name": "strike", "type": "skill"},
 		{"id": 14, "path": "res://assets/graphics/images/skills/spear-air.png", "name": "strike", "type": "skill"},
 		{"id": 15, "path": "res://assets/graphics/images/skills/seal-air.png", "name": "debaf", "type": "skill"},
 		{"id": 16, "path": "res://assets/graphics/images/skills/shield-air.png", "name": "shield", "type": "skill"},
 		{"id": 17, "path": "res://assets/graphics/images/skills/ring-air.png", "name": "dot", "type": "skill"},
 		{"id": 18, "path": "res://assets/graphics/images/skills/tornado-air.png", "name": "ult", "type": "skill"},
+
 		{"id": 19, "path": "res://assets/graphics/images/skills/rock-earth.png", "name": "strike", "type": "skill"},
 		{"id": 20, "path": "res://assets/graphics/images/skills/spikes-earth.png", "name": "strike", "type": "skill"},
 		{"id": 21, "path": "res://assets/graphics/images/skills/rain-earth.png", "name": "strike", "type": "skill"},
@@ -28,4 +33,14 @@ class_name ItemDatabase
 		{"id": 23, "path": "res://assets/graphics/images/skills/shield-earth.png", "name": "shield", "type": "skill"},
 		{"id": 24, "path": "res://assets/graphics/images/skills/sands-earth.png", "name": "dot", "type": "skill"},
 		{"id": 25, "path": "res://assets/graphics/images/skills/earthquake-earth.png", "name": "ult", "type": "skill"},
+
+		{"id": 26, "path": "res://assets/graphics/images/skills/empty-strike.png", "name": "strike", "type": "skill"},
+		{"id": 27, "path": "res://assets/graphics/images/skills/convert-hp.png", "name": "common", "type": "skill"},
+		{"id": 28, "path": "res://assets/graphics/images/skills/mana-strike.png", "name": "strike", "type": "skill"},
+		{"id": 29, "path": "res://assets/graphics/images/skills/move-back.png", "name": "move", "type": "skill"},
+		{"id": 30, "path": "res://assets/graphics/images/skills/move-forward.png", "name": "move", "type": "skill"},
+		{"id": 31, "path": "res://assets/graphics/images/skills/recovery.png", "name": "common", "type": "skill"},
+		{"id": 32, "path": "res://assets/graphics/images/skills/shield-all-silver.png", "name": "shield", "type": "skill"},
+		{"id": 33, "path": "res://assets/graphics/images/skills/shield-all-gold.png", "name": "shield", "type": "skill"},
+		{"id": 34, "path": "res://assets/graphics/images/skills/shield-mana.png", "name": "shield", "type": "skill"},
 	]
