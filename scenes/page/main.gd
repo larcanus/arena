@@ -9,7 +9,7 @@ func _ready():
 	$AnimationPlayer.play('blackinScene')
 	$BackgroundSprite/ButtonsControl/AnimationPlayerBtn.play('battleIcon')
 	$BackgroundColor.set_color(scene_background)
-	$CanvasLayerMenu/PopupMenu.visible = false;
+	#$CanvasLayerMenu/PopupMenu.visible = false;
 	$textLabelUserState.text = UserStoreGlobal.state.name + '  ' + JSON.stringify(UserStoreGlobal.state.controlOfElements);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +44,7 @@ func _on_resize():
 	#$BackgroundSprite/ButtonsControl.scale = Vector2(target_scale, target_scale)
 	#$ButtonsControl/BattleBtn.scale = Vector2(target_scale, target_scale)
 	#$ButtonsControl/SpellBtn.scale = Vector2(target_scale, target_scale)
-	$CanvasLayerMenu/MenuBtn.scale = Vector2(target_scale, target_scale)
+	#$CanvasLayerMenu/MenuBtn.scale = Vector2(target_scale, target_scale)
 	#var sizeX = $BackgroundSprite/ButtonsControl.size.x
 	#$BackgroundSprite/ButtonsControl.position = Vector2(viewport_size.x/2 - (sizeX/2),viewport_size.y/2)
 	print($BackgroundSprite/ButtonsControl.size)
@@ -74,12 +74,9 @@ func _notification_battle_return_btn():
 func _notification_battle_go_btn():
 	get_tree().change_scene_to_packed(battle_scene);
 
-func _on_menu_btn_pressed():
-	get_tree().paused = !get_tree().paused
-	$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;
-
-func _on_popup_menu_gui_input(event):
-	if event is InputEventMouseButton and event.get_button_index():
-		if $CanvasLayerMenu/PopupMenu.visible:
-			get_tree().paused = !get_tree().paused
-			$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;
+#func _on_popup_menu_gui_input(event):
+	#print(event)
+	#if event is InputEventMouseButton and event.get_button_index():
+		#if $CanvasLayerMenu/PopupMenu.visible:
+			#get_tree().paused = !get_tree().paused
+			#$CanvasLayerMenu/PopupMenu.visible = !$CanvasLayerMenu/PopupMenu.visible;

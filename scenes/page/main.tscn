@@ -20,6 +20,21 @@
 [ext_resource type="PackedScene" uid="uid://3bjyupig62ha" path="res://scenes/ui/popup_menu.tscn" id="18_oh6u5"]
 [ext_resource type="PackedScene" uid="uid://b43fcdkj1krjx" path="res://scenes/ui/user_state_bar.tscn" id="21_mp7sf"]
 
+[sub_resource type="Animation" id="Animation_mkosm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundSprite/ButtonsControl/BattleBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(375, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_apviq"]
 resource_name = "battleIcon"
 length = 2.0
@@ -66,21 +81,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.117647, 0.0666667, 0.235294, 0), Color(0.117647, 0.0666667, 0.235294, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_mkosm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundSprite/ButtonsControl/BattleBtn:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(375, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dwm02"]
@@ -133,8 +133,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -75.0
-offset_right = 75.0
+offset_left = -96.37747
+offset_right = 53.622528
 offset_bottom = 150.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -207,10 +207,17 @@ grow_vertical = 0
 [node name="CanvasLayerMenu" type="CanvasLayer" parent="."]
 
 [node name="PopupMenu" parent="CanvasLayerMenu" instance=ExtResource("18_oh6u5")]
+offset_top = 0.0
+offset_bottom = 0.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="PopupMenuold" parent="CanvasLayerMenu" instance=ExtResource("18_oh6u5")]
 visible = false
 
 [node name="MenuBtn" type="TextureButton" parent="CanvasLayerMenu"]
 process_mode = 3
+visible = false
 offset_right = 158.0
 offset_bottom = 150.0
 texture_normal = ExtResource("15_h0cnn")
@@ -251,6 +258,6 @@ color = Color(0.117647, 0.0666667, 0.235294, 1)
 
 [connection signal="animation_finished" from="BackgroundSprite/ButtonsControl/AnimationPlayerBtn" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BackgroundSprite/ButtonsControl/BattleBtn" to="." method="_on_battle_btn_pressed"]
-[connection signal="gui_input" from="CanvasLayerMenu/PopupMenu" to="." method="_on_popup_menu_gui_input"]
+[connection signal="gui_input" from="CanvasLayerMenu/PopupMenuold" to="." method="_on_popup_menu_gui_input"]
 [connection signal="pressed" from="CanvasLayerMenu/MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
