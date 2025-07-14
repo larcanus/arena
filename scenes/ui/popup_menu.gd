@@ -1,23 +1,21 @@
 extends Control
 
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	$MenuContainer.visible = false;
-
-func _on_menu_btn_pressed() -> void:
-	get_tree().paused = !get_tree().paused
-	$MenuContainer.visible = !$MenuContainer.visible;
-
-func _on_background_gui_input(event):
-	if event is InputEventMouseButton and event.get_button_index():
-		get_tree().paused = !get_tree().paused
-		$MenuContainer.visible = !$MenuContainer.visible;
+	pass # Replace with function body.
 
 
-func _on_button_1_pressed():
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+#func change_scale_aspect_to_expand():
+	#if(get_tree().root.content_scale_aspect == Window.CONTENT_SCALE_ASPECT_KEEP):
+		#get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND;
+		#print('change scale_aspect = expand')
+
+func _on_texture_button_pressed():
+	#change_scale_aspect_to_expand();
 	get_tree().paused = false;
 	get_tree().change_scene_to_file('res://scenes/page/menu.tscn')
-
-
-func _on_button_2_pressed() -> void:
-	pass;
